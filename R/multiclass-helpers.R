@@ -1,11 +1,25 @@
 #' Aggregates data for multiclass confusion matrix for one target
 #'
+#' @param ... dots
+#'
+#' @noRd
+#' @keywords Internal
+aggregate_multiclass_cm <- function(...) {
+
+  UseMethod("aggregate_multiclass_cm")
+
+}
+
+
+
+#' Aggregates data for multiclass confusion matrix for one target
+#'
 #' @param data Data frame of prediction and reference
 #' @param target The target class
 #'
 #' @noRd
 #' @keywords Internal
-aggregate_multiclass_cm <- function(data, target) {
+aggregate_multiclass_cm.data.frame <- function(data, target) {
 
   res <- data
 
@@ -15,6 +29,35 @@ aggregate_multiclass_cm <- function(data, target) {
   res
 
 }
+
+
+
+#' Aggregates data for multiclass confusion matrix for one target
+#'
+#' @param tbl The confusion matrix as a table
+#' @param col The col number of the target class
+#'
+#' @noRd
+#' @keywords Internal
+aggregate_multiclass_cm.table <- function(tbl, col) {
+
+  res <- matrix(nrow = 2, ncol = 2)
+
+  tp <- diag(tbl)
+  fn <- colSums(tbl) - tp
+  fp <- rowSums(tbl) - tp
+  tn <- sum(tbl) - tp - fn - fp
+
+  res[1,1] <- tn[col]
+  res[1,2] <- fn[col]
+  res[2,1] <- fp[col]
+  res[2,2] <- tn[col]
+
+  res
+
+}
+
+
 
 #' Calculate the combination of n and r.
 #'
@@ -45,7 +88,8 @@ ncr <- function(n, r) {
 calc_entropy <- function(item, n) {
 
   lik <- item / n
-  lik[lik != 0] <- lik[lik != 0] * log(lik[lik != 0], 2)
+  lik <- lik[lik != 0]
+  lik <- lik * log(lik, 2)
 
   -sum(lik)
 

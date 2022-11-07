@@ -1,5 +1,6 @@
 
-#' Calculate Discriminant power (dp).
+#' Calculate Discriminant Power (dp).
+#'
 #'
 #' @param tn Number of true negatives in the contingency table.
 #' @param fp Number of false positives in the contingency table.
@@ -10,19 +11,18 @@
 #'
 calc_dp <- function(tn, fp, tp, fn) {
 
-  tnr <- (calc_tnr(
-    tn = tn, fp = fp, ci.type = FALSE, ci.level = 0)
-  )[1]
-
-  tpr <- (calc_tpr(
-    tp = tp, fn = fn, ci.type = FALSE, ci.level = 0)
-  )[1]
+  tpr <- calc_tpr(tp, fn, F, 0)[1]
+  tnr <- calc_tnr(tn, fp, F, 0)[1]
 
   if (tpr == 1 | tnr == 1) {
     warning("Discriminant power can not be calculated with
-             perfect tpr or tnr.")
+             perfect tpr or tnr. Returning NA.")
+    return(NA_real_)
   }
 
-  (sqrt(3) / pi) * log((tpr / (1 - tpr)), 10) + log((tnr / (1 - tnr)), 10)
+  a <- tpr / (1 - tpr)
+  b <- tnr / (1 - tnr)
+
+  (sqrt(3) / pi) * (log(a, 10) + log(b, 10))
 
 }

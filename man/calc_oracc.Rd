@@ -9,7 +9,7 @@ calc_oracc(tbl, unbiased = FALSE)
 \arguments{
 \item{tbl}{The contingency table.}
 
-\item{unbiased}{Logical, should unbiased random accuracy be returned (TRUE)?}
+\item{unbiased}{TRUE/FALSE, should unbiased random accuracy be returned? FALSE by default.}
 }
 \description{
 Calculate Calculate overall random accuracy or unbiased overall random accuracy (oracc).

@@ -10,6 +10,9 @@
 #'
 calc_dor <- function(tp, fn, tn, fp) {
 
-  (tp / (tp + fn)) / (fn / (fn + tn)) / (1 - (tp / (tp + fn))) / (tn / (fp + tn))
+  plr <- calc_plr(tp, fn, fp, tn, F, 0)[1]
+  nlr <- calc_nlr(fn, tp, tn, fp, F, 0)[1]
+
+  plr / nlr
 
 }

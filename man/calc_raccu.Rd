@@ -4,12 +4,14 @@
 \alias{calc_raccu}
 \title{Calculate Random acc Unbiased}
 \usage{
-calc_raccu(ppos, pos, n)
+calc_raccu(tp, fp, fn, n)
 }
 \arguments{
-\item{ppos}{Number of positives in predict vector}
+\item{tp}{Number of true positives}
 
-\item{pos}{Number of positives in reference vector}
+\item{fp}{Number of false positives}
+
+\item{fn}{Number of false negatives}
 
 \item{n}{Total number of samples}
 }

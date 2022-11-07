@@ -1,8 +1,8 @@
 
 #' Calculate Response Entropy.
 #'
-#' @param ppos vector of positives in predict vector per class
-#' @param n Total number of observations
+#' @param ppos vector of positives in predict vector per class.
+#' @param n Vector of total number of observations by class.
 #'
 #' @export
 #'

@@ -7,9 +7,9 @@
 calc_response_entropy(ppos, n)
 }
 \arguments{
-\item{ppos}{vector of positives in predict vector per class}
+\item{ppos}{vector of positives in predict vector per class.}
 
-\item{n}{Total number of observations}
+\item{n}{Vector of total number of observations by class.}
 }
 \description{
 Calculate Response Entropy.

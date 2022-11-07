@@ -14,5 +14,8 @@ calc_fmi(tp, fp, fn)
 \item{fn}{Number of false negatives in the contingency table.}
 }
 \description{
-Calculate Fowlkes–Mallows index
+The Fowlkes–Mallows index is the geometric mean of precision (PPV) and recall (TPR). It is generally used to compare the results of two clustering algorithms. It ranges from 0 to 1, with 1 indicating perfect classification.
+}
+\references{
+Fowlkes, E. B.; Mallows, C. L. (1 September 1983). "A Method for Comparing Two Hierarchical Clusterings". Journal of the American Statistical Association. 78 (383): 553. doi:10.2307/2288117
 }

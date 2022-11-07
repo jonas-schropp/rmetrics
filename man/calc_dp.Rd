@@ -2,7 +2,7 @@
 % Please edit documentation in R/binary-calc-dp.R
 \name{calc_dp}
 \alias{calc_dp}
-\title{Calculate Discriminant power (dp).}
+\title{Calculate Discriminant Power (dp).}
 \usage{
 calc_dp(tn, fp, tp, fn)
 }
@@ -16,5 +16,5 @@ calc_dp(tn, fp, tp, fn)
 \item{fn}{Number of false negatives in the contingency table.}
 }
 \description{
-Calculate Discriminant power (dp).
+Calculate Discriminant Power (dp).
 }

@@ -16,10 +16,13 @@
 #'
 calc_plr <- function(tp, fn, fp, tn, ci.type, ci.level) {
 
-  lr <- (tp / (tp + fn)) / (fn / (fn + tn))
+  tpr <- calc_tpr(tp, fn, F, 0)[1]
+  fnr <- calc_fpr(fp, tn, F, 0)[1]
+
+  lr <- tpr / fnr
 
   # CI method by Koopman (1984). Coverage not that great.
-  if (is.na(ci.type)) {
+  if (is.na(ci.type) | isFALSE(ci.type)) {
     ci <- c(NA_real_, NA_real_)
   } else if ( ci.type == "koopman") {
     ci <- ci.koopman(tp, fn, fp, tn, lr, ci.level, pos = TRUE)
@@ -27,6 +30,8 @@ calc_plr <- function(tp, fn, fp, tn, ci.type, ci.level) {
     ci <- c(NA_real_, NA_real_)
   }
 
-  c(lr, ci)
+  res <- c(lr, ci)
+  names(res) <- c("plr", "ll", "ul")
+  res
 
 }

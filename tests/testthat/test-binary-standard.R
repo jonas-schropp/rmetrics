@@ -4,8 +4,7 @@
 #####
 ################################################################################
 
-if (!require("psych")) install.packages("psych")
-if (!require("dendextend")) install.packages("dendextend")
+
 
 ################################################################################
 # Point estimates - Standard
@@ -107,7 +106,7 @@ test_that("calc_for works with valid input", {
 })
 test_that("calc_plr works with valid input", {
   expect_equal(
-    calc_plr(tp, fn, fp, tn, ci.type, ci.level)[1], # positive likelihood ratio,
+    unname(calc_plr(tp, fn, fp, tn, ci.type, ci.level)[1]), # positive likelihood ratio,
     1.500, # pycm
     tolerance = 0.001
   )
@@ -150,7 +149,7 @@ test_that("calc_f2 works with valid input", {
 test_that("calc_phi works with valid input", {
   expect_equal(
     calc_phi(tp, tn, fp, fn),
-    psych::phi(tbl, digits = 3),
+    0.204, # psych
     tolerance = 0.001
   )
 })
@@ -170,7 +169,7 @@ test_that("calc_markedness works with valid input", {
 })
 test_that("calc_dor works with valid input", {
   expect_equal(
-    calc_dor(tp, fn, tn, fp),
+    unname(calc_dor(tp, fn, tn, fp)),
     2.333, # pycm
     tolerance = 0.001
   )
@@ -178,7 +177,7 @@ test_that("calc_dor works with valid input", {
 test_that("calc_fmi works with valid input", {
   expect_equal(
     calc_fmi(tp, fp, fn),
-    dendextend::FM_index(prediction, reference), # order doesn't matter
+    0.520104, # dendextend
     tolerance = 0.001, ignore_attr = TRUE
   )
 })
@@ -191,8 +190,8 @@ test_that("calc_racc works with valid input", {
 })
 test_that("calc_raccu works with valid input", {
   expect_equal(
-    calc_raccu(ppos, pos, n),
-    0.203, # pycm
+    calc_raccu(tp, fp, fn, n),
+    0.2025, # pycm
     tolerance = 0.001
   )
 })
@@ -310,7 +309,7 @@ test_that("calc_lift works with valid input", {
 })
 test_that("calc_op works with valid input", {
   expect_equal(
-    calc_op(tp, fp, pos, neg), # optimized precision
+    calc_op(tn, fp, tp, fn), # optimized precision
     0.5655, # pycm
     tolerance = 0.001
   )
