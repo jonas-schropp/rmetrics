@@ -2,17 +2,43 @@
 % Please edit documentation in R/binary-calc-aupr.R
 \name{calc_aupr}
 \alias{calc_aupr}
-\title{Calculate Area under the PR curve for each class (aupr).}
+\alias{calc_aupr.default}
+\alias{calc_aupr.table}
+\alias{calc_aupr.data.frame}
+\title{Calculate Area under the PR curve (AUPR).}
 \usage{
-calc_aupr(tp, fp, fn)
+calc_aupr(...)
+
+\method{calc_aupr}{default}(tp, fp, fn)
+
+\method{calc_aupr}{table}(tbl)
+
+\method{calc_aupr}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Area under the PR curve for each class (aupr).
+Calculate Area under the PR curve (AUPR).
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_aupr(default)}: 
+
+\item \code{calc_aupr(table)}: 
+
+\item \code{calc_aupr(data.frame)}: 
+
+}}

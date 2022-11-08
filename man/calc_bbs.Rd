@@ -2,17 +2,43 @@
 % Please edit documentation in R/binary-calc-bbs.R
 \name{calc_bbs}
 \alias{calc_bbs}
+\alias{calc_bbs.default}
+\alias{calc_bbs.table}
+\alias{calc_bbs.data.frame}
 \title{Calculate Braun-Blanquet similarity (bbs).}
 \usage{
-calc_bbs(tp, ppos, pos)
+calc_bbs(...)
+
+\method{calc_bbs}{default}(tp, ppos, pos)
+
+\method{calc_bbs}{table}(tbl)
+
+\method{calc_bbs}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{ppos}{Number of positives in predict vector}
+\item{ppos}{Number of positives in prediction vector (= TP + FP)}
 
-\item{pos}{Number of actual positives}
+\item{pos}{Number of positives per class (= colSums(tbl))}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Braun-Blanquet similarity (bbs).
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_bbs(default)}: 
+
+\item \code{calc_bbs(table)}: 
+
+\item \code{calc_bbs(data.frame)}: 
+
+}}

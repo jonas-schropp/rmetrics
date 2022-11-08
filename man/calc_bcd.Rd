@@ -2,17 +2,43 @@
 % Please edit documentation in R/binary-calc-bcd.R
 \name{calc_bcd}
 \alias{calc_bcd}
+\alias{calc_bcd.default}
+\alias{calc_bcd.table}
+\alias{calc_bcd.data.frame}
 \title{Calculate Bray-Curtis dissimilarity (bcd).}
 \usage{
-calc_bcd(ppos, pos, n)
+calc_bcd(...)
+
+\method{calc_bcd}{default}(ppos, pos, n)
+
+\method{calc_bcd}{table}(tbl)
+
+\method{calc_bcd}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{ppos}{Number of positives in predict vector}
+\item{ppos}{Number of positives in prediction vector (= TP + FP)}
 
-\item{pos}{Number of actual positives}
+\item{pos}{Number of positives per class (= colSums(tbl))}
 
-\item{n}{Total number of samples.}
+\item{n}{Total number of observations.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Bray-Curtis dissimilarity (bcd).
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_bcd(default)}: 
+
+\item \code{calc_bcd(table)}: 
+
+\item \code{calc_bcd(data.frame)}: 
+
+}}

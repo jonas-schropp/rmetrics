@@ -6,7 +6,6 @@
 #' @noRd
 #' @keywords Internal
 #'
-#'
 aggregate_multiclass_cm.data.frame <- function(data, target) {
 
   res <- data

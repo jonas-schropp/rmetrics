@@ -2,17 +2,32 @@
 % Please edit documentation in R/multiclass-calc-kappa.R
 \name{calc_kappa}
 \alias{calc_kappa}
+\alias{calc_kappa.table}
+\alias{calc_kappa.data.frame}
 \title{Calculate Kappa, unbiased Kappa or Kappa no Prevalence.}
 \usage{
-calc_kappa(tbl, unbiased = FALSE, prev = TRUE)
+calc_kappa(...)
+
+\method{calc_kappa}{table}(tbl, unbiased = FALSE, prev = TRUE)
+
+\method{calc_kappa}{data.frame}(data, unbiased = FALSE, prev = TRUE)
 }
 \arguments{
-\item{tbl}{The contingency table.}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
 \item{unbiased}{Logical, should 'normal' or unbiased overall random accuracy be used.}
 
 \item{prev}{TRUE for Kappa and unbiased Kappa, FALSE for Kappa no prevalence.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
 }
 \description{
 Calculate Kappa, unbiased Kappa or Kappa no Prevalence.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_kappa(table)}: 
+
+\item \code{calc_kappa(data.frame)}: 
+
+}}

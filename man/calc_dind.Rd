@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-dind.R
 \name{calc_dind}
 \alias{calc_dind}
+\alias{calc_dind.default}
+\alias{calc_dind.table}
+\alias{calc_dind.data.frame}
 \title{Calculate Distance index (dind).}
 \usage{
-calc_dind(tn, fp, tp, fn)
+calc_dind(...)
+
+\method{calc_dind}{default}(tn, fp, tp, fn)
+
+\method{calc_dind}{table}(tbl)
+
+\method{calc_dind}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Distance index (dind).
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_dind(default)}: 
+
+\item \code{calc_dind(table)}: 
+
+\item \code{calc_dind(data.frame)}: 
+
+}}

@@ -2,17 +2,43 @@
 % Please edit documentation in R/binary-calc-f2.R
 \name{calc_f2}
 \alias{calc_f2}
+\alias{calc_f2.default}
+\alias{calc_f2.table}
+\alias{calc_f2.data.frame}
 \title{Calculate F2 Score}
 \usage{
-calc_f2(tp, fp, fn)
+calc_f2(...)
+
+\method{calc_f2}{default}(tp, fp, fn)
+
+\method{calc_f2}{table}(tbl)
+
+\method{calc_f2}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate F2 Score
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_f2(default)}: 
+
+\item \code{calc_f2(table)}: 
+
+\item \code{calc_f2(data.frame)}: 
+
+}}

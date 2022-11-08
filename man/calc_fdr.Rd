@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-fdr.R
 \name{calc_fdr}
 \alias{calc_fdr}
+\alias{calc_fdr.default}
+\alias{calc_fdr.table}
+\alias{calc_fdr.data.frame}
 \title{Calculate False Discovery Rate}
 \usage{
-calc_fdr(fp, tp, ci.type, ci.level)
+calc_fdr(...)
+
+\method{calc_fdr}{default}(fp, tp, ci.type, ci.level)
+
+\method{calc_fdr}{table}(tbl, ci.type, ci.level)
+
+\method{calc_fdr}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate False Discovery Rate
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_fdr(default)}: 
+
+\item \code{calc_fdr(table)}: 
+
+\item \code{calc_fdr(data.frame)}: 
+
+}}

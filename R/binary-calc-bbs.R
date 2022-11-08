@@ -1,13 +1,20 @@
-
 #' Calculate Braun-Blanquet similarity (bbs).
-#'
-#' @param tp Number of true positives in the contingency table.
-#' @param ppos Number of positives in predict vector
-#' @param pos Number of actual positives
 #'
 #' @export
 #'
-calc_bbs <- function(tp, ppos, pos) {
+calc_bbs <- function(...) UseMethod("calc_bbs")
+
+
+
+#' @describeIn calc_bbs
+#'
+#' @param tp `r rox("tp")`
+#' @param ppos `r rox("ppos")`
+#' @param pos `r rox("pos")`
+#'
+#' @export
+#'
+calc_bbs.default <- function(tp, ppos, pos) {
 
   if (ppos > 0 | pos > 0) {
 
@@ -26,3 +33,46 @@ calc_bbs <- function(tp, ppos, pos) {
   bbs
 
 }
+
+
+
+#' @describeIn calc_bbs
+#'
+#' @param tbl `r rox("tbl")`
+#'
+#' @export
+#'
+calc_bbs.table <- function(tbl) {
+
+  tp <- tbl[2,2]
+  fp <- tbl[2,1]
+  ppos <- tp + fp
+  pos <- colSums(tbl)
+
+  calc_bbs(tp, ppos, pos)
+
+}
+
+
+
+#' @describeIn calc_bbs
+#'
+#' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
+#'
+#' @export
+#'
+calc_bbs.data.frame <- function(
+    data,
+    prediction, reference
+) {
+
+  data <- data[, c(prediction, reference)]
+  tbl <- table(data)
+
+  calc_bbs(tbl)
+
+}
+
+

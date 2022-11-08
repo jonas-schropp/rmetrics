@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-dor.R
 \name{calc_dor}
 \alias{calc_dor}
+\alias{calc_dor.default}
+\alias{calc_dor.table}
+\alias{calc_dor.data.frame}
 \title{Calculate Diagnostic odds ratio}
 \usage{
-calc_dor(tp, fn, tn, fp)
+calc_dor(...)
+
+\method{calc_dor}{default}(tp, fn, tn, fp)
+
+\method{calc_dor}{table}(tbl)
+
+\method{calc_dor}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
 
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Diagnostic odds ratio
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_dor(default)}: 
+
+\item \code{calc_dor(table)}: 
+
+\item \code{calc_dor(data.frame)}: 
+
+}}

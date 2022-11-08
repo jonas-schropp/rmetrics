@@ -12,10 +12,10 @@
 #'
 #' @export
 #'
-calc_fmi <- function(tp, fp, fn) {
+calc_fmi <- function(otp, ofp, ofn) {
 
-  ppv <- calc_precision(tp, fp, F, 0)[1]
-  tpr <- calc_tpr(tp, fn, F, 0)[1]
+  ppv <- calc_precision(otp, ofp, F, 0)[1]
+  tpr <- calc_tpr(otp, ofn, F, 0)[1]
 
   sqrt(ppv * tpr)
 
@@ -39,47 +39,16 @@ calc_fmi <- function(tp, fp, fn) {
 #'
 #' @export
 #'
-FM_index_R <- function (A1_clusters, A2_clusters, assume_sorted_vectors = FALSE,
-          warn = dendextend_options("warn"), ...) {
-  if (!assume_sorted_vectors) {
-    sorted_As <- sort_2_clusters_vectors(A1_clusters, A2_clusters,
-                                         assume_sorted_vectors = assume_sorted_vectors, warn = warn)
-    A1_clusters <- sorted_As[[1]]
-    A2_clusters <- sorted_As[[2]]
-  }
-  if (any(is.na(A1_clusters)) | any(is.na(A2_clusters))) {
-    if (warn)
-      warning("The clusterings have some NA's in them - returned NA.")
-    FM_index <- NA
-    attr(FM_index, "E_FM") <- NA
-    attr(FM_index, "V_FM") <- NA
-    return(FM_index)
-  }
-  M <- table(A1_clusters, A2_clusters)
-  n <- length(A1_clusters)
-  Tk <- sum(M^2) - n
-  m_i. <- apply(M, 1, sum)
-  m_.j <- apply(M, 2, sum)
-  m_.. <- n
-  if (sum(M) != n)
-    stop("Why does M matrix doesn't sum up to n ??")
-  Pk <- sum(m_i.^2) - n
-  Qk <- sum(m_.j^2) - n
-  FM <- Tk/sqrt(Pk * Qk)
-  E_FM <- sqrt(Pk * Qk)/(n * (n - 1))
-  Pk2 <- sum(m_i. * (m_i. - 1) * (m_i. - 2))
-  Qk2 <- sum(m_.j * (m_.j - 1) * (m_.j - 2))
-  V_FM <- 2/(n * (n - 1)) +
-    4 * Pk2 * Qk2 /
-    ((n * (n - 1) * (n - 2)) * Pk * Qk) +
-    (Pk - 2 - 4 * Pk2/Pk) *
-    (Qk - 2 - 4 * Qk2/Qk) /
-    ((n * (n - 1) * (n - 2) * (n - 3))) -
-    Pk * Qk/(n^2 * (n - 1)^2)
-  # Includes the attributes E_FM and V_FM for the relevant expectancy and
-  # variance under the null hypothesis of no-relation.
-  FM_index <- FM
-  attr(FM_index, "E_FM") <- E_FM
-  attr(FM_index, "V_FM") <- V_FM
-  return(FM_index)
+FM_index_R <- function (tbl) {
+
+  n <- sum(tbl)
+  Tk <- sum(tbl^2) - n
+  ppos <- apply(tbl, 1, sum)
+  pos <- apply(tbl, 2, sum)
+
+  Pk <- sum(ppos^2) - n
+  Qk <- sum(pos^2) - n
+  FM <- Tk / sqrt(Pk * Qk)
+
+  return(FM)
 }

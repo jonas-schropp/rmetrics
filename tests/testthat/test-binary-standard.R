@@ -174,13 +174,6 @@ test_that("calc_dor works with valid input", {
     tolerance = 0.001
   )
 })
-test_that("calc_fmi works with valid input", {
-  expect_equal(
-    calc_fmi(tp, fp, fn),
-    0.520104, # dendextend
-    tolerance = 0.001, ignore_attr = TRUE
-  )
-})
 test_that("calc_racc works with valid input", {
   expect_equal(
     calc_racc(ppos, pos, n),

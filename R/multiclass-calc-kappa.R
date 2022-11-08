@@ -1,13 +1,24 @@
-
 #' Calculate Kappa, unbiased Kappa or Kappa no Prevalence.
 #'
-#' @param tbl The contingency table.
+#' @export
+#'
+calc_kappa <- function(...) UseMethod("calc_kappa")
+
+
+
+#' @describeIn calc_kappa
+#'
+#' @param tbl `r rox("tbl")`
 #' @param unbiased Logical, should 'normal' or unbiased overall random accuracy be used.
 #' @param prev TRUE for Kappa and unbiased Kappa, FALSE for Kappa no prevalence.
 #'
 #' @export
 #'
-calc_kappa <- function(tbl, unbiased = FALSE, prev = TRUE) {
+calc_kappa.table <- function(
+    tbl,
+    unbiased = FALSE,
+    prev = TRUE
+    ) {
 
   n <- sum(tbl)
   otp <- sum(diag(tbl))
@@ -19,5 +30,28 @@ calc_kappa <- function(tbl, unbiased = FALSE, prev = TRUE) {
   } else {
     2 * oacc - 1
   }
+
+}
+
+
+
+#' @describeIn calc_kappa
+#'
+#' @param data `r rox("data")`
+#' @param unbiased Logical, should 'normal' or unbiased overall random accuracy be used.
+#' @param prev TRUE for Kappa and unbiased Kappa, FALSE for Kappa no prevalence.
+#'
+#' @export
+#'
+calc_kappa.data.frame <- function(
+    data,
+    unbiased = FALSE,
+    prev = TRUE
+    ) {
+
+  data <- data[, c(prediction, reference)]
+  tbl <- table(data)
+
+  calc_kappa(tbl)
 
 }

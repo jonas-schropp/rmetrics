@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-dp.R
 \name{calc_dp}
 \alias{calc_dp}
+\alias{calc_dp.default}
+\alias{calc_dp.table}
+\alias{calc_dp.data.frame}
 \title{Calculate Discriminant Power (dp).}
 \usage{
-calc_dp(tn, fp, tp, fn)
+calc_dp(...)
+
+\method{calc_dp}{default}(tn, fp, tp, fn)
+
+\method{calc_dp}{table}(tbl)
+
+\method{calc_dp}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Discriminant Power (dp).
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_dp(default)}: 
+
+\item \code{calc_dp(table)}: 
+
+\item \code{calc_dp(data.frame)}: 
+
+}}

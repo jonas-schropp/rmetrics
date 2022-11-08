@@ -1,15 +1,21 @@
-
 #' Calculate Discriminant Power (dp).
-#'
-#'
-#' @param tn Number of true negatives in the contingency table.
-#' @param fp Number of false positives in the contingency table.
-#' @param tp Number of true positives in the contingency table.
-#' @param fn Number of false negatives in the contingency table.
 #'
 #' @export
 #'
-calc_dp <- function(tn, fp, tp, fn) {
+calc_dp <- function(...) UseMethod("calc_dp")
+
+
+
+#' @describeIn calc_dp
+#'
+#' @param tn `r rox("tn")`
+#' @param fp `r rox("fp")`
+#' @param tp `r rox("tp")`
+#' @param fn `r rox("fn")`
+#'
+#' @export
+#'
+calc_dp.default <- function(tn, fp, tp, fn) {
 
   tpr <- calc_tpr(tp, fn, F, 0)[1]
   tnr <- calc_tnr(tn, fp, F, 0)[1]
@@ -24,5 +30,46 @@ calc_dp <- function(tn, fp, tp, fn) {
   b <- tnr / (1 - tnr)
 
   (sqrt(3) / pi) * (log(a, 10) + log(b, 10))
+
+}
+
+
+
+#' @describeIn calc_dp
+#'
+#' @param tbl `r rox("tbl")`
+#'
+#' @export
+#'
+calc_dp.table <- function(tbl) {
+
+  tp <- tbl[2,2]
+  tn <- tbl[1,1]
+  fp <- tbl[2,1]
+  fn <- tbl[1,2]
+
+  calc_dp(tn, fp, tp, fn)
+
+}
+
+
+
+#' @describeIn calc_dp
+#'
+#' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
+#'
+#' @export
+#'
+calc_dp.data.frame <- function(
+    data,
+    prediction, reference
+) {
+
+  data <- data[, c(prediction, reference)]
+  tbl <- table(data)
+
+  calc_dp(tbl)
 
 }

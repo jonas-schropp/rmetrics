@@ -32,13 +32,23 @@ fp <- rowSums(tbl) - tp
 tn <- sum(tbl) - tp - fn - fp
 ppos <- tp + fp          # predicted positives per class
 n <- on   #colSums(tbl)
+ofp <- sum(rowSums(tbl) - tp)
+ofn <- sum(colSums(tbl) - tp)
 
 
 
 ################################################################################
+
+test_that("calc_fmi works with valid input", {
+  expect_equal(
+    calc_fmi(otp, ofp, ofn),
+    0.520104, # dendextend
+    tolerance = 0.001, ignore_attr = TRUE
+  )
+})
 test_that("Overall Accuracy works with valid input", {
   expect_equal(
-    calc_oacc(otp, on),
+    calc_oacc(otp, n),
     0.6333333333333333,
     tolerance = 0.001
   )
@@ -66,7 +76,7 @@ test_that("Kappa works with valid input", {
 })
 test_that("Bennett S works with valid input", {
   expect_equal(
-    calc_bennett_s(tbl, otp, on),
+    calc_bennett_s(tbl, otp, n),
     0.44999999999999996,
     tolerance = 0.001
   )
@@ -94,7 +104,7 @@ test_that("Chi-Squared works with valid input", {
 })
 test_that("Phi-Squared works with valid input", {
   expect_equal(
-    unname(calc_phi_square(tbl, on)),
+    unname(calc_phi_square(tbl, n)),
     0.48409090909090907,
     tolerance = 0.001
   )
@@ -178,21 +188,21 @@ test_that("Overall J works with valid input", {
 })
 test_that("Hamming Loss works with valid input", {
   expect_equal(
-    calc_hamming(otp, on),
+    calc_hamming(otp, n),
     0.3666666666666667,
     tolerance = 0.001
   )
 })
 test_that("Zero-one Loss works with valid input", {
   expect_equal(
-    calc_zero_one_loss(otp, on),
+    calc_zero_one_loss(otp, n),
     55,
     tolerance = 0.001
   )
 })
 test_that("NIR works with valid input", {
   expect_equal(
-    calc_nir(pos, on),
+    calc_nir(pos, n),
     0.36666666666666664,
     tolerance = 0.001
   )
@@ -255,7 +265,7 @@ test_that("RCI works with valid input", {
 })
 test_that("Pearson C works with valid input", {
   expect_equal(
-    unname(calc_pearson_c(tbl, on)),
+    unname(calc_pearson_c(tbl, n)),
     0.5711276827604436,
     tolerance = 0.001
   )
@@ -283,7 +293,7 @@ test_that("CSI works with valid input", {
 })
 test_that("ARI works with valid input", {
   expect_equal(
-    calc_ari(tbl, on),
+    calc_ari(tbl, n),
     0.2386898115250567,
     tolerance = 0.001
   )
@@ -360,7 +370,7 @@ test_that("FPR Micro works with valid input", {
 })
 test_that("FNR Micro works with valid input", {
   expect_equal(
-    calc_fnr_micro(otp, on),
+    calc_fnr_micro(otp, n),
     0.3666666666666667,
     tolerance = 0.001
   )

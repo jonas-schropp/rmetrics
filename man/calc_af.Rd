@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-af.R
 \name{calc_af}
 \alias{calc_af}
+\alias{calc_af.default}
+\alias{calc_af.table}
+\alias{calc_af.data.frame}
 \title{Calculate Adjusted F-score (af).}
 \usage{
-calc_af(tp, fp, fn, tn)
+calc_af(...)
+
+\method{calc_af}{default}(tp, fp, fn, tn)
+
+\method{calc_af}{table}(tbl)
+
+\method{calc_af}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
 
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Adjusted F-score (af).
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_af(default)}: 
+
+\item \code{calc_af(table)}: 
+
+\item \code{calc_af(data.frame)}: 
+
+}}

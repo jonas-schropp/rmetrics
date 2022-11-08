@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-agm.R
 \name{calc_agm}
 \alias{calc_agm}
+\alias{calc_agm.default}
+\alias{calc_agm.table}
+\alias{calc_agm.data.frame}
 \title{Calculate Adjusted geometric mean (agm).}
 \usage{
-calc_agm(tn, fp, tp, fn)
+calc_agm(...)
+
+\method{calc_agm}{default}(tn, fp, tp, fn)
+
+\method{calc_agm}{table}(tbl)
+
+\method{calc_agm}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Adjusted geometric mean (agm).
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_agm(default)}: 
+
+\item \code{calc_agm(table)}: 
+
+\item \code{calc_agm(data.frame)}: 
+
+}}
