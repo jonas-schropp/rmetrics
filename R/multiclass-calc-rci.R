@@ -1,16 +1,45 @@
-
 #' Calculate Relative classifier information (rci).
-#'
-#' @param tbl confusion matrix
-#' @param pos vector of actual positives per class
-#' @param ppos vector of positives in predict vector per class
-#' @param n Total number of observations
 #'
 #' @export
 #'
-calc_rci <- function(tbl, pos, ppos, n) {
+calc_rci <- function(...) UseMethod("calc_rci")
 
-  mutual_information <- calc_mutual_information(tbl, pos, ppos, n)
+
+
+#' @describeIn calc_rci
+#'
+#' @param data data
+#' @param prediction prediciton
+#' @param reference reference
+#'
+#' @export
+#'
+calc_rci.data.frame <- function(
+    data,
+    prediction = "prediction",
+    reference = "reference"
+) {
+
+  tbl <- table(data[, c(prediction, reference)])
+
+  calc_rci(tbl)
+
+}
+
+
+
+#' @describeIn calc_rci
+#'
+#' @param tbl table
+#'
+#' @export
+#'
+calc_rci.table <- function(tbl) {
+
+  n <- sum(tbl)
+  pos <- colSums(tbl)
+
+  mutual_information <- calc_mutual_information(tbl)
   reference_entropy <- calc_reference_entropy(pos, n)
 
   if (reference_entropy != 0) {

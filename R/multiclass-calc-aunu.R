@@ -1,23 +1,51 @@
-
 #' Calculate average AUC (aunu) / AUC macro.
-#'
-#' @param data data with prediction, reference
-#' @param classes confusion matrix classes
 #'
 #' @export
 #'
-calc_aunu <- function(data, classes) {
+calc_aunu <- function(...) UseMethod("calc_aunu")
 
-  aucs <- double(length(classes))
 
-  for (t in 1:length(classes)) {
 
-    df_tmp <- aggregate_multiclass_cm(data, classes[t])
-    tbl <- table(df_tmp)
-    tp <- tbl[2,2]
-    tn <- tbl[1,1]
-    fp <- tbl[2,1]
-    fn <- tbl[1,2]
+#' @describeIn calc_aunu
+#'
+#' @param data data with prediction, reference
+#' @param prediction Name of the variable in data that holds the predictions
+#' @param reference Name of the variable in data that holds the reference values
+#'
+#' @export
+#'
+calc_aunu.data.frame <- function(
+    data,
+    prediction = "prediction",
+    reference = "reference"
+) {
+
+  data <- data[,c(prediction, reference)]
+  tbl <- table(data)
+
+  calc_aunu(tbl)
+
+}
+
+
+
+#' @describeIn calc_aunu
+#'
+#' @param tbl table
+#'
+#' @export
+#'
+calc_aunu.table <- function(tbl) {
+
+  aucs <- double(length = ncol(tbl))
+
+  for (t in 1:ncol(tbl)) {
+
+    tbl.t <- aggregate_multiclass_cm.table(tbl, t)
+    tp <- tbl.t[2,2]
+    tn <- tbl.t[1,1]
+    fp <- tbl.t[2,1]
+    fn <- tbl.t[1,2]
     aucs[t] <- calc_auroc(tn, fp, tp, fn)
 
   }
@@ -25,3 +53,8 @@ calc_aunu <- function(data, classes) {
   calc_macro(aucs)
 
 }
+
+
+
+
+

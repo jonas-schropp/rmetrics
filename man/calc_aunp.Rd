@@ -2,19 +2,32 @@
 % Please edit documentation in R/multiclass-calc-aunp.R
 \name{calc_aunp}
 \alias{calc_aunp}
+\alias{calc_aunp.data.frame}
+\alias{calc_aunp.table}
 \title{Calculate overall AUC (aunp).}
 \usage{
-calc_aunp(data, classes, pos, n)
+calc_aunp(...)
+
+\method{calc_aunp}{data.frame}(data, prediction = "prediction", reference = "reference")
+
+\method{calc_aunp}{table}(tbl)
 }
 \arguments{
 \item{data}{data with prediction, reference}
 
-\item{classes}{confusion matrix classes}
+\item{prediction}{Name of the variable in data that holds the predictions}
 
-\item{pos}{number of actual positives per class}
+\item{reference}{Name of the variable in data that holds the reference values}
 
-\item{n}{population or total number of samples per class}
+\item{tbl}{table}
 }
 \description{
 Calculate overall AUC (aunp).
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_aunp(data.frame)}: 
+
+\item \code{calc_aunp(table)}: 
+
+}}

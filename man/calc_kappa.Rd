@@ -4,14 +4,10 @@
 \alias{calc_kappa}
 \title{Calculate Kappa, unbiased Kappa or Kappa no Prevalence.}
 \usage{
-calc_kappa(tbl, otp, on, unbiased = FALSE, prev = TRUE)
+calc_kappa(tbl, unbiased = FALSE, prev = TRUE)
 }
 \arguments{
 \item{tbl}{The contingency table.}
-
-\item{otp}{Overall number of true positives in the contingency table.}
-
-\item{on}{Overall number of observations}
 
 \item{unbiased}{Logical, should 'normal' or unbiased overall random accuracy be used.}
 

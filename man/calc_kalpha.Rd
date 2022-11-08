@@ -4,12 +4,12 @@
 \alias{calc_kalpha}
 \title{Calculate Unweighted Krippendorff's alpha (kalpha).}
 \usage{
-calc_kalpha(tbl, otp)
+calc_kalpha(tbl, unbiased = TRUE)
 }
 \arguments{
 \item{tbl}{The contingency table.}
 
-\item{otp}{Overall true positives.}
+\item{unbiased}{TRUE/FALSE. Should unbiased overall random accuracy be used?}
 }
 \description{
 Calculate Unweighted Krippendorff's alpha (kalpha).

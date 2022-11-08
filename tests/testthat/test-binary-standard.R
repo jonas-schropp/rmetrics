@@ -246,7 +246,7 @@ test_that("calc_mcc works with valid input", {
 })
 test_that("calc_ji works with valid input", {
   expect_equal(
-    calc_ji(tp, ppos, pos), # jaccard index,
+    calc_jaccard(tp, ppos, pos), # jaccard index,
     0.3846, # pycm
     tolerance = 0.001
   )

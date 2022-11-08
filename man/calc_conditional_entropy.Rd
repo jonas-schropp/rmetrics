@@ -2,15 +2,32 @@
 % Please edit documentation in R/multiclass-calc-conditional-entropy.R
 \name{calc_conditional_entropy}
 \alias{calc_conditional_entropy}
+\alias{calc_conditional_entropy.data.frame}
+\alias{calc_conditional_entropy.table}
 \title{Calculate conditional entropy.}
 \usage{
-calc_conditional_entropy(tbl, pos)
+calc_conditional_entropy(...)
+
+\method{calc_conditional_entropy}{data.frame}(
+  data,
+  prediction = "prediction",
+  reference = "reference"
+)
+
+\method{calc_conditional_entropy}{table}(tbl)
 }
 \arguments{
-\item{tbl}{confusion matrix}
+\item{data}{data.frame}
 
-\item{pos}{vector of actual positives per class}
+\item{tbl}{confusion matrix}
 }
 \description{
-Calculate conditional entropy.
+Computes the average conditional entropy between two vectors.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_conditional_entropy(data.frame)}: 
+
+\item \code{calc_conditional_entropy(table)}: 
+
+}}

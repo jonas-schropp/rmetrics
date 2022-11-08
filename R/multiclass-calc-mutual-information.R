@@ -2,14 +2,16 @@
 #' Calculate Mutual information.
 #'
 #' @param tbl confusion matrix
-#' @param pos vector of actual positives per class
-#' @param ppos vector of positives in predict vector per class
-#' @param n Total number of observations
 #'
 #' @export
 #'
-calc_mutual_information <- function(tbl, pos, ppos, n) {
+calc_mutual_information <- function(tbl) {
 
-  calc_response_entropy(ppos, n) - calc_conditional_entropy(tbl, pos)
+  ppos <- diag(tbl) + (rowSums(tbl) - diag(tbl))
+  n <- sum(tbl)
 
+  re <- calc_response_entropy(ppos, n)
+  ce <- calc_conditional_entropy(tbl)
+
+  re - ce
 }

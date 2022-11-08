@@ -2,13 +2,32 @@
 % Please edit documentation in R/multiclass-calc-jaccard-overall.R
 \name{calc_jaccard_overall}
 \alias{calc_jaccard_overall}
+\alias{calc_jaccard_overall.data.frame}
+\alias{calc_jaccard_overall.table}
 \title{Calculate Mean overall Jaccard index.}
 \usage{
-calc_jaccard_overall(data)
+calc_jaccard_overall(...)
+
+\method{calc_jaccard_overall}{data.frame}(data, prediction = "prediction", reference = "reference")
+
+\method{calc_jaccard_overall}{table}(tbl)
 }
 \arguments{
 \item{data}{data frame or matrix consisting of prediction and reference}
+
+\item{prediction}{Name of the variable in data that holds the predictions}
+
+\item{reference}{Name of the variable in data that holds the reference values}
+
+\item{tbl}{confusion matrix}
 }
 \description{
 Calculate Mean overall Jaccard index.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_jaccard_overall(data.frame)}: 
+
+\item \code{calc_jaccard_overall(table)}: 
+
+}}

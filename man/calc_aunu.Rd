@@ -2,15 +2,32 @@
 % Please edit documentation in R/multiclass-calc-aunu.R
 \name{calc_aunu}
 \alias{calc_aunu}
+\alias{calc_aunu.data.frame}
+\alias{calc_aunu.table}
 \title{Calculate average AUC (aunu) / AUC macro.}
 \usage{
-calc_aunu(data, classes)
+calc_aunu(...)
+
+\method{calc_aunu}{data.frame}(data, prediction = "prediction", reference = "reference")
+
+\method{calc_aunu}{table}(tbl)
 }
 \arguments{
 \item{data}{data with prediction, reference}
 
-\item{classes}{confusion matrix classes}
+\item{prediction}{Name of the variable in data that holds the predictions}
+
+\item{reference}{Name of the variable in data that holds the reference values}
+
+\item{tbl}{table}
 }
 \description{
 Calculate average AUC (aunu) / AUC macro.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_aunu(data.frame)}: 
+
+\item \code{calc_aunu(table)}: 
+
+}}

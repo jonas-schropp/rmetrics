@@ -9,7 +9,7 @@
 #'
 calc_f1_macro <- function(tp, fp, fn) {
 
-  f1 <- (2 * tp) / ((2 * tp + fp + 1) * fn)
+  f1 <- calc_f1(tp, fp, fn)
 
   calc_macro(f1)
 

@@ -4,16 +4,10 @@
 \alias{calc_mutual_information}
 \title{Calculate Mutual information.}
 \usage{
-calc_mutual_information(tbl, pos, ppos, n)
+calc_mutual_information(tbl)
 }
 \arguments{
 \item{tbl}{confusion matrix}
-
-\item{pos}{vector of actual positives per class}
-
-\item{ppos}{vector of positives in predict vector per class}
-
-\item{n}{Total number of observations}
 }
 \description{
 Calculate Mutual information.

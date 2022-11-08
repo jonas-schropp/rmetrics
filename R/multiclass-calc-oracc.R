@@ -7,10 +7,14 @@
 #'
 calc_oracc <- function(tbl, unbiased = FALSE) {
 
+  n <- sum(tbl)
+  ppos <- diag(tbl) + (rowSums(tbl) - diag(tbl))
+  pos <- colSums(tbl)
+
   if (unbiased) {
-    sum((rowSums(tbl) * colSums(tbl)) / (sum(tbl))^2)
+    sum(((ppos + pos) / (2 * n))^2)
   } else if(!unbiased) {
-    sum((rowSums(tbl) * colSums(tbl)) / (2 * sum(tbl)^2))
+    sum((ppos * pos) / (n^2))
   }
 
 }

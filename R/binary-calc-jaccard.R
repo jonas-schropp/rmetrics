@@ -7,7 +7,7 @@
 #'
 #' @export
 #'
-calc_ji <- function(tp, ppos, pos) {
+calc_jaccard <- function(tp, ppos, pos) {
 
   tp / (ppos + pos - tp)
 

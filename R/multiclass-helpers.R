@@ -1,24 +1,12 @@
 #' Aggregates data for multiclass confusion matrix for one target
 #'
-#' @param ... dots
-#'
-#' @noRd
-#' @keywords Internal
-aggregate_multiclass_cm <- function(...) {
-
-  UseMethod("aggregate_multiclass_cm")
-
-}
-
-
-
-#' Aggregates data for multiclass confusion matrix for one target
-#'
 #' @param data Data frame of prediction and reference
 #' @param target The target class
 #'
 #' @noRd
 #' @keywords Internal
+#'
+#'
 aggregate_multiclass_cm.data.frame <- function(data, target) {
 
   res <- data
@@ -26,7 +14,7 @@ aggregate_multiclass_cm.data.frame <- function(data, target) {
   res[,1] <- data[,1] == target
   res[,2] <- data[,2] == target
 
-  res
+  table(res)
 
 }
 
@@ -51,7 +39,9 @@ aggregate_multiclass_cm.table <- function(tbl, col) {
   res[1,1] <- tn[col]
   res[1,2] <- fn[col]
   res[2,1] <- fp[col]
-  res[2,2] <- tn[col]
+  res[2,2] <- tp[col]
+
+  class(res) <- "table"
 
   res
 
@@ -70,7 +60,7 @@ aggregate_multiclass_cm.table <- function(tbl, col) {
 ncr <- function(n, r) {
 
   if (r > n) return(0)
-  r = min(r, n - r)
+  r <- min(r, n - r)
   floor(prod(seq(n, n - r, -1)) / prod(seq(1, r + 1)))
 
 }
@@ -374,7 +364,7 @@ calc_pc_ac1 <- function(pos, ppos, n) {
 
 
 
-#' Calculate Percent chance agreement for Bennett-et-al.s-S-score.
+#' Calculate Percent chance agreement for Bennett's S.
 #'
 #' @param tbl input table
 #'

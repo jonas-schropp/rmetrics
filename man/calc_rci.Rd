@@ -2,19 +2,32 @@
 % Please edit documentation in R/multiclass-calc-rci.R
 \name{calc_rci}
 \alias{calc_rci}
+\alias{calc_rci.data.frame}
+\alias{calc_rci.table}
 \title{Calculate Relative classifier information (rci).}
 \usage{
-calc_rci(tbl, pos, ppos, n)
+calc_rci(...)
+
+\method{calc_rci}{data.frame}(data, prediction = "prediction", reference = "reference")
+
+\method{calc_rci}{table}(tbl)
 }
 \arguments{
-\item{tbl}{confusion matrix}
+\item{data}{data}
 
-\item{pos}{vector of actual positives per class}
+\item{prediction}{prediciton}
 
-\item{ppos}{vector of positives in predict vector per class}
+\item{reference}{reference}
 
-\item{n}{Total number of observations}
+\item{tbl}{table}
 }
 \description{
 Calculate Relative classifier information (rci).
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_rci(data.frame)}: 
+
+\item \code{calc_rci(table)}: 
+
+}}

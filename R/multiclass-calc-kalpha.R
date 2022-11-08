@@ -2,17 +2,21 @@
 #' Calculate Unweighted Krippendorff's alpha (kalpha).
 #'
 #' @param tbl The contingency table.
-#' @param otp Overall true positives.
+#' @param unbiased TRUE/FALSE. Should unbiased overall random accuracy be used?
 #'
 #' @export
 #'
-calc_kalpha <- function(tbl, otp) {
+calc_kalpha <- function(tbl, unbiased = TRUE) {
 
-  oracc <- calc_oracc(tbl, unbiased = FALSE)
+  n <- sum(tbl)
+  otp <- sum(diag(tbl))
 
-  epsi = 1 / (2 * sum(tbl))
-  p_a = (1 - epsi) * calc_oacc(otp, sum(tbl)) + epsi
+  oracc <- calc_oracc(tbl, unbiased = unbiased)
+  oacc <- calc_oacc(otp, n)
 
-  calc_reliability(oracc, p_a)
+  epsi <- 1 / (2 * n)
+  acc <- (1 - epsi) * oacc + epsi
+
+  calc_reliability(oracc, acc)
 
 }
