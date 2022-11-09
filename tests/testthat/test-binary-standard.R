@@ -113,7 +113,7 @@ test_that("calc_plr works with valid input", {
 })
 test_that("calc_nlr works with valid input", {
   expect_equal(
-    calc_nlr(fn, tp, tn, fp, ci.type, ci.level)[1], # negative likelihood ratio,
+    unname(calc_nlr(tp, fn, fp, tn, ci.type, ci.level)[1]), # negative likelihood ratio,
     0.6428, # pycm
     tolerance = 0.001
   )
@@ -176,28 +176,28 @@ test_that("calc_dor works with valid input", {
 })
 test_that("calc_racc works with valid input", {
   expect_equal(
-    calc_racc(ppos, pos, n),
+    calc_racc(tp, fp, fn, n, unbiased = FALSE),
     0.2, # pycm
     tolerance = 0.001
   )
 })
 test_that("calc_raccu works with valid input", {
   expect_equal(
-    calc_raccu(tp, fp, fn, n),
+    calc_racc(tp, fp, fn, n, unbiased = TRUE),
     0.2025, # pycm
     tolerance = 0.001
   )
 })
 test_that("calc_ooc works with valid input", {
   expect_equal(
-    calc_ooc(tp, ppos, pos), # otsuki-ochiai coefficient,
+    calc_ooc(tp, fp, fn), # otsuki-ochiai coefficient,
     0.559, # pycm
     tolerance = 0.001
   )
 })
 test_that("calc_oc works with valid input", {
   expect_equal(
-    calc_oc(tp, ppos, pos), # overlap coefficient,
+    calc_oc(tp, fp, fn), # overlap coefficient,
     0.625, # pycm
     tolerance = 0.001
   )
@@ -239,7 +239,7 @@ test_that("calc_mcc works with valid input", {
 })
 test_that("calc_ji works with valid input", {
   expect_equal(
-    calc_jaccard(tp, ppos, pos), # jaccard index,
+    calc_jaccard(tp, fn, fp), # jaccard index,
     0.3846, # pycm
     tolerance = 0.001
   )

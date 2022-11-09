@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-is.R
 \name{calc_is}
 \alias{calc_is}
-\title{Calculate Information score (is).}
+\alias{calc_is.default}
+\alias{calc_is.table}
+\alias{calc_is.data.frame}
+\title{Calculate Information score.}
 \usage{
-calc_is(tp, fp, fn, n)
+calc_is(...)
+
+\method{calc_is}{default}(tp, fp, fn, n)
+
+\method{calc_is}{table}(tbl)
+
+\method{calc_is}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
 
-\item{n}{Total number of samples.}
+\item{n}{Total number of observations.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Information score (is).
+Calculate Information score.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_is(default)}: 
+
+\item \code{calc_is(table)}: 
+
+\item \code{calc_is(data.frame)}: 
+
+}}

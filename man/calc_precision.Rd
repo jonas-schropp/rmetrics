@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-precision.R
 \name{calc_precision}
 \alias{calc_precision}
+\alias{calc_precision.default}
+\alias{calc_precision.table}
+\alias{calc_precision.data.frame}
 \title{Calculate Precision}
 \usage{
-calc_precision(tp, fp, ci.type, ci.level)
+calc_precision(...)
+
+\method{calc_precision}{default}(tp, fp, ci.type, ci.level)
+
+\method{calc_precision}{table}(tbl, ci.type, ci.level)
+
+\method{calc_precision}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Precision
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_precision(default)}: 
+
+\item \code{calc_precision(table)}: 
+
+\item \code{calc_precision(data.frame)}: 
+
+}}

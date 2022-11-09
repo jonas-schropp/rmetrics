@@ -1,17 +1,29 @@
-
-#' Calculate Overlap coefficient (oc)
-#'
-#' @param tp Number of true positives in the contingency table.
-#' @param ppos Number of positives in predict vector
-#' @param pos Number of actual positives
+#' Calculate Overlap Coefficient
 #'
 #' @export
 #'
-calc_oc <- function(tp, ppos, pos) {
+calc_oc <- function(...) UseMethod("calc_oc")
 
-  if (ppos > 0 & pos > 0) {
 
-    oc <- tp / min(ppos, pos)
+
+#' @describeIn calc_oc
+#'
+#' @param tp `r rox("tp")`
+#' @param fp `r rox("fp")`
+#' @param fn `r rox("fn")`
+#'
+#' @export
+#'
+calc_oc.default <- function(tp, fp, fn) {
+
+  ppos <- tp + fp
+  pos <- tp + fn
+  m <- min(ppos, pos)
+
+
+  if (m != 0) {
+
+    oc <- tp / m
 
   } else {
 
@@ -19,10 +31,52 @@ calc_oc <- function(tp, ppos, pos) {
 
     warning(
       "Can not calculate Overlap coefficient. \n
-      No positive cases in prediction or reference.")
+      No positive cases in prediction or reference. \n
+      Returning NA.")
 
   }
 
   oc
 
 }
+
+
+
+#' @describeIn calc_oc
+#'
+#' @param tbl `r rox("tbl")`
+#'
+#' @export
+#'
+calc_oc.table <- function(tbl) {
+
+  tp <- tbl[2,2]
+  fp <- tbl[2,1]
+  fn <- tbl[1,2]
+
+  calc_oc(tp, fp, fn)
+
+}
+
+
+
+#' @describeIn calc_oc
+#'
+#' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
+#'
+#' @export
+#'
+calc_oc.data.frame <- function(
+    data,
+    prediction, reference
+) {
+
+  data <- data[, c(prediction, reference)]
+  tbl <- table(data)
+
+  calc_oc(tbl)
+
+}
+

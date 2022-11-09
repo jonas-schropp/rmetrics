@@ -2,17 +2,47 @@
 % Please edit documentation in R/binary-calc-racc.R
 \name{calc_racc}
 \alias{calc_racc}
-\title{Calculate Random accuracy}
+\alias{calc_racc.default}
+\alias{calc_racc.table}
+\alias{calc_racc.data.frame}
+\title{Calculate (Unbiased) Random Accuracy}
 \usage{
-calc_racc(ppos, pos, n)
+calc_racc(...)
+
+\method{calc_racc}{default}(tp, fp, fn, n, unbiased = FALSE)
+
+\method{calc_racc}{table}(tbl, unbiased = FALSE)
+
+\method{calc_racc}{data.frame}(data, prediction, reference, unbiased = FALSE)
 }
 \arguments{
-\item{ppos}{Number of positives in predict vector}
+\item{tp}{True Positives (TP).}
 
-\item{pos}{Number of positives in reference vector}
+\item{fp}{False Positives (FP).}
 
-\item{n}{Total number of samples}
+\item{fn}{Fase Negatives (FN).}
+
+\item{n}{Total number of observations.}
+
+\item{unbiased}{Should unbiased random accuracy be calculated? FALSE by default.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Random accuracy
+Calculate (Unbiased) Random Accuracy
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_racc(default)}: 
+
+\item \code{calc_racc(table)}: 
+
+\item \code{calc_racc(data.frame)}: 
+
+}}

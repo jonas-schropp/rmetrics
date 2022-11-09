@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-net-benefit.R
 \name{calc_net_benefit}
 \alias{calc_net_benefit}
-\title{Calculate Net Benefit}
+\alias{calc_net_benefit.default}
+\alias{calc_net_benefit.table}
+\alias{calc_net_benefit.data.frame}
+\title{Calculate Net Benefit.}
 \usage{
-calc_net_benefit(tp, fp, n, w)
+calc_net_benefit(...)
+
+\method{calc_net_benefit}{default}(tp, fp, n, weight = 1)
+
+\method{calc_net_benefit}{table}(tbl, weight = 1)
+
+\method{calc_net_benefit}{data.frame}(data, prediction, reference, weight = 1)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{n}{Total number of samples}
+\item{n}{Total number of observations.}
 
-\item{w}{weight}
+\item{weight}{The weight for FP in comparison to TP. By default 1.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Net Benefit
+Calculate Net Benefit.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_net_benefit(default)}: 
+
+\item \code{calc_net_benefit(table)}: 
+
+\item \code{calc_net_benefit(data.frame)}: 
+
+}}

@@ -1,32 +1,97 @@
-
-#' Calculate Negative Likelihood Ratio (nlr)
-#'
-#' @param fn Number of false negatives in the contingency table.
-#' @param tp Number of true positives in the contingency table.
-#' @param tn Number of true negatives in the contingency table.
-#' @param fp Number of false positives in the contingency table.
-#' @param ci.type Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level and boot.
-#' @param ci.level A number between 0 and 1 for the levels of the confidence intervals that should be calculated.
+#' Calculate Negative Likelihood Ratio
 #'
 #' @importFrom stats qnorm
 #'
-#' @source Koopman, P. A. R. "Confidence intervals for the ratio of two binomial proportions." Biometrics (1984): 513-517.
+#' @source Koopman, PAR (1984) Confidence intervals for the ratio of two binomial proportions. Biometrics; 513-517.
 #'
 #' @export
 #'
-calc_nlr <- function(fn, tp, tn, fp, ci.type, ci.level) {
+calc_nlr <- function(...) UseMethod("calc_nlr")
+
+
+
+#' @describeIn calc_nlr
+#'
+#' @param tp `r rox("tp")`
+#' @param fn `r rox("fn")`
+#' @param fp `r rox("fp")`
+#' @param tn `r rox("tn")`
+#' @param ci.type Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level.
+#' @param ci.level `r rox("ci.level")`
+#'
+#' @export
+#'
+calc_nlr.default <- function(tp, fn, fp, tn, ci.type, ci.level) {
 
   lr <- (1 - (tp / (tp + fn))) / (tn / (fp + tn))
 
   # CI method by Koopman (1984). Coverage not that great.
   if (is.na(ci.type)) {
+
     ci <- c(NA_real_, NA_real_)
-  } else if ( ci.type == "koopman") {
+
+  } else if (isFALSE(ci.type)) {
+
+    ci <- c(NA_real_, NA_real_)
+
+  } else if (ci.type == "koopman") {
+
     ci <- ci.koopman(tp, fn, fp, tn, lr, ci.level, pos = FALSE)
+
   } else {
+
     ci <- c(NA_real_, NA_real_)
+
   }
 
-  c(lr, ci)
+  res <- c(lr, ci)
+  names(res) <- c("nlr", "ll", "ul")
+  return(res)
+
+}
+
+
+
+#' @describeIn calc_nlr
+#'
+#' @param tbl `r rox("tbl")`
+#' @param ci.type Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level.
+#' @param ci.level `r rox("ci.level")`
+#'
+#' @export
+#'
+calc_nlr.table <- function(tbl, ci.type, ci.level) {
+
+  tp <- tbl[2,2]
+  tn <- tbl[1,1]
+  fp <- tbl[2,1]
+  fn <- tbl[1,2]
+
+  calc_nlr(tp, fn, fp, tn, ci.type, ci.level)
+
+}
+
+
+
+#' @describeIn calc_nlr
+#'
+#' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
+#' @param ci.type Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level.
+#' @param ci.level `r rox("ci.level")`
+#'
+#' @export
+#'
+calc_nlr.data.frame <- function(
+    data,
+    prediction, reference,
+    ci.type, ci.level
+) {
+
+  data <- data[, c(prediction, reference)]
+  tbl <- table(data)
+
+  calc_nlr(tbl, ci.type, ci.level)
 
 }

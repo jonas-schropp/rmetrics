@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-informedness.R
 \name{calc_informedness}
 \alias{calc_informedness}
+\alias{calc_informedness.default}
+\alias{calc_informedness.table}
+\alias{calc_informedness.data.frame}
 \title{Calculate Informedness}
 \usage{
-calc_informedness(tp, fn, tn, fp)
+calc_informedness(...)
+
+\method{calc_informedness}{default}(tp, fn, tn, fp)
+
+\method{calc_informedness}{table}(tbl)
+
+\method{calc_informedness}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
 
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Informedness
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_informedness(default)}: 
+
+\item \code{calc_informedness(table)}: 
+
+\item \code{calc_informedness(data.frame)}: 
+
+}}

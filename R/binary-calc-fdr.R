@@ -17,7 +17,7 @@ calc_fdr <- function(...) UseMethod("calc_fdr")
 #'
 calc_fdr.default <- function(fp, tp, ci.type, ci.level) {
 
-  calc_prop(fp, tp, ci.type, ci.level)
+  calc_prop(fp, fp + tp, ci.type, ci.level)
 
 }
 
@@ -36,7 +36,7 @@ calc_fdr.table <- function(tbl, ci.type, ci.level) {
   tp <- tbl[2,2]
   fp <- tbl[2,1]
 
-  calc_prop(fp, tp, ci.type, ci.level)
+  calc_prop(fp, fp + tp, ci.type, ci.level)
 
 }
 

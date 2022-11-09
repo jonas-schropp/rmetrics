@@ -43,9 +43,9 @@ calc_jaccard_overall.table <- function(tbl) {
     tbl.t <- aggregate_multiclass_cm.table(tbl, t)
     tp <- tbl.t[2,2]
     fp <- tbl.t[2,1]
-    pos <- sum(tbl.t[, 2])
-    ppos <- tp + fp
-    res[t] <- calc_jaccard(tp, ppos, pos)
+    fn <- tbl.t[1,2]
+
+    res[t] <- calc_jaccard(tp, fn, fp)
 
   }
 

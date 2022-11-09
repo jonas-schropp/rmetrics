@@ -18,7 +18,7 @@ calc_dor <- function(...) UseMethod("calc_dor")
 calc_dor.default <- function(tp, fn, tn, fp) {
 
   plr <- calc_plr(tp, fn, fp, tn, F, 0)[1]
-  nlr <- calc_nlr(fn, tp, tn, fp, F, 0)[1]
+  nlr <- calc_nlr(tp, fn, fp, tn, F, 0)[1]
 
   plr / nlr
 
@@ -39,7 +39,7 @@ calc_dor.table <- function(tbl) {
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_dor(tn, fp, tp, fn)
+  calc_dor(tp, fn, tn, fp)
 
 }
 

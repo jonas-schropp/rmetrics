@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-tnr.R
 \name{calc_tnr}
 \alias{calc_tnr}
-\title{Calculate Specificity (tnr)}
+\alias{calc_tnr.default}
+\alias{calc_tnr.table}
+\alias{calc_tnr.data.frame}
+\title{Calculate Specificity (TNR)}
 \usage{
-calc_tnr(tn, fp, ci.type, ci.level)
+calc_tnr(...)
+
+\method{calc_tnr}{default}(tn, fp, ci.type, ci.level)
+
+\method{calc_tnr}{table}(tbl, ci.type, ci.level)
+
+\method{calc_tnr}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Specificity (tnr)
+Calculate Specificity (TNR)
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_tnr(default)}: 
+
+\item \code{calc_tnr(table)}: 
+
+\item \code{calc_tnr(data.frame)}: 
+
+}}

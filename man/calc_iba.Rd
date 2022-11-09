@@ -2,21 +2,47 @@
 % Please edit documentation in R/binary-calc-iba.R
 \name{calc_iba}
 \alias{calc_iba}
-\title{Calculate Index of balanced acc (iba).}
+\alias{calc_iba.default}
+\alias{calc_iba.table}
+\alias{calc_iba.data.frame}
+\title{Calculate Index of Balanced Accuracy.}
 \usage{
-calc_iba(tn, fp, tp, fn, alpha = 1)
+calc_iba(...)
+
+\method{calc_iba}{default}(tn, fp, tp, fn, alpha = 1)
+
+\method{calc_iba}{table}(tbl, alpha = 1)
+
+\method{calc_iba}{data.frame}(data, prediction, reference, alpha = 1)
 }
 \arguments{
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
 
-\item{alpha}{How much should TPR-TNR be weighted? Default is 1.}
+\item{alpha}{Weight for TPR - TNR. By default 1.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Index of balanced acc (iba).
+Calculate Index of Balanced Accuracy.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_iba(default)}: 
+
+\item \code{calc_iba(table)}: 
+
+\item \code{calc_iba(data.frame)}: 
+
+}}

@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-op.R
 \name{calc_op}
 \alias{calc_op}
-\title{Calculate Optimized precision (op).}
+\alias{calc_op.default}
+\alias{calc_op.table}
+\alias{calc_op.data.frame}
+\title{Calculate Optimized Precision.}
 \usage{
-calc_op(tn, fp, tp, fn)
+calc_op(...)
+
+\method{calc_op}{default}(tn, fp, tp, fn)
+
+\method{calc_op}{table}(tbl)
+
+\method{calc_op}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Optimized precision (op).
+Calculate Optimized Precision.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_op(default)}: 
+
+\item \code{calc_op(table)}: 
+
+\item \code{calc_op(data.frame)}: 
+
+}}

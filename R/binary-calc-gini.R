@@ -1,17 +1,65 @@
-
 #' Calculate Gini index (gini).
-#'
-#' @param tn Number of true negatives in the contingency table.
-#' @param fp Number of false positives in the contingency table.
-#' @param tp Number of true positives in the contingency table.
-#' @param fn Number of false negatives in the contingency table.
 #'
 #' @export
 #'
-calc_gini <- function(tn, fp, tp, fn) {
+calc_gini <- function(...) UseMethod("calc_gini")
 
-  auroc <- (calc_auroc(tn = tn, fp = fp, tp = tp, fn = fn))[1]
+
+
+#' @describeIn calc_gini
+#'
+#' @param tn `r rox("tn")`
+#' @param fp `r rox("fp")`
+#' @param tp `r rox("tp")`
+#' @param fn `r rox("fn")`
+#'
+#' @export
+#'
+calc_gini.default <- function(tn, fp, tp, fn) {
+
+  auroc <- calc_auroc(tn, fp, tp, fn)[1]
 
   2 * auroc - 1
+
+}
+
+
+
+#' @describeIn calc_gini
+#'
+#' @param tbl `r rox("tbl")`
+#'
+#' @export
+#'
+calc_gini.table <- function(tbl) {
+
+  tp <- tbl[2,2]
+  tn <- tbl[1,1]
+  fp <- tbl[2,1]
+  fn <- tbl[1,2]
+
+  calc_gini(tn, fp, tp, fn)
+
+}
+
+
+
+#' @describeIn calc_gini
+#'
+#' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
+#'
+#' @export
+#'
+calc_gini.data.frame <- function(
+    data,
+    prediction, reference
+) {
+
+  data <- data[, c(prediction, reference)]
+  tbl <- table(data)
+
+  calc_gini(tbl)
 
 }

@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-prevalence.R
 \name{calc_prevalence}
 \alias{calc_prevalence}
+\alias{calc_prevalence.default}
+\alias{calc_prevalence.table}
+\alias{calc_prevalence.data.frame}
 \title{Calculate Sample Prevalence}
 \usage{
-calc_prevalence(pos, neg, ci.type, ci.level)
+calc_prevalence(...)
+
+\method{calc_prevalence}{default}(pos, neg, ci.type, ci.level)
+
+\method{calc_prevalence}{table}(tbl, ci.type, ci.level)
+
+\method{calc_prevalence}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{pos}{Number of positives according to reference.}
+\item{pos}{Number of positives per class (= colSums(tbl))}
 
-\item{neg}{Number of negatives according to reference.}
+\item{neg}{}
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Sample Prevalence
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_prevalence(default)}: 
+
+\item \code{calc_prevalence(table)}: 
+
+\item \code{calc_prevalence(data.frame)}: 
+
+}}

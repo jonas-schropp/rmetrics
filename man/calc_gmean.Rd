@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-gmean.R
 \name{calc_gmean}
 \alias{calc_gmean}
+\alias{calc_gmean.default}
+\alias{calc_gmean.table}
+\alias{calc_gmean.data.frame}
 \title{Calculate Geometric mean (gmean) of TPR and TNR.}
 \usage{
-calc_gmean(tn, fp, tp, fn)
+calc_gmean(...)
+
+\method{calc_gmean}{default}(tn, fp, tp, fn)
+
+\method{calc_gmean}{table}(tbl)
+
+\method{calc_gmean}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Geometric mean (gmean) of TPR and TNR.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_gmean(default)}: 
+
+\item \code{calc_gmean(table)}: 
+
+\item \code{calc_gmean(data.frame)}: 
+
+}}

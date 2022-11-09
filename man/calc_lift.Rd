@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-lift.R
 \name{calc_lift}
 \alias{calc_lift}
-\title{Calculate Lift score (lift).}
+\alias{calc_lift.default}
+\alias{calc_lift.table}
+\alias{calc_lift.data.frame}
+\title{Calculate Lift Score}
 \usage{
-calc_lift(tp, fp, pos, neg)
+calc_lift(...)
+
+\method{calc_lift}{default}(tp, fp, pos, neg)
+
+\method{calc_lift}{table}(tbl)
+
+\method{calc_lift}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{pos}{Number of actual positives}
+\item{pos}{Number of positives per class (= colSums(tbl))}
 
-\item{neg}{Number of actual negatives}
+\item{neg}{}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Lift score (lift).
+Calculate Lift Score
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_lift(default)}: 
+
+\item \code{calc_lift(table)}: 
+
+\item \code{calc_lift(data.frame)}: 
+
+}}

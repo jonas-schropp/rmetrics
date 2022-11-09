@@ -2,17 +2,43 @@
 % Please edit documentation in R/binary-calc-ooc.R
 \name{calc_ooc}
 \alias{calc_ooc}
-\title{Calculate Otsuka-Ochiai coefficient (ooc)}
+\alias{calc_ooc.default}
+\alias{calc_ooc.table}
+\alias{calc_ooc.data.frame}
+\title{Calculate Otsuka-Ochiai Coefficient}
 \usage{
-calc_ooc(tp, ppos, pos)
+calc_ooc(...)
+
+\method{calc_ooc}{default}(tp, fp, fn)
+
+\method{calc_ooc}{table}(tbl)
+
+\method{calc_ooc}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{ppos}{Number of positives in predict vector}
+\item{fp}{False Positives (FP).}
 
-\item{pos}{Number of actual positives}
+\item{fn}{Fase Negatives (FN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Otsuka-Ochiai coefficient (ooc)
+Calculate Otsuka-Ochiai Coefficient
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_ooc(default)}: 
+
+\item \code{calc_ooc(table)}: 
+
+\item \code{calc_ooc(data.frame)}: 
+
+}}

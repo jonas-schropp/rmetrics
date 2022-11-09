@@ -2,26 +2,52 @@
 % Please edit documentation in R/binary-calc-plr.R
 \name{calc_plr}
 \alias{calc_plr}
-\title{Calculate Positive Likelihood Ratio (plr)}
+\alias{calc_plr.default}
+\alias{calc_plr.table}
+\alias{calc_plr.data.frame}
+\title{Calculate Positive Likelihood Ratio}
 \source{
-Koopman, P. A. R. Confidence intervals for the ratio of two binomial proportions. Biometrics (1984): 513-517.
+Koopman, PAR (1984) Confidence intervals for the ratio of two binomial proportions. Biometrics; 513-517.
 }
 \usage{
-calc_plr(tp, fn, fp, tn, ci.type, ci.level)
+calc_plr(...)
+
+\method{calc_plr}{default}(tp, fn, fp, tn, ci.type, ci.level)
+
+\method{calc_plr}{table}(tbl, ci.type, ci.level)
+
+\method{calc_plr}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{ci.type}{Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level and boot.}
+\item{ci.type}{Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level.}
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Positive Likelihood Ratio (plr)
+Calculate Positive Likelihood Ratio
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_plr(default)}: 
+
+\item \code{calc_plr(table)}: 
+
+\item \code{calc_plr(data.frame)}: 
+
+}}

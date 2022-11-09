@@ -2,19 +2,49 @@
 % Please edit documentation in R/binary-calc-tpr.R
 \name{calc_tpr}
 \alias{calc_tpr}
-\title{Calculate Sensitivity (tpr)}
+\alias{calc_tpr.default}
+\alias{calc_tpr.table}
+\alias{calc_tpr.data.frame}
+\title{Calculate Sensitivity (TPR)}
 \usage{
-calc_tpr(tp, fn, ci.type, ci.level)
+calc_tpr(...)
+
+\method{calc_tpr}{default}(tp, fn, ci.type, ci.level)
+
+\method{calc_tpr}{table}(tbl, ci.type, ci.level)
+
+\method{calc_tpr}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
+
+\item{tn}{True Negatives (TN).}
+
+\item{fp}{False Positives (FP).}
 }
 \description{
-Calculate Sensitivity (tpr)
+Calculate Sensitivity (TPR)
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_tpr(default)}: 
+
+\item \code{calc_tpr(table)}: 
+
+\item \code{calc_tpr(data.frame)}: 
+
+}}

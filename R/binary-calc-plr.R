@@ -1,20 +1,27 @@
-
-#' Calculate Positive Likelihood Ratio (plr)
-#'
-#' @param tp Number of true positives in the contingency table.
-#' @param fn Number of false negatives in the contingency table.
-#' @param fp Number of false positives in the contingency table.
-#' @param tn Number of true negatives in the contingency table.
-#' @param ci.type Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level and boot.
-#' @param ci.level A number between 0 and 1 for the levels of the confidence intervals that should be calculated.
+#' Calculate Positive Likelihood Ratio
 #'
 #' @importFrom stats qnorm
 #'
-#' @source Koopman, P. A. R. Confidence intervals for the ratio of two binomial proportions. Biometrics (1984): 513-517.
+#' @source Koopman, PAR (1984) Confidence intervals for the ratio of two binomial proportions. Biometrics; 513-517.
 #'
 #' @export
 #'
-calc_plr <- function(tp, fn, fp, tn, ci.type, ci.level) {
+calc_plr <- function(...) UseMethod("calc_plr")
+
+
+
+#' @describeIn calc_plr
+#'
+#' @param tp `r rox("tp")`
+#' @param fn `r rox("fn")`
+#' @param fp `r rox("fp")`
+#' @param tn `r rox("tn")`
+#' @param ci.type Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level.
+#' @param ci.level `r rox("ci.level")`
+#'
+#' @export
+#'
+calc_plr.default <- function(tp, fn, fp, tn, ci.type, ci.level) {
 
   tpr <- calc_tpr(tp, fn, F, 0)[1]
   fnr <- calc_fpr(fp, tn, F, 0)[1]
@@ -33,5 +40,50 @@ calc_plr <- function(tp, fn, fp, tn, ci.type, ci.level) {
   res <- c(lr, ci)
   names(res) <- c("plr", "ll", "ul")
   res
+
+}
+
+
+#' @describeIn calc_plr
+#'
+#' @param tbl `r rox("tbl")`
+#' @param ci.type Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level.
+#' @param ci.level `r rox("ci.level")`
+#'
+#' @export
+#'
+calc_plr.table <- function(tbl, ci.type, ci.level) {
+
+  tp <- tbl[2,2]
+  tn <- tbl[1,1]
+  fp <- tbl[2,1]
+  fn <- tbl[1,2]
+
+  calc_nlr(tp, fn, fp, tn, ci.type, ci.level)
+
+}
+
+
+
+#' @describeIn calc_plr
+#'
+#' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
+#' @param ci.type Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level.
+#' @param ci.level `r rox("ci.level")`
+#'
+#' @export
+#'
+calc_plr.data.frame <- function(
+    data,
+    prediction, reference,
+    ci.type, ci.level
+) {
+
+  data <- data[, c(prediction, reference)]
+  tbl <- table(data)
+
+  calc_plr(tbl, ci.type, ci.level)
 
 }

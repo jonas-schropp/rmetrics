@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-for.R
 \name{calc_for}
 \alias{calc_for}
+\alias{calc_for.default}
+\alias{calc_for.table}
+\alias{calc_for.data.frame}
 \title{Calculate False Omission Rate}
 \usage{
-calc_for(fn, tn, ci.type, ci.level)
+calc_for(...)
+
+\method{calc_for}{default}(fn, tn, ci.type, ci.level)
+
+\method{calc_for}{table}(tbl, ci.type, ci.level)
+
+\method{calc_for}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
 
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate False Omission Rate
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_for(default)}: 
+
+\item \code{calc_for(table)}: 
+
+\item \code{calc_for(data.frame)}: 
+
+}}

@@ -2,13 +2,32 @@
 % Please edit documentation in R/multiclass-calc-joint-entropy.R
 \name{calc_joint_entropy}
 \alias{calc_joint_entropy}
+\alias{calc_joint_entropy.table}
+\alias{calc_joint_entropy.data.frame}
 \title{Calculate Joint entropy.}
 \usage{
-calc_joint_entropy(tbl)
+calc_joint_entropy(...)
+
+\method{calc_joint_entropy}{table}(tbl)
+
+\method{calc_joint_entropy}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tbl}{input table}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Joint entropy.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_joint_entropy(table)}: 
+
+\item \code{calc_joint_entropy(data.frame)}: 
+
+}}

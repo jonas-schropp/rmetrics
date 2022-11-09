@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-q.R
 \name{calc_q}
 \alias{calc_q}
-\title{Calculate Yule's Q. .}
+\alias{calc_q.default}
+\alias{calc_q.table}
+\alias{calc_q.data.frame}
+\title{Calculate Yule's Q.}
 \usage{
-calc_q(tp, tn, fp, fn)
+calc_q(...)
+
+\method{calc_q}{default}(tp, tn, fp, fn)
+
+\method{calc_q}{table}(tbl)
+
+\method{calc_q}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Yule's Q. .
+Calculate Yule's Q.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_q(default)}: 
+
+\item \code{calc_q(table)}: 
+
+\item \code{calc_q(data.frame)}: 
+
+}}

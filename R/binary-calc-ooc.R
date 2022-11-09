@@ -1,13 +1,23 @@
-
-#' Calculate Otsuka-Ochiai coefficient (ooc)
-#'
-#' @param tp Number of true positives in the contingency table.
-#' @param ppos Number of positives in predict vector
-#' @param pos Number of actual positives
+#' Calculate Otsuka-Ochiai Coefficient
 #'
 #' @export
 #'
-calc_ooc <- function(tp, ppos, pos) {
+calc_ooc <- function(...) UseMethod("calc_ooc")
+
+
+
+#' @describeIn calc_ooc
+#'
+#' @param tp `r rox("tp")`
+#' @param fp `r rox("fp")`
+#' @param fn `r rox("fn")`
+#'
+#' @export
+#'
+calc_ooc.default <- function(tp, fp, fn) {
+
+  ppos <- tp + fp
+  pos <- tp + fn
 
   if (ppos > 0 & pos > 0) {
 
@@ -24,5 +34,45 @@ calc_ooc <- function(tp, ppos, pos) {
   }
 
   ooc
+
+}
+
+
+
+#' @describeIn calc_ooc
+#'
+#' @param tbl `r rox("tbl")`
+#'
+#' @export
+#'
+calc_ooc.table <- function(tbl) {
+
+  tp <- tbl[2,2]
+  fp <- tbl[2,1]
+  fn <- tbl[1,2]
+
+  calc_ooc(tp, fp, fn)
+
+}
+
+
+
+#' @describeIn calc_ooc
+#'
+#' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
+#'
+#' @export
+#'
+calc_ooc.data.frame <- function(
+    data,
+    prediction, reference
+) {
+
+  data <- data[, c(prediction, reference)]
+  tbl <- table(data)
+
+  calc_ooc(tbl)
 
 }

@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-sind.R
 \name{calc_sind}
 \alias{calc_sind}
-\title{Calculate Similarity index (sind).}
+\alias{calc_sind.default}
+\alias{calc_sind.table}
+\alias{calc_sind.data.frame}
+\title{Calculate Similarity Index}
 \usage{
-calc_sind(tn, fp, tp, fn)
+calc_sind(...)
+
+\method{calc_sind}{default}(tn, fp, tp, fn)
+
+\method{calc_sind}{table}(tbl)
+
+\method{calc_sind}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tn}{Number of true negatives in the contingency table.}
+\item{tn}{True Negatives (TN).}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{fp}{False Positives (FP).}
 
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Similarity index (sind).
+Calculate Similarity Index
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_sind(default)}: 
+
+\item \code{calc_sind(table)}: 
+
+\item \code{calc_sind(data.frame)}: 
+
+}}

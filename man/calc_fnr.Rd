@@ -2,19 +2,45 @@
 % Please edit documentation in R/binary-calc-fnr.R
 \name{calc_fnr}
 \alias{calc_fnr}
+\alias{calc_fnr.default}
+\alias{calc_fnr.table}
+\alias{calc_fnr.data.frame}
 \title{Calculate False Negative Rate}
 \usage{
-calc_fnr(fn, tp, ci.type, ci.level)
+calc_fnr(...)
+
+\method{calc_fnr}{default}(fn, tp, ci.type, ci.level)
+
+\method{calc_fnr}{table}(tbl, ci.type, ci.level)
+
+\method{calc_fnr}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{fn}{Number of false negatives in the contingency table.}
+\item{fn}{Fase Negatives (FN).}
 
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate False Negative Rate
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_fnr(default)}: 
+
+\item \code{calc_fnr(table)}: 
+
+\item \code{calc_fnr(data.frame)}: 
+
+}}

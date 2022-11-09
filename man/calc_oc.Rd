@@ -2,17 +2,43 @@
 % Please edit documentation in R/binary-calc-oc.R
 \name{calc_oc}
 \alias{calc_oc}
-\title{Calculate Overlap coefficient (oc)}
+\alias{calc_oc.default}
+\alias{calc_oc.table}
+\alias{calc_oc.data.frame}
+\title{Calculate Overlap Coefficient}
 \usage{
-calc_oc(tp, ppos, pos)
+calc_oc(...)
+
+\method{calc_oc}{default}(tp, fp, fn)
+
+\method{calc_oc}{table}(tbl)
+
+\method{calc_oc}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tp}{True Positives (TP).}
 
-\item{ppos}{Number of positives in predict vector}
+\item{fp}{False Positives (FP).}
 
-\item{pos}{Number of actual positives}
+\item{fn}{Fase Negatives (FN).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Overlap coefficient (oc)
+Calculate Overlap Coefficient
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_oc(default)}: 
+
+\item \code{calc_oc(table)}: 
+
+\item \code{calc_oc(data.frame)}: 
+
+}}

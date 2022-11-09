@@ -2,15 +2,34 @@
 % Please edit documentation in R/multiclass-calc-kalpha.R
 \name{calc_kalpha}
 \alias{calc_kalpha}
-\title{Calculate Unweighted Krippendorff's alpha (kalpha).}
+\alias{calc_kalpha.table}
+\alias{calc_kalpha.data.frame}
+\title{Calculate Unweighted Krippendorff's Alpha.}
 \usage{
-calc_kalpha(tbl, unbiased = TRUE)
+calc_kalpha(...)
+
+\method{calc_kalpha}{table}(tbl, unbiased = TRUE)
+
+\method{calc_kalpha}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tbl}{The contingency table.}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
 \item{unbiased}{TRUE/FALSE. Should unbiased overall random accuracy be used?}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Unweighted Krippendorff's alpha (kalpha).
+Calculate Unweighted Krippendorff's Alpha.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_kalpha(table)}: 
+
+\item \code{calc_kalpha(data.frame)}: 
+
+}}

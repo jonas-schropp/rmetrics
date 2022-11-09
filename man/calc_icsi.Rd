@@ -2,17 +2,43 @@
 % Please edit documentation in R/binary-calc-icsi.R
 \name{calc_icsi}
 \alias{calc_icsi}
-\title{Calculate Individual classification success index (icsi).}
+\alias{calc_icsi.default}
+\alias{calc_icsi.table}
+\alias{calc_icsi.data.frame}
+\title{Calculate Individual classification success index.}
 \usage{
-calc_icsi(tp, fn, fp)
+calc_icsi(...)
+
+\method{calc_icsi}{default}(tp, fn, fp)
+
+\method{calc_icsi}{table}(tbl)
+
+\method{calc_icsi}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{TP}
+\item{tp}{True Positives (TP).}
 
-\item{fn}{FN}
+\item{fn}{Fase Negatives (FN).}
 
-\item{fp}{FP}
+\item{fp}{False Positives (FP).}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Individual classification success index (icsi).
+Calculate Individual classification success index.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_icsi(default)}: 
+
+\item \code{calc_icsi(table)}: 
+
+\item \code{calc_icsi(data.frame)}: 
+
+}}
