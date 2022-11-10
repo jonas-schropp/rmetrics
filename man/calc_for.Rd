@@ -16,9 +16,9 @@ calc_for(...)
 \method{calc_for}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{fn}{Fase Negatives (FN).}
+\item{fn}{Numeric, Fase Negatives (FN).}
 
-\item{tn}{True Negatives (TN).}
+\item{tn}{Numeric, True Negatives (TN).}
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 

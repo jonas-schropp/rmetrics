@@ -17,9 +17,13 @@ calc_conditional_entropy(...)
 \method{calc_conditional_entropy}{table}(tbl)
 }
 \arguments{
-\item{data}{data.frame}
+\item{data}{A data.frame containing the prediction and the reference.}
 
-\item{tbl}{confusion matrix}
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 }
 \description{
 Computes the average conditional entropy between two vectors.

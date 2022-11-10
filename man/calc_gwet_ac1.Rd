@@ -2,19 +2,45 @@
 % Please edit documentation in R/multiclass-calc-gwet-ac1.R
 \name{calc_gwet_ac1}
 \alias{calc_gwet_ac1}
+\alias{calc_gwet_ac1.default}
+\alias{calc_gwet_ac1.table}
+\alias{calc_gwet_ac1.data.frame}
 \title{Calculate Gwet AC1.}
 \usage{
-calc_gwet_ac1(pos, ppos, otp, on)
+calc_gwet_ac1(...)
+
+\method{calc_gwet_ac1}{default}(tp, fp, fn, n)
+
+\method{calc_gwet_ac1}{table}(tbl)
+
+\method{calc_gwet_ac1}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{pos}{Vector of positives in reference.}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{ppos}{Vector of positives in prediction.}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
 
-\item{otp}{Overall true positives.}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
 
-\item{on}{Number of samples.}
+\item{n}{Total number of observations.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Gwet AC1.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_gwet_ac1(default)}: 
+
+\item \code{calc_gwet_ac1(table)}: 
+
+\item \code{calc_gwet_ac1(data.frame)}: 
+
+}}

@@ -16,9 +16,9 @@ calc_net_benefit(...)
 \method{calc_net_benefit}{data.frame}(data, prediction, reference, weight = 1)
 }
 \arguments{
-\item{tp}{True Positives (TP).}
+\item{tp}{Numeric, True Positives (TP).}
 
-\item{fp}{False Positives (FP).}
+\item{fp}{Numeric, False Positives (FP).}
 
 \item{n}{Total number of observations.}
 

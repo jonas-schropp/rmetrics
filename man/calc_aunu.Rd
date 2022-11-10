@@ -2,32 +2,45 @@
 % Please edit documentation in R/multiclass-calc-aunu.R
 \name{calc_aunu}
 \alias{calc_aunu}
-\alias{calc_aunu.data.frame}
+\alias{calc_aunu.default}
 \alias{calc_aunu.table}
+\alias{calc_aunu.data.frame}
 \title{Calculate average AUC (aunu) / AUC macro.}
 \usage{
 calc_aunu(...)
 
-\method{calc_aunu}{data.frame}(data, prediction = "prediction", reference = "reference")
+\method{calc_aunu}{default}(tp, tn, fp, fn)
 
 \method{calc_aunu}{table}(tbl)
+
+\method{calc_aunu}{data.frame}(data, prediction = "prediction", reference = "reference")
 }
 \arguments{
-\item{data}{data with prediction, reference}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{prediction}{Name of the variable in data that holds the predictions}
+\item{tn}{Numeric vector of True Negatives (TN) by class.}
 
-\item{reference}{Name of the variable in data that holds the reference values}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
 
-\item{tbl}{table}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate average AUC (aunu) / AUC macro.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{calc_aunu(data.frame)}: 
+\item \code{calc_aunu(default)}: 
 
 \item \code{calc_aunu(table)}: 
+
+\item \code{calc_aunu(data.frame)}: 
 
 }}

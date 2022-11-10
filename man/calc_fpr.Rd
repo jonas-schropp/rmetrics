@@ -16,9 +16,9 @@ calc_fpr(...)
 \method{calc_fpr}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{fp}{False Positives (FP).}
+\item{fp}{Numeric, False Positives (FP).}
 
-\item{tn}{True Negatives (TN).}
+\item{tn}{Numeric, True Negatives (TN).}
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 

@@ -2,15 +2,41 @@
 % Please edit documentation in R/multiclass-calc-fpr-macro.R
 \name{calc_fpr_macro}
 \alias{calc_fpr_macro}
-\title{Calculate FPR macro.}
+\alias{calc_fpr_macro.default}
+\alias{calc_fpr_macro.table}
+\alias{calc_fpr_macro.data.frame}
+\title{Calculate FPR Macro.}
 \usage{
-calc_fpr_macro(fp, tn)
+calc_fpr_macro(...)
+
+\method{calc_fpr_macro}{default}(fp, tn)
+
+\method{calc_fpr_macro}{table}(tbl)
+
+\method{calc_fpr_macro}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{fp}{FP by class}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
 
-\item{tn}{TN by class}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
+
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
 }
 \description{
-Calculate FPR macro.
+Calculate FPR Macro.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_fpr_macro(default)}: 
+
+\item \code{calc_fpr_macro(table)}: 
+
+\item \code{calc_fpr_macro(data.frame)}: 
+
+}}

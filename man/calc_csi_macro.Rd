@@ -2,17 +2,43 @@
 % Please edit documentation in R/multiclass-calc-csi-macro.R
 \name{calc_csi_macro}
 \alias{calc_csi_macro}
-\title{Calculate classification success index macro (csi macro).}
+\alias{calc_csi_macro.default}
+\alias{calc_csi_macro.table}
+\alias{calc_csi_macro.data.frame}
+\title{Calculate classification Success Index Macro.}
 \usage{
-calc_csi_macro(tp, fn, fp)
+calc_csi_macro(...)
+
+\method{calc_csi_macro}{default}(tp, fn, fp)
+
+\method{calc_csi_macro}{table}(tbl)
+
+\method{calc_csi_macro}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{TP by class}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{fn}{FN by class}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
 
-\item{fp}{FP by class}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate classification success index macro (csi macro).
+Calculate classification Success Index Macro.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_csi_macro(default)}: 
+
+\item \code{calc_csi_macro(table)}: 
+
+\item \code{calc_csi_macro(data.frame)}: 
+
+}}

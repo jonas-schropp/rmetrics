@@ -2,23 +2,35 @@
 % Please edit documentation in R/multiclass-calc-cramer-v.R
 \name{calc_cramer_v}
 \alias{calc_cramer_v}
+\alias{calc_cramer_v.table}
+\alias{calc_cramer_v.data.frame}
 \title{Calculate Cramer's V.}
 \usage{
-calc_cramer_v(
+calc_cramer_v(...)
+
+\method{calc_cramer_v}{table}(
   tbl,
   ci.type = c("ncchisq", "ncchisqadj", "fisher", "fisheradj"),
   ci.level = 0.95,
   bias_correct = FALSE
 )
+
+\method{calc_cramer_v}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tbl}{The contingency table.}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
 \item{ci.type}{FALSE if no ci is requested or one out of "ncchisq" (using noncentral chisquare), "ncchisqadj", "fisher" (using fisher z transformation), "fisheradj" (using fisher z transformation and bias correction).}
 
-\item{ci.level}{double between 0 and 1}
+\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
 
-\item{bias_correct}{should a bias correction be applied?}
+\item{bias_correct}{Should a bias correction be applied? FALSE by default.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \value{
 A numeric vector with the three elements 'v', 'll' and 'ul'. If no CI is requested, 'll' and 'ul' are NA.
@@ -28,9 +40,18 @@ Calculate Cramer's V.
 }
 \details{
 A Cramer's V between 0 and 0.3 is considered as weak, 0.3-0.7 as medium and > 0.7 as strong.
-This implementation is based on code by Andri Signorell \href{mailto:andri@signorell.net}{andri@signorell.net} and Michael Smithson \href{mailto:michael.smithson@anu.edu.au}{michael.smithson@anu.edu.au} for the package DescTools.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_cramer_v(table)}: 
+
+\item \code{calc_cramer_v(data.frame)}: 
+
+}}
 \references{
 Cramer, H. (1946) Mathematical Methods of Statistics. Princeton University Press
 Agresti, A. (2002) Categorical Data Analysis. John Wiley & Sons
+}
+\author{
+This implementation is based on code by Andri Signorell \href{mailto:andri@signorell.net}{andri@signorell.net} and Michael Smithson \href{mailto:michael.smithson@anu.edu.au}{michael.smithson@anu.edu.au} for the package \code{DescTools} with only minor changes.
 }

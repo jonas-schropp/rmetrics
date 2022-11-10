@@ -2,17 +2,32 @@
 % Please edit documentation in R/multiclass-calc-bennett-s.R
 \name{calc_bennett_s}
 \alias{calc_bennett_s}
+\alias{calc_bennett_s.table}
+\alias{calc_bennett_s.data.frame}
 \title{Calculate Bennett's S.}
 \usage{
-calc_bennett_s(tbl, otp, on)
+calc_bennett_s(...)
+
+\method{calc_bennett_s}{table}(tbl)
+
+\method{calc_bennett_s}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tbl}{input table}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
-\item{otp}{Overall true positives.}
+\item{data}{A data.frame containing the prediction and the reference.}
 
-\item{on}{Number of samples.}
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Bennett's S.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_bennett_s(table)}: 
+
+\item \code{calc_bennett_s(data.frame)}: 
+
+}}

@@ -8,22 +8,19 @@ calc_aunu <- function(...) UseMethod("calc_aunu")
 
 #' @describeIn calc_aunu
 #'
-#' @param data data with prediction, reference
-#' @param prediction Name of the variable in data that holds the predictions
-#' @param reference Name of the variable in data that holds the reference values
+#' @param tp `r rox("tpm")`
+#' @param tn `r rox("tnm")`
+#' @param fp `r rox("fpm")`
+#' @param fn `r rox("fnm")`
 #'
 #' @export
 #'
-calc_aunu.data.frame <- function(
-    data,
-    prediction = "prediction",
-    reference = "reference"
-) {
+calc_aunu.default <- function(tp, tn, fp, fn) {
 
-  data <- data[,c(prediction, reference)]
-  tbl <- table(data)
+  aucs <- double(length = length(tp))
+  for (i in 1:length(tp)) aucs[i] <- calc_auroc(tn[i], fp[i], tp[i], fn[i])
 
-  calc_aunu(tbl)
+  calc_macro(aucs)
 
 }
 
@@ -31,7 +28,7 @@ calc_aunu.data.frame <- function(
 
 #' @describeIn calc_aunu
 #'
-#' @param tbl table
+#' @param tbl `r rox("tbl")`
 #'
 #' @export
 #'
@@ -51,6 +48,29 @@ calc_aunu.table <- function(tbl) {
   }
 
   calc_macro(aucs)
+
+}
+
+
+
+#' @describeIn calc_aunu
+#'
+#' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
+#'
+#' @export
+#'
+calc_aunu.data.frame <- function(
+    data,
+    prediction = "prediction",
+    reference = "reference"
+) {
+
+  data <- data[,c(prediction, reference)]
+  tbl <- table(data)
+
+  calc_aunu(tbl)
 
 }
 

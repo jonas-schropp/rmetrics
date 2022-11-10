@@ -1,50 +1,50 @@
-#' Calculate Bangdiwala's B.
+#' Calculate F macro.
 #'
 #' @export
 #'
-calc_b <- function(...) UseMethod("calc_b")
+calc_f_macro <- function(...) UseMethod("calc_f_macro")
 
 
 
-#' @describeIn calc_b
+#' @describeIn calc_f_macro
 #'
 #' @param tp `r rox("tpm")`
 #' @param fp `r rox("fpm")`
 #' @param fn `r rox("fnm")`
+#' @param beta Scaling factor. 1 by default for the F1-Score.
 #'
 #' @export
 #'
-calc_b.default <- function(tp, fp, fn) {
+calc_f_macro.default <- function(tp, fp, fn, beta = 1) {
 
-  ppos <- tp + fp
-  pos <- tp + fn
+  f <- calc_f(tp, fp, fn, beta)
 
-  sum(tp^2) / sum(ppos * pos)
+  calc_macro(f)
 
 }
 
 
 
-#' @describeIn calc_b
+#' @describeIn calc_f_macro
 #'
 #' @param tbl `r rox("tbl")`
 #'
 #' @export
 #'
-calc_b.table <- function(tbl) {
+calc_f_macro.table <- function(tbl) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
   fp <- rowSums(tbl) - tp
   tn <- sum(tbl) - tp - fn - fp
 
-  calc_b(tp, fp, fn)
+  calc_f_macro(tp, fp, fn)
 
 }
 
 
 
-#' @describeIn calc_b
+#' @describeIn calc_f_macro
 #'
 #' @param data `r rox("data")`
 #' @param prediction `r rox("prediction")`
@@ -52,7 +52,7 @@ calc_b.table <- function(tbl) {
 #'
 #' @export
 #'
-calc_b.data.frame <- function(
+calc_f_macro.data.frame <- function(
     data,
     prediction, reference
 ) {
@@ -60,7 +60,8 @@ calc_b.data.frame <- function(
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_b(tbl)
+  calc_f_macro(tbl)
 
 }
+
 

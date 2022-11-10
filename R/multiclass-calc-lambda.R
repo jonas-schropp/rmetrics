@@ -1,12 +1,8 @@
-
 #' Calculate Goodman Kruskal Lambda.
 #'
-#' Calculate symmetric and asymmetric Goodman Kruskal lambda and their confidence intervals. Lambda is a measure of proportional reduction in error in cross tabulation analysis. For any sample with a nominal independent variable and dependent variable (or ones that can be treated nominally), it indicates the extent to which the modal categories and frequencies for each value of the independent variable differ from the overall modal category and frequency, i.e. for all values of the independent variable together
-#'
-#' @param tbl input table
-#' @param direction character, either "symmetric", "row" or "column".
-#' @param ci.type FALSE if no ci is requested or "normal" for normal approximation CIs
-#' @param ci.level double between 0 and 1
+#' Calculates symmetric and asymmetric (lambda A and lambda B) Goodman Kruskal lambda and their confidence intervals.
+#' Lambda measures the proportional reduction in error in cross tabulation analysis. It can be used the gauge the strength of association between two nominal variables.
+#' It can be interpreted as the probable improvement in predicting the reference given knowledge of the predictions.
 #'
 #' @references
 #' Agresti, A. (2002) Categorical Data Analysis. John Wiley & Sons
@@ -14,16 +10,31 @@
 #' Liebetrau, A. M. (1983) Measures of Association, Sage University Papers Series on Quantitative Applications in the Social Sciences, 07-004. Newbury Park, CA: Sage, pp. 17–24
 #'
 #' @details
-#' This implementation is based on code by Andri Signorell <andri@signorell.net> and Antti Arppe <antti.arppe@helsinki.fi> for the package DescTools.
+#' This implementation is based on code by Andri Signorell <andri@signorell.net>, Antti Arppe <antti.arppe@helsinki.fi> and Nanina Anderegg (confidence interval symmetric lambda) for the package `DescTools`.
 #'
 #' @returns
 #' A numeric vector with the three elements 'lambda', 'll' and 'ul'. If no CI is requested, 'll' and 'ul' are NA.
 #'
 #' @export
 #'
-calc_lambda <- function (tbl,
-                         direction = c("symmetric", "row", "column"),
-                         ci.type = FALSE, ci.level = 0.95) {
+calc_lambda <- function(...) UseMethod("calc_lambda")
+
+
+
+#' @describeIn calc_lambda
+#'
+#' @param tbl `r rox("tbl")`
+#' @param direction Character, either "symmetric", "row" or "column". "row" corresponds to Lambda B and "column" to Lambda A.
+#' @param ci.type FALSE if no ci is requested or "normal" for normal approximation CIs
+#' @param ci.level `r rox("ci.level")`
+#'
+#' @export
+#'
+calc_lambda.table <- function(
+    tbl,
+    direction = c("symmetric", "row", "column"),
+    ci.type = FALSE, ci.level = 0.95
+    ) {
 
   n <- sum(tbl)
   csum <- colSums(tbl)
@@ -51,15 +62,17 @@ calc_lambda <- function (tbl,
   } else if (ci.type == "normal") {
 
     if (direction == "symmetric") {
-
-      sigma2 <- lambda.var.symmetric(tbl, n, max.csum, max.rsum,
-                                     csum, rsum, nr, nc, cmax, rmax)
+      sigma2 <- lambda.var.symmetric(
+        tbl, n, max.csum, max.rsum, csum, rsum, nr, nc, cmax, rmax
+        )
     } else if (direction == "row") {
-      sigma2 <- lambda.var.row(tbl, n, max.csum, max.rsum,
-                               csum, rsum, nr, nc, cmax, rmax)
+      sigma2 <- lambda.var.row(
+        tbl, n, max.csum, max.rsum, csum, rsum, nr, nc, cmax, rmax
+        )
     } else if (direction == "column") {
-      sigma2 <- lambda.var.column(tbl, n, max.csum, max.rsum,
-                                  csum, rsum, nr, nc, cmax, rmax)
+      sigma2 <- lambda.var.column(
+        tbl, n, max.csum, max.rsum, csum, rsum, nr, nc, cmax, rmax
+        )
     }
 
     pr2 <- 1 - (1 - ci.level)/2
@@ -72,3 +85,31 @@ calc_lambda <- function (tbl,
 
   return(res)
 }
+
+
+
+#' @describeIn calc_lambda
+#'
+#' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
+#' @param direction Character, either "symmetric", "row" or "column". "row" corresponds to Lambda B and "column" to Lambda A.
+#' @param ci.type FALSE if no ci is requested or "normal" for normal approximation CIs
+#' @param ci.level `r rox("ci.level")`
+#'
+#' @export
+#'
+calc_lambda.data.frame <- function(
+    data,
+    prediction, reference,
+    direction,
+    ci.type, ci.level
+) {
+
+  data <- data[, c(prediction, reference)]
+  tbl <- table(data)
+
+  calc_lambda(tbl, direction, ci.type, ci.level)
+
+}
+

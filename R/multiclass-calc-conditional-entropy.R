@@ -10,7 +10,9 @@ calc_conditional_entropy <- function(...) UseMethod("calc_conditional_entropy")
 
 #' @describeIn calc_conditional_entropy
 #'
-#' @param data data.frame
+#' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
 #'
 #' @export
 #'
@@ -30,7 +32,7 @@ calc_conditional_entropy.data.frame <- function(
 
 #' @describeIn calc_conditional_entropy
 #'
-#' @param tbl confusion matrix
+#' @param tbl `r rox("tbl")`
 #'
 #' @export
 #'

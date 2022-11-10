@@ -2,15 +2,41 @@
 % Please edit documentation in R/multiclass-calc-fnr-micro.R
 \name{calc_fnr_micro}
 \alias{calc_fnr_micro}
-\title{Calculate FNR macro.}
+\alias{calc_fnr_micro.default}
+\alias{calc_fnr_micro.table}
+\alias{calc_fnr_micro.data.frame}
+\title{Calculate FNR micro.}
 \usage{
-calc_fnr_micro(otp, on)
+calc_fnr_micro(...)
+
+\method{calc_fnr_micro}{default}(otp, n)
+
+\method{calc_fnr_micro}{table}(tbl)
+
+\method{calc_fnr_micro}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{otp}{Overall true positives}
+\item{otp}{Overall True Positives (OTP).}
 
-\item{on}{Overall N}
+\item{n}{Total number of observations.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate FNR macro.
+Calculate FNR micro.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_fnr_micro(default)}: 
+
+\item \code{calc_fnr_micro(table)}: 
+
+\item \code{calc_fnr_micro(data.frame)}: 
+
+}}

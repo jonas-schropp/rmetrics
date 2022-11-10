@@ -9,8 +9,8 @@ calc_kappa <- function(...) UseMethod("calc_kappa")
 #' @describeIn calc_kappa
 #'
 #' @param tbl `r rox("tbl")`
-#' @param unbiased Logical, should 'normal' or unbiased overall random accuracy be used.
-#' @param prev TRUE for Kappa and unbiased Kappa, FALSE for Kappa no prevalence.
+#' @param unbiased Should 'normal' or unbiased overall random accuracy be used. FALSE by default.
+#' @param prev TRUE for Kappa and unbiased Kappa, FALSE for Kappa no prevalence. TRUE by default.
 #'
 #' @export
 #'

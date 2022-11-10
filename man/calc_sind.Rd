@@ -16,13 +16,13 @@ calc_sind(...)
 \method{calc_sind}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tn}{True Negatives (TN).}
+\item{tn}{Numeric, True Negatives (TN).}
 
-\item{fp}{False Positives (FP).}
+\item{fp}{Numeric, False Positives (FP).}
 
-\item{tp}{True Positives (TP).}
+\item{tp}{Numeric, True Positives (TP).}
 
-\item{fn}{Fase Negatives (FN).}
+\item{fn}{Numeric, Fase Negatives (FN).}
 
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 

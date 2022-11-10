@@ -2,32 +2,43 @@
 % Please edit documentation in R/multiclass-calc-jaccard-overall.R
 \name{calc_jaccard_overall}
 \alias{calc_jaccard_overall}
-\alias{calc_jaccard_overall.data.frame}
+\alias{calc_jaccard_overall.default}
 \alias{calc_jaccard_overall.table}
+\alias{calc_jaccard_overall.data.frame}
 \title{Calculate Mean overall Jaccard index.}
 \usage{
 calc_jaccard_overall(...)
 
-\method{calc_jaccard_overall}{data.frame}(data, prediction = "prediction", reference = "reference")
+\method{calc_jaccard_overall}{default}(tp, fn, fp)
 
 \method{calc_jaccard_overall}{table}(tbl)
+
+\method{calc_jaccard_overall}{data.frame}(data, prediction = "prediction", reference = "reference")
 }
 \arguments{
-\item{data}{data frame or matrix consisting of prediction and reference}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{prediction}{Name of the variable in data that holds the predictions}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
 
-\item{reference}{Name of the variable in data that holds the reference values}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
 
-\item{tbl}{confusion matrix}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Mean overall Jaccard index.
+The overall Jaccard index is calculated as the mean Jaccard index over all classes in data.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{calc_jaccard_overall(data.frame)}: 
+\item \code{calc_jaccard_overall(default)}: 
 
 \item \code{calc_jaccard_overall(table)}: 
+
+\item \code{calc_jaccard_overall(data.frame)}: 
 
 }}

@@ -2,17 +2,45 @@
 % Please edit documentation in R/multiclass-calc-kl-divergence.R
 \name{calc_kl_divergence}
 \alias{calc_kl_divergence}
-\title{Calculate Kullback-Liebler (KL) divergence.}
+\alias{calc_kl_divergence.default}
+\alias{calc_kl_divergence.table}
+\alias{calc_kl_divergence.data.frame}
+\title{Calculate Kullback-Leibler Divergence.}
 \usage{
-calc_kl_divergence(pos, ppos, n)
+calc_kl_divergence(...)
+
+\method{calc_kl_divergence}{default}(tp, fp, fn, n, epsilon = 1e-06)
+
+\method{calc_kl_divergence}{table}(tbl, epsilon = 1e-06)
+
+\method{calc_kl_divergence}{data.frame}(data, prediction, reference, epsilon = 1e-06)
 }
 \arguments{
-\item{pos}{vector of actual positives per class}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{ppos}{vector of positives in predict vector per class}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
 
-\item{n}{Total number of observations}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
+
+\item{n}{Total number of observations.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Kullback-Liebler (KL) divergence.
+Calculate Kullback-Leibler Divergence.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_kl_divergence(default)}: 
+
+\item \code{calc_kl_divergence(table)}: 
+
+\item \code{calc_kl_divergence(data.frame)}: 
+
+}}

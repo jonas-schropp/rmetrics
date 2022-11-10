@@ -2,15 +2,32 @@
 % Please edit documentation in R/multiclass-calc-ari.R
 \name{calc_ari}
 \alias{calc_ari}
-\title{Calculate Adjusted Rand index (ari).}
+\alias{calc_ari.table}
+\alias{calc_ari.data.frame}
+\title{Calculate Adjusted Rand index.}
 \usage{
-calc_ari(tbl, on)
+calc_ari(...)
+
+\method{calc_ari}{table}(tbl)
+
+\method{calc_ari}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tbl}{input confusion matrix of the form \code{table(prediction, reference)}}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
-\item{on}{Total number of observations}
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Adjusted Rand index (ari).
+Calculate Adjusted Rand index.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_ari(table)}: 
+
+\item \code{calc_ari(data.frame)}: 
+
+}}

@@ -2,15 +2,41 @@
 % Please edit documentation in R/multiclass-calc-fnr-macro.R
 \name{calc_fnr_macro}
 \alias{calc_fnr_macro}
+\alias{calc_fnr_macro.default}
+\alias{calc_fnr_macro.table}
+\alias{calc_fnr_macro.data.frame}
 \title{Calculate FNR macro.}
 \usage{
-calc_fnr_macro(fn, tp)
+calc_fnr_macro(...)
+
+\method{calc_fnr_macro}{default}(fn, tp)
+
+\method{calc_fnr_macro}{table}(tbl)
+
+\method{calc_fnr_macro}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{fn}{FN by class}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
 
-\item{tp}{TP by class}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate FNR macro.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_fnr_macro(default)}: 
+
+\item \code{calc_fnr_macro(table)}: 
+
+\item \code{calc_fnr_macro(data.frame)}: 
+
+}}

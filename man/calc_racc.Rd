@@ -16,11 +16,11 @@ calc_racc(...)
 \method{calc_racc}{data.frame}(data, prediction, reference, unbiased = FALSE)
 }
 \arguments{
-\item{tp}{True Positives (TP).}
+\item{tp}{Numeric, True Positives (TP).}
 
-\item{fp}{False Positives (FP).}
+\item{fp}{Numeric, False Positives (FP).}
 
-\item{fn}{Fase Negatives (FN).}
+\item{fn}{Numeric, Fase Negatives (FN).}
 
 \item{n}{Total number of observations.}
 

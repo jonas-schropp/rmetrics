@@ -18,7 +18,7 @@ calc_bcd(...)
 \arguments{
 \item{ppos}{Number of positives in prediction vector (= TP + FP)}
 
-\item{pos}{Number of positives per class (= colSums(tbl))}
+\item{pos}{Number of positives in reference.}
 
 \item{n}{Total number of observations.}
 

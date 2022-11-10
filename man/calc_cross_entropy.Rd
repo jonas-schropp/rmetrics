@@ -2,17 +2,43 @@
 % Please edit documentation in R/multiclass-calc-cross-entropy.R
 \name{calc_cross_entropy}
 \alias{calc_cross_entropy}
+\alias{calc_cross_entropy.default}
+\alias{calc_cross_entropy.table}
+\alias{calc_cross_entropy.data.frame}
 \title{Calculate Cross entropy.}
 \usage{
-calc_cross_entropy(ppos, pos, n)
+calc_cross_entropy(...)
+
+\method{calc_cross_entropy}{default}(tp, fp, fn)
+
+\method{calc_cross_entropy}{table}(tbl)
+
+\method{calc_cross_entropy}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{ppos}{vector of positives in predict vector per class}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{pos}{vector of actual positives per class}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
 
-\item{n}{Total number of observations per class}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Cross entropy.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_cross_entropy(default)}: 
+
+\item \code{calc_cross_entropy(table)}: 
+
+\item \code{calc_cross_entropy(data.frame)}: 
+
+}}

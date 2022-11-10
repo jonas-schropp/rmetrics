@@ -16,9 +16,9 @@ calc_prevalence(...)
 \method{calc_prevalence}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{pos}{Number of positives per class (= colSums(tbl))}
+\item{pos}{Number of positives in reference.}
 
-\item{neg}{}
+\item{neg}{Number of negatives in reference.}
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 

@@ -2,14 +2,17 @@
 % Please edit documentation in R/multiclass-calc-aickin.R
 \name{calc_aickin}
 \alias{calc_aickin}
-\title{Calculate Aickin's Alpha}
+\alias{calc_aickin.table}
+\title{Calculate Aickin's Alpha.}
 \source{
 \enumerate{
 \item Aickin, M. (1990) Maximum Likelihood Estimation of Agreement in the Constant Predictive Probability Model, and Its Relation to Cohen's Kappa. Biometrics 46, 293-302.
 }
 }
 \usage{
-calc_aickin(
+calc_aickin(...)
+
+\method{calc_aickin}{table}(
   tbl,
   d = diag(1, nrow = nrow(tbl), ncol = ncol(tbl)),
   epsilon = 1e-07,
@@ -19,7 +22,7 @@ calc_aickin(
 )
 }
 \arguments{
-\item{tbl}{input confusion matrix of the form \code{table(prediction, reference)}}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
 \item{d}{The agreement matrix for tbl. Must have the same dimensions as tbl, with 1 to indicate agreeing scores, and 0 disagreeing scores. By default the diagonal is considered agreeing.}
 
@@ -27,13 +30,18 @@ calc_aickin(
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or 'aickin' if the default CI's by Aickin should be calculated. If FALSE overwrites ci.level. Default is to calculate the CI.}
 
-\item{ci.level}{A double between 0 and 1 for the levels of the confidence intervals that should be calculated. Default is 0.95.}
+\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
 
 \item{maxiter}{Integer or double. Maximum number of iterations to try until convergence. Default is 1000.}
 }
 \description{
-Calculate Aickin's Alpha
+Calculate Aickin's Alpha.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_aickin(table)}: 
+
+}}
 \author{
-Shamelessly stolen from Joseph, L. and Bélisle, P. \url{https://www.medicine.mcgill.ca/epidemiology/Joseph/PBelisle/Aickin-Alpha-Agreement-R.html}
+Shamelessly stolen and only slightly adapted from Joseph, L. and Bélisle, P. \url{https://www.medicine.mcgill.ca/epidemiology/Joseph/PBelisle/Aickin-Alpha-Agreement-R.html}
 }

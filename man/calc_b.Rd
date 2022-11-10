@@ -2,17 +2,43 @@
 % Please edit documentation in R/multiclass-calc-b.R
 \name{calc_b}
 \alias{calc_b}
+\alias{calc_b.default}
+\alias{calc_b.table}
+\alias{calc_b.data.frame}
 \title{Calculate Bangdiwala's B.}
 \usage{
-calc_b(tp, ppos, pos)
+calc_b(...)
+
+\method{calc_b}{default}(tp, fp, fn)
+
+\method{calc_b}{table}(tbl)
+
+\method{calc_b}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{vector of true positives per class}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{ppos}{vector of positives in predict vector per class}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
 
-\item{pos}{vector of actual positives per class}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Bangdiwala's B.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_b(default)}: 
+
+\item \code{calc_b(table)}: 
+
+\item \code{calc_b(data.frame)}: 
+
+}}

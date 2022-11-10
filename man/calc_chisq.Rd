@@ -2,13 +2,37 @@
 % Please edit documentation in R/multiclass-calc-chisq.R
 \name{calc_chisq}
 \alias{calc_chisq}
+\alias{calc_chisq.table}
+\alias{calc_chisq.data.frame}
 \title{Calculate Chi-squared.}
 \usage{
-calc_chisq(tbl)
+calc_chisq(...)
+
+\method{calc_chisq}{table}(tbl, ...)
+
+\method{calc_chisq}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
-\item{tbl}{confusion matrix}
+\item{...}{Additional parameters passed on to \code{chisq.test}.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
+}
+\value{
+A named vector with the test statistic, degrees of freedom and p value of the test.
 }
 \description{
-Calculate Chi-squared.
+A simple wrapper over \code{stats::chisq.test}
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_chisq(table)}: 
+
+\item \code{calc_chisq(data.frame)}: 
+
+}}

@@ -19,13 +19,13 @@ calc_plr(...)
 \method{calc_plr}{data.frame}(data, prediction, reference, ci.type, ci.level)
 }
 \arguments{
-\item{tp}{True Positives (TP).}
+\item{tp}{Numeric, True Positives (TP).}
 
-\item{fn}{Fase Negatives (FN).}
+\item{fn}{Numeric, Fase Negatives (FN).}
 
-\item{fp}{False Positives (FP).}
+\item{fp}{Numeric, False Positives (FP).}
 
-\item{tn}{True Negatives (TN).}
+\item{tn}{Numeric, True Negatives (TN).}
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level.}
 

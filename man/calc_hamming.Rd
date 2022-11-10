@@ -2,15 +2,41 @@
 % Please edit documentation in R/multiclass-calc-hamming.R
 \name{calc_hamming}
 \alias{calc_hamming}
-\title{Calculate Hamming loss.}
+\alias{calc_hamming.default}
+\alias{calc_hamming.table}
+\alias{calc_hamming.data.frame}
+\title{Calculate Hamming Loss.}
 \usage{
-calc_hamming(otp, on)
+calc_hamming(...)
+
+\method{calc_hamming}{default}(otp, n)
+
+\method{calc_hamming}{table}(tbl)
+
+\method{calc_hamming}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{otp}{Overall true positives}
+\item{otp}{Overall True Positives (OTP).}
 
-\item{on}{Onverall N}
+\item{n}{Total number of observations.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Hamming loss.
+Calculate Hamming Loss.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_hamming(default)}: 
+
+\item \code{calc_hamming(table)}: 
+
+\item \code{calc_hamming(data.frame)}: 
+
+}}

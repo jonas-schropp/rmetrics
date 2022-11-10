@@ -15,10 +15,15 @@ rox <- function(type) {
     "Character. The name of the variable in data that contains the reference values."
   } else if (type == "n") "Total number of observations."
 
-  else if (type == "tp") "True Positives (TP)."
-  else if (type == "fp") "False Positives (FP)."
-  else if (type == "tn") "True Negatives (TN)."
-  else if (type == "fn") "Fase Negatives (FN)."
+  else if (type == "tp") "Numeric, True Positives (TP)."
+  else if (type == "fp") "Numeric, False Positives (FP)."
+  else if (type == "tn") "Numeric, True Negatives (TN)."
+  else if (type == "fn") "Numeric, Fase Negatives (FN)."
+
+  else if (type == "tpm") "Numeric vector of True Positives (TP) by class."
+  else if (type == "fpm") "Numeric vector of False Positives (FP) by class."
+  else if (type == "tnm") "Numeric vector of True Negatives (TN) by class."
+  else if (type == "fnm") "Numeric vector of Fase Negatives (FN) by class."
 
   else if (type == "otp") "Overall True Positives (OTP)."
   else if (type == "ofp") "Overall False Positives (OFP)."
@@ -26,10 +31,17 @@ rox <- function(type) {
   else if (type == "ofn") "Overall Fase Negatives (OFN)."
 
   else if (type == "ppos") "Number of positives in prediction vector (= TP + FP)"
-  else if (type == "pos") "Number of positives per class (= colSums(tbl))"
+  else if (type == "pos") "Number of positives in reference."
+  else if (type == "neg") "Number of negatives in reference."
+
+  else if (type == "posm") "Number of positives per class (= colSums(tbl))"
+  else if (type == "negm") "Number of negatives per class (= colSums(tbl))"
 
   else if (type == "ci.level") {
     "A number between 0 and 1 for the levels of the confidence intervals that should be calculated."
+  }
+  else if (type == "method") {
+    'Character. The averaging method for the individual class scores. Can be either "macro" for macro-averaging or "micro" for micro averaging.'
   }
 
 }

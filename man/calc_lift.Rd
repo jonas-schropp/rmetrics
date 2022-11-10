@@ -16,13 +16,13 @@ calc_lift(...)
 \method{calc_lift}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{True Positives (TP).}
+\item{tp}{Numeric, True Positives (TP).}
 
-\item{fp}{False Positives (FP).}
+\item{fp}{Numeric, False Positives (FP).}
 
-\item{pos}{Number of positives per class (= colSums(tbl))}
+\item{pos}{Number of positives in reference.}
 
-\item{neg}{}
+\item{neg}{Number of negatives in reference.}
 
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
