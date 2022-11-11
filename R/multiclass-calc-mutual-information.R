@@ -14,10 +14,7 @@ calc_mutual_information <- function(...) UseMethod("calc_mutual_information")
 #'
 calc_mutual_information.table <- function(tbl) {
 
-  ppos <- diag(tbl) + (rowSums(tbl) - diag(tbl))
-  n <- sum(tbl)
-
-  re <- calc_response_entropy(ppos, n)
+  re <- calc_response_entropy(tbl)
   ce <- calc_conditional_entropy(tbl)
 
   re - ce

@@ -24,6 +24,8 @@ calc_kl_divergence(...)
 
 \item{n}{Total number of observations.}
 
+\item{epsilon}{Continuity correction for zero cells. By default 0.000001.}
+
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
 \item{data}{A data.frame containing the prediction and the reference.}

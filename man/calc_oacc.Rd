@@ -2,15 +2,41 @@
 % Please edit documentation in R/multiclass-calc-oacc.R
 \name{calc_oacc}
 \alias{calc_oacc}
-\title{Calculate Calculate Overall accuracy (oacc).}
+\alias{calc_oacc.default}
+\alias{calc_oacc.table}
+\alias{calc_oacc.data.frame}
+\title{Calculate Calculate Overall Accuracy.}
 \usage{
-calc_oacc(otp, on)
+calc_oacc(...)
+
+\method{calc_oacc}{default}(otp, n)
+
+\method{calc_oacc}{table}(tbl)
+
+\method{calc_oacc}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{otp}{Overall number of true positives in the contingency table.}
+\item{otp}{Overall True Positives (OTP).}
 
-\item{on}{Overall number of observations}
+\item{n}{Total number of observations.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Also called TPR Micro.
+The proportion of overall true positives, regardless of class. Identical to micro-averaging TPR.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_oacc(default)}: 
+
+\item \code{calc_oacc(table)}: 
+
+\item \code{calc_oacc(data.frame)}: 
+
+}}

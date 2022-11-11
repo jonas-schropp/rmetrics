@@ -2,15 +2,43 @@
 % Please edit documentation in R/multiclass-calc-reference-entropy.R
 \name{calc_reference_entropy}
 \alias{calc_reference_entropy}
+\alias{calc_reference_entropy.default}
+\alias{calc_reference_entropy.table}
+\alias{calc_reference_entropy.data.frame}
 \title{Calculate Reference Entropy.}
 \usage{
-calc_reference_entropy(pos, n)
+calc_reference_entropy(...)
+
+\method{calc_reference_entropy}{default}(tp, fn, n)
+
+\method{calc_reference_entropy}{table}(tbl)
+
+\method{calc_reference_entropy}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{pos}{vector of actual positives per class}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{n}{Total number of observations}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
+
+\item{n}{Total number of observations.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Reference Entropy.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_reference_entropy(default)}: 
+
+\item \code{calc_reference_entropy(table)}: 
+
+\item \code{calc_reference_entropy(data.frame)}: 
+
+}}

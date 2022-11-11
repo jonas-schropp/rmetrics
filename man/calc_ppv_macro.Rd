@@ -2,15 +2,41 @@
 % Please edit documentation in R/multiclass-calc-ppv-macro.R
 \name{calc_ppv_macro}
 \alias{calc_ppv_macro}
-\title{Calculate Precision macro (ppv macro).}
+\alias{calc_ppv_macro.default}
+\alias{calc_ppv_macro.table}
+\alias{calc_ppv_macro.data.frame}
+\title{Calculate Precision (PPV) Macro.}
 \usage{
-calc_ppv_macro(tp, fp)
+calc_ppv_macro(...)
+
+\method{calc_ppv_macro}{default}(tp, fp)
+
+\method{calc_ppv_macro}{table}(tbl)
+
+\method{calc_ppv_macro}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{TP by class}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{fp}{FP by class}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Precision macro (ppv macro).
+Calculate Precision (PPV) Macro.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_ppv_macro(default)}: 
+
+\item \code{calc_ppv_macro(table)}: 
+
+\item \code{calc_ppv_macro(data.frame)}: 
+
+}}

@@ -18,7 +18,7 @@ calc_bennett_s.table <- function(tbl) {
   otp <- sum(diag(tbl)) # Add agreement matrix option here
   n <- sum(tbl)
 
-  oacc <- calc_oacc(otp, n, F, 0)[1]
+  oacc <- calc_oacc(otp, n)[1]
 
   calc_reliability(pc_s, oacc)
 

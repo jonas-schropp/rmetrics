@@ -11,10 +11,11 @@ calc_cross_entropy <- function(...) UseMethod("calc_cross_entropy")
 #' @param tp `r rox("tpm")`
 #' @param fp `r rox("fpm")`
 #' @param fn `r rox("fnm")`
+#' @param n `r rox("n")`
 #'
 #' @export
 #'
-calc_cross_entropy.default <- function(tp, fp, fn) {
+calc_cross_entropy.default <- function(tp, fp, fn, n) {
 
   ppos <- tp + fp
   pos <- tp + fn
@@ -41,9 +42,10 @@ calc_cross_entropy.table <- function(tbl) {
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
   fp <- rowSums(tbl) - tp
-  tn <- sum(tbl) - tp - fn - fp
+  n <- sum(tbl)
+  tn <- n - tp - fn - fp
 
-  calc_cross_entropy(tp, fp, fn)
+  calc_cross_entropy(tp, fp, fn, n)
 
 }
 

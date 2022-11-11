@@ -20,7 +20,7 @@ calc_aunp.default <- function(tp, tn, fp, fn) {
   aucs <- double(length = length(tp))
   for (i in 1:length(tp)) aucs[i] <- calc_auroc(tn[i], fp[i], tp[i], fn[i])
 
-  n <- sum(tp, tn, fp, fn)
+  n <- sum(tp, tn, fp, fn) / length(tp)
   pos <- fn + tp
 
   sum((pos / n) * aucs)

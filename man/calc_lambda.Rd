@@ -2,33 +2,54 @@
 % Please edit documentation in R/multiclass-calc-lambda.R
 \name{calc_lambda}
 \alias{calc_lambda}
+\alias{calc_lambda.table}
+\alias{calc_lambda.data.frame}
 \title{Calculate Goodman Kruskal Lambda.}
 \usage{
-calc_lambda(
+calc_lambda(...)
+
+\method{calc_lambda}{table}(
   tbl,
   direction = c("symmetric", "row", "column"),
   ci.type = FALSE,
   ci.level = 0.95
 )
+
+\method{calc_lambda}{data.frame}(data, prediction, reference, direction, ci.type, ci.level)
 }
 \arguments{
-\item{tbl}{input table}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
-\item{direction}{character, either "symmetric", "row" or "column".}
+\item{direction}{Character, either "symmetric", "row" or "column". "row" corresponds to Lambda B and "column" to Lambda A.}
 
 \item{ci.type}{FALSE if no ci is requested or "normal" for normal approximation CIs}
 
-\item{ci.level}{double between 0 and 1}
+\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \value{
 A numeric vector with the three elements 'lambda', 'll' and 'ul'. If no CI is requested, 'll' and 'ul' are NA.
 }
 \description{
-Calculate symmetric and asymmetric Goodman Kruskal lambda and their confidence intervals. Lambda is a measure of proportional reduction in error in cross tabulation analysis. For any sample with a nominal independent variable and dependent variable (or ones that can be treated nominally), it indicates the extent to which the modal categories and frequencies for each value of the independent variable differ from the overall modal category and frequency, i.e. for all values of the independent variable together
+Calculates symmetric and asymmetric (lambda A and lambda B) Goodman Kruskal lambda and their confidence intervals.
+Lambda measures the proportional reduction in error in cross tabulation analysis. It can be used the gauge the strength of association between two nominal variables.
+It can be interpreted as the probable improvement in predicting the reference given knowledge of the predictions.
 }
 \details{
-This implementation is based on code by Andri Signorell \href{mailto:andri@signorell.net}{andri@signorell.net} and Antti Arppe \href{mailto:antti.arppe@helsinki.fi}{antti.arppe@helsinki.fi} for the package DescTools.
+This implementation is based on code by Andri Signorell \href{mailto:andri@signorell.net}{andri@signorell.net}, Antti Arppe \href{mailto:antti.arppe@helsinki.fi}{antti.arppe@helsinki.fi} and Nanina Anderegg (confidence interval symmetric lambda) for the package \code{DescTools}.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_lambda(table)}: 
+
+\item \code{calc_lambda(data.frame)}: 
+
+}}
 \references{
 Agresti, A. (2002) Categorical Data Analysis. John Wiley & Sons
 Goodman, L. A., Kruskal W. H. (1979) Measures of Association for Cross Classifications. New York: Springer-Verlag (contains articles appearing in J. Amer. Statist. Assoc. in 1954, 1959, 1963, 1972).

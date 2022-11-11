@@ -2,17 +2,43 @@
 % Please edit documentation in R/multiclass-calc-mcc-overall.R
 \name{calc_mcc_overall}
 \alias{calc_mcc_overall}
-\title{Calculate Calculate Overall_MCC.}
+\alias{calc_mcc_overall.default}
+\alias{calc_mcc_overall.table}
+\alias{calc_mcc_overall.data.frame}
+\title{Calculate Overall Matthews Correlation Coefficient.}
 \usage{
-calc_mcc_overall(tbl, ppos, pos)
+calc_mcc_overall(...)
+
+\method{calc_mcc_overall}{default}(tp, fp, fn)
+
+\method{calc_mcc_overall}{table}(tbl)
+
+\method{calc_mcc_overall}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tbl}{Classification matrix.}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{ppos}{Positives in prediction.}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
 
-\item{pos}{Positives in reference.}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Calculate Overall_MCC.
+Calculate Overall Matthews Correlation Coefficient.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_mcc_overall(default)}: 
+
+\item \code{calc_mcc_overall(table)}: 
+
+\item \code{calc_mcc_overall(data.frame)}: 
+
+}}

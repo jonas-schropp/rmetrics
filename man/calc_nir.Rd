@@ -2,15 +2,43 @@
 % Please edit documentation in R/multiclass-calc-nir.R
 \name{calc_nir}
 \alias{calc_nir}
-\title{Calculate No information rate (nir).}
+\alias{calc_nir.default}
+\alias{calc_nir.table}
+\alias{calc_nir.data.frame}
+\title{Calculate No information Rate.}
 \usage{
-calc_nir(pos, on)
+calc_nir(...)
+
+\method{calc_nir}{default}(tp, fn, n)
+
+\method{calc_nir}{table}(tbl)
+
+\method{calc_nir}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{pos}{Positives in reference.}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{on}{Overall N}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
+
+\item{n}{Total number of observations.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate No information rate (nir).
+Calculate No information Rate.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_nir(default)}: 
+
+\item \code{calc_nir(table)}: 
+
+\item \code{calc_nir(data.frame)}: 
+
+}}

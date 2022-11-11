@@ -2,15 +2,43 @@
 % Please edit documentation in R/multiclass-calc-response-entropy.R
 \name{calc_response_entropy}
 \alias{calc_response_entropy}
+\alias{calc_response_entropy.default}
+\alias{calc_response_entropy.table}
+\alias{calc_response_entropy.data.frame}
 \title{Calculate Response Entropy.}
 \usage{
-calc_response_entropy(ppos, n)
+calc_response_entropy(...)
+
+\method{calc_response_entropy}{default}(tp, fp, n)
+
+\method{calc_response_entropy}{table}(tbl)
+
+\method{calc_response_entropy}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{ppos}{vector of positives in predict vector per class.}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{n}{Vector of total number of observations by class.}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
+
+\item{n}{Total number of observations.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Response Entropy.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_response_entropy(default)}: 
+
+\item \code{calc_response_entropy(table)}: 
+
+\item \code{calc_response_entropy(data.frame)}: 
+
+}}

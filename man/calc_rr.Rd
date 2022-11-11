@@ -2,13 +2,41 @@
 % Please edit documentation in R/multiclass-calc-rr.R
 \name{calc_rr}
 \alias{calc_rr}
-\title{Calculate Global performance index (rr).}
+\alias{calc_rr.default}
+\alias{calc_rr.table}
+\alias{calc_rr.data.frame}
+\title{Calculate Global Performance Index.}
 \usage{
-calc_rr(ppos)
+calc_rr(...)
+
+\method{calc_rr}{default}(tp, fp)
+
+\method{calc_rr}{table}(tbl)
+
+\method{calc_rr}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{ppos}{Positives in prediction.}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
+
+\item{fp}{Numeric vector of False Positives (FP) by class.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Global performance index (rr).
+Calculate Global Performance Index.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_rr(default)}: 
+
+\item \code{calc_rr(table)}: 
+
+\item \code{calc_rr(data.frame)}: 
+
+}}

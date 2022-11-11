@@ -2,15 +2,34 @@
 % Please edit documentation in R/multiclass-calc-pearson-c.R
 \name{calc_pearson_c}
 \alias{calc_pearson_c}
+\alias{calc_pearson_c.table}
+\alias{calc_pearson_c.data.frame}
 \title{Calculate Pearson's C.}
 \usage{
-calc_pearson_c(tbl, on)
+calc_pearson_c(...)
+
+\method{calc_pearson_c}{table}(tbl, ...)
+
+\method{calc_pearson_c}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
-\item{tbl}{confusion matrix}
+\item{...}{Additional arguments passed on to \code{stats::chisq.test}. Not used.}
 
-\item{on}{Total number of observations}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Pearson's C.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_pearson_c(table)}: 
+
+\item \code{calc_pearson_c(data.frame)}: 
+
+}}

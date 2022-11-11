@@ -2,32 +2,32 @@
 % Please edit documentation in R/multiclass-calc-rci.R
 \name{calc_rci}
 \alias{calc_rci}
-\alias{calc_rci.data.frame}
 \alias{calc_rci.table}
-\title{Calculate Relative classifier information (rci).}
+\alias{calc_rci.data.frame}
+\title{Calculate Relative Classifier Information.}
 \usage{
 calc_rci(...)
 
-\method{calc_rci}{data.frame}(data, prediction = "prediction", reference = "reference")
-
 \method{calc_rci}{table}(tbl)
+
+\method{calc_rci}{data.frame}(data, prediction = "prediction", reference = "reference")
 }
 \arguments{
-\item{data}{data}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
-\item{prediction}{prediciton}
+\item{data}{A data.frame containing the prediction and the reference.}
 
-\item{reference}{reference}
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
-\item{tbl}{table}
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Relative classifier information (rci).
+Calculate Relative Classifier Information.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{calc_rci(data.frame)}: 
-
 \item \code{calc_rci(table)}: 
+
+\item \code{calc_rci(data.frame)}: 
 
 }}

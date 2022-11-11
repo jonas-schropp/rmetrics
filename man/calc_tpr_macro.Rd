@@ -2,15 +2,41 @@
 % Please edit documentation in R/multiclass-calc-tpr-macro.R
 \name{calc_tpr_macro}
 \alias{calc_tpr_macro}
-\title{Calculate TPR macro.}
+\alias{calc_tpr_macro.default}
+\alias{calc_tpr_macro.table}
+\alias{calc_tpr_macro.data.frame}
+\title{Calculate TPR Macro.}
 \usage{
-calc_tpr_macro(tp, fn)
+calc_tpr_macro(...)
+
+\method{calc_tpr_macro}{default}(tp, fn)
+
+\method{calc_tpr_macro}{table}(tbl)
+
+\method{calc_tpr_macro}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{TP by class}
+\item{tp}{Numeric vector of True Positives (TP) by class.}
 
-\item{fn}{FN by class}
+\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate TPR macro.
+Calculate TPR Macro.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_tpr_macro(default)}: 
+
+\item \code{calc_tpr_macro(table)}: 
+
+\item \code{calc_tpr_macro(data.frame)}: 
+
+}}

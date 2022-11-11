@@ -2,13 +2,32 @@
 % Please edit documentation in R/multiclass-calc-mutual-information.R
 \name{calc_mutual_information}
 \alias{calc_mutual_information}
+\alias{calc_mutual_information.table}
+\alias{calc_mutual_information.data.frame}
 \title{Calculate Mutual information.}
 \usage{
-calc_mutual_information(tbl)
+calc_mutual_information(...)
+
+\method{calc_mutual_information}{table}(tbl)
+
+\method{calc_mutual_information}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tbl}{confusion matrix}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Mutual information.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_mutual_information(table)}: 
+
+\item \code{calc_mutual_information(data.frame)}: 
+
+}}

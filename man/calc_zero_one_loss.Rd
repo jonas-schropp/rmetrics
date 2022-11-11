@@ -2,15 +2,41 @@
 % Please edit documentation in R/multiclass-calc-zero-one-loss.R
 \name{calc_zero_one_loss}
 \alias{calc_zero_one_loss}
-\title{Calculate Zero-One loss.}
+\alias{calc_zero_one_loss.default}
+\alias{calc_zero_one_loss.table}
+\alias{calc_zero_one_loss.data.frame}
+\title{Calculate Zero-One Loss.}
 \usage{
-calc_zero_one_loss(otp, on)
+calc_zero_one_loss(...)
+
+\method{calc_zero_one_loss}{default}(otp, n)
+
+\method{calc_zero_one_loss}{table}(tbl)
+
+\method{calc_zero_one_loss}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{otp}{Overall true positives}
+\item{otp}{Overall True Positives (OTP).}
 
-\item{on}{Overall N}
+\item{n}{Total number of observations.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Zero-One loss.
+Calculate Zero-One Loss.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_zero_one_loss(default)}: 
+
+\item \code{calc_zero_one_loss(table)}: 
+
+\item \code{calc_zero_one_loss(data.frame)}: 
+
+}}

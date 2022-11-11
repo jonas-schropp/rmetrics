@@ -2,15 +2,46 @@
 % Please edit documentation in R/multiclass-calc-rand.R
 \name{calc_rand}
 \alias{calc_rand}
-\title{Calculate Rand index (rand).}
+\alias{calc_rand.table}
+\alias{calc_rand.data.frame}
+\title{Calculate Rand Index.}
 \usage{
-calc_rand(prediction, reference)
+calc_rand(...)
+
+\method{calc_rand}{table}(tbl, adjust = FALSE)
+
+\method{calc_rand}{data.frame}(
+  data,
+  prediction = "prediction",
+  reference = "reference",
+  adjust = FALSE
+)
 }
 \arguments{
-\item{prediction}{prediction}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
-\item{reference}{reference}
+\item{adjust}{Should the index be rescaled to take into account that random chance will cause some objects to occupy the same clusters, so that the Rand Index can never be zero? FALSE by default.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate Rand index (rand).
+The Rand index ranges between 0 and 1 and can be used to measure the similarity between two categorical vectors. It is commonly used to evaluate the similarity between clustering outcomes.
+}
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_rand(table)}: 
+
+\item \code{calc_rand(data.frame)}: 
+
+}}
+\references{
+Rand, W.M. 1971. Objective criteria for the evaluation of clustering methods. Journal of the American Statistical Association 66: 846–850.
+Hubert, L. and Arabie, P. 1985. Comparing partitions. Journal of Classification. 2: 193–218.
+}
+\author{
+Adapted from the implementation for Rand Index and Adjusted Rand index in \code{fossil}, written by Matthew Vavrek.
 }

@@ -2,15 +2,41 @@
 % Please edit documentation in R/multiclass-calc-tnr-macro.R
 \name{calc_tnr_macro}
 \alias{calc_tnr_macro}
-\title{Calculate TNR macro.}
+\alias{calc_tnr_macro.default}
+\alias{calc_tnr_macro.table}
+\alias{calc_tnr_macro.data.frame}
+\title{Calculate TNR Macro.}
 \usage{
-calc_tnr_macro(tn, fp)
+calc_tnr_macro(...)
+
+\method{calc_tnr_macro}{default}(tn, fp)
+
+\method{calc_tnr_macro}{table}(tbl)
+
+\method{calc_tnr_macro}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tn}{TN by class}
+\item{tn}{Numeric vector of True Negatives (TN) by class.}
 
-\item{fp}{FP by class}
+\item{fp}{Numeric vector of False Positives (FP) by class.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-Calculate TNR macro.
+Calculate TNR Macro.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_tnr_macro(default)}: 
+
+\item \code{calc_tnr_macro(table)}: 
+
+\item \code{calc_tnr_macro(data.frame)}: 
+
+}}

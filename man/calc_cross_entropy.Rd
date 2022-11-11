@@ -9,7 +9,7 @@
 \usage{
 calc_cross_entropy(...)
 
-\method{calc_cross_entropy}{default}(tp, fp, fn)
+\method{calc_cross_entropy}{default}(tp, fp, fn, n)
 
 \method{calc_cross_entropy}{table}(tbl)
 
@@ -21,6 +21,8 @@ calc_cross_entropy(...)
 \item{fp}{Numeric vector of False Positives (FP) by class.}
 
 \item{fn}{Numeric vector of Fase Negatives (FN) by class.}
+
+\item{n}{Total number of observations.}
 
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
