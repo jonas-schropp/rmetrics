@@ -148,7 +148,7 @@ calc_aickin.table <- function(tbl,
 
 
 
-#' @describeIn calc_acc_macro
+#' @describeIn calc_aickin
 #'
 #' @param data `r rox("data")`
 #' @param prediction `r rox("prediction")`
