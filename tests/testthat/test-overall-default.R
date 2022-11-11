@@ -85,8 +85,8 @@ test_that("Bennett S works with valid input", {
 test_that("Scott PI / Unbiased Kappa works with valid input", {
   expect_equal(
     calc_kappa(tbl, TRUE, TRUE),
-    0.44862155388471175, # pycm result - result here is .45 exactly?
-    tolerance = 0.01
+    0.44862155388471175, # pycm
+    tolerance = 0.001
   )
 })
 test_that("Kappa No Prevalence works with valid input", {
