@@ -3,6 +3,7 @@
 \name{calc_aickin}
 \alias{calc_aickin}
 \alias{calc_aickin.table}
+\alias{calc_aickin.data.frame}
 \title{Calculate Aickin's Alpha.}
 \source{
 \enumerate{
@@ -14,6 +15,17 @@ calc_aickin(...)
 
 \method{calc_aickin}{table}(
   tbl,
+  d = diag(1, nrow = nrow(tbl), ncol = ncol(tbl)),
+  epsilon = 1e-07,
+  ci.type = "aickin",
+  ci.level = 0.95,
+  maxiter = 1000
+)
+
+\method{calc_aickin}{data.frame}(
+  data,
+  prediction,
+  reference,
   d = diag(1, nrow = nrow(tbl), ncol = ncol(tbl)),
   epsilon = 1e-07,
   ci.type = "aickin",
@@ -33,6 +45,12 @@ calc_aickin(...)
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
 
 \item{maxiter}{Integer or double. Maximum number of iterations to try until convergence. Default is 1000.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Aickin's Alpha.
@@ -40,6 +58,8 @@ Calculate Aickin's Alpha.
 \section{Methods (by class)}{
 \itemize{
 \item \code{calc_aickin(table)}: 
+
+\item \code{calc_aickin(data.frame)}: 
 
 }}
 \author{

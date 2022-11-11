@@ -33,10 +33,8 @@ calc_prevalence.default <- function(pos, neg, ci.type, ci.level) {
 #'
 calc_prevalence.table <- function(tbl, ci.type, ci.level) {
 
-  tp <- tbl[2,2]
-  tn <- tbl[1,1]
-  fp <- tbl[2,1]
-  fn <- tbl[1,2]
+  pos <- sum(tbl[,2])
+  neg <- sum(tbl[,1])
 
   calc_prop(pos, pos + neg, ci.type, ci.level)
 

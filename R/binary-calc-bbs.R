@@ -45,9 +45,8 @@ calc_bbs.default <- function(tp, ppos, pos) {
 calc_bbs.table <- function(tbl) {
 
   tp <- tbl[2,2]
-  fp <- tbl[2,1]
-  ppos <- tp + fp
-  pos <- colSums(tbl)
+  ppos <- sum(tbl[2,])
+  pos <- sum(tbl[,2])
 
   calc_bbs(tp, ppos, pos)
 

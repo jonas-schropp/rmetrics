@@ -35,9 +35,9 @@ calc_lift.default <- function(tp, fp, pos, neg) {
 calc_lift.table <- function(tbl) {
 
   tp <- tbl[2,2]
-  tn <- tbl[1,1]
-  pos <- tbl[1,]
-  neg <- tbl[2,]
+  fp <- tbl[2,1]
+  pos <- sum(tbl[,2])
+  neg <- sum(tbl[,1])
 
   calc_lift(tp, fp, pos, neg)
 

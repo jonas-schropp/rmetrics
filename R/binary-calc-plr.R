@@ -59,7 +59,7 @@ calc_plr.table <- function(tbl, ci.type, ci.level) {
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_nlr(tp, fn, fp, tn, ci.type, ci.level)
+  calc_plr(tp, fn, fp, tn, ci.type, ci.level)
 
 }
 

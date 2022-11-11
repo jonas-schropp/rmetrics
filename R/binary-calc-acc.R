@@ -17,9 +17,15 @@ calc_acc <- function(...) UseMethod("calc_acc")
 #'
 #' @export
 #'
-calc_acc.default <- function(tp, tn, fp, fn, ci.type, ci.level) {
+calc_acc.default <- function(
+    tp, tn, fp, fn,
+    ci.type, ci.level
+    ) {
 
-  calc_prop(tp + tn, tp + tn + fp + fn, ci.type, ci.level)
+  calc_prop(tp + tn,
+            tp + tn + fp + fn,
+            ci.type,
+            ci.level)
 
 }
 

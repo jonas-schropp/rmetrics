@@ -44,7 +44,7 @@ calc_racc.table <- function(tbl, unbiased = FALSE) {
   fn <- tbl[1,2]
   n <- sum(tbl)
 
-  calc_racc(tp, fp, fn, n)
+  calc_racc(tp, fp, fn, n, unbiased)
 
 }
 
@@ -67,7 +67,7 @@ calc_racc.data.frame <- function(
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_racc(tbl)
+  calc_racc(tbl, unbiased)
 
 }
 

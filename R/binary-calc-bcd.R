@@ -32,10 +32,9 @@ calc_bcd.default <- function(ppos, pos, n) {
 #'
 calc_bcd.table <- function(tbl) {
 
-  tp <- tbl[2,2]
-  tn <- tbl[1,1]
-  fp <- tbl[2,1]
-  fn <- tbl[1,2]
+  ppos <- sum(tbl[2,])
+  pos <- sum(tbl[,2])
+  n <- sum(tbl)
 
   calc_bcd(ppos, pos, n)
 

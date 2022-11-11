@@ -71,6 +71,6 @@ calc_err.data.frame <- function(
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_err(tbl)
+  calc_err(tbl, ci.type, ci.level)
 
 }

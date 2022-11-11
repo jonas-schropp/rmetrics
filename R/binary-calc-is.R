@@ -32,9 +32,9 @@ calc_is.default <- function(tp, fp, fn, n) {
 calc_is.table <- function(tbl) {
 
   tp <- tbl[2,2]
-  tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
+  n <- sum(tbl)
 
   calc_is(tp, fp, fn, n)
 
