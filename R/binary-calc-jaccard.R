@@ -1,5 +1,7 @@
 #' Calculate Jaccard index
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_jaccard <- function(...) UseMethod("calc_jaccard")
@@ -14,7 +16,7 @@ calc_jaccard <- function(...) UseMethod("calc_jaccard")
 #'
 #' @export
 #'
-calc_jaccard.default <- function(tp, fn, fp) {
+calc_jaccard.default <- function(tp, fn, fp, ...) {
 
   ppos <- tp + fp
   pos <- fn + tp
@@ -31,7 +33,7 @@ calc_jaccard.default <- function(tp, fn, fp) {
 #'
 #' @export
 #'
-calc_jaccard.table <- function(tbl) {
+calc_jaccard.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -53,7 +55,7 @@ calc_jaccard.table <- function(tbl) {
 #'
 calc_jaccard.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

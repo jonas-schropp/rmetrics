@@ -1,5 +1,7 @@
 #' Calculate False Omission Rate
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_for <- function(...) UseMethod("calc_for")
@@ -15,7 +17,7 @@ calc_for <- function(...) UseMethod("calc_for")
 #'
 #' @export
 #'
-calc_for.default <- function(fn, tn, ci.type, ci.level) {
+calc_for.default <- function(fn, tn, ci.type, ci.level, ...) {
 
    calc_prop(fn, fn + tn, ci.type, ci.level)
 
@@ -31,7 +33,7 @@ calc_for.default <- function(fn, tn, ci.type, ci.level) {
 #'
 #' @export
 #'
- calc_for.table <- function(tbl, ci.type, ci.level) {
+ calc_for.table <- function(tbl, ci.type, ci.level, ...) {
 
   tn <- tbl[1,1]
   fn <- tbl[1,2]
@@ -55,7 +57,7 @@ calc_for.default <- function(fn, tn, ci.type, ci.level) {
  calc_for.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
+    ci.type, ci.level, ...
 ) {
 
   data <- data[, c(prediction, reference)]

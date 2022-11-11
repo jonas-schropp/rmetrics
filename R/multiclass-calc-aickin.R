@@ -1,5 +1,7 @@
 #' Calculate Aickin's Alpha.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @source
 #' 1. Aickin, M. (1990) Maximum Likelihood Estimation of Agreement in the Constant Predictive Probability Model, and Its Relation to Cohen's Kappa. Biometrics 46, 293-302.
 #'
@@ -28,7 +30,8 @@ calc_aickin.table <- function(tbl,
                               epsilon = 1e-7,
                               ci.type = "aickin",
                               ci.level = 0.95,
-                              maxiter = 1000)
+                              maxiter = 1000,
+                              ...)
 {
 
   if (any(dim(tbl) != dim(d))) stop("tbl and d must be of equal dimensions.")
@@ -168,7 +171,8 @@ calc_aickin.data.frame <- function(
     epsilon = 1e-7,
     ci.type = "aickin",
     ci.level = 0.95,
-    maxiter = 1000
+    maxiter = 1000,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

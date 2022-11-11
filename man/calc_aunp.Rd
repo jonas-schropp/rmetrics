@@ -9,13 +9,15 @@
 \usage{
 calc_aunp(...)
 
-\method{calc_aunp}{default}(tp, tn, fp, fn)
+\method{calc_aunp}{default}(tp, tn, fp, fn, ...)
 
-\method{calc_aunp}{table}(tbl)
+\method{calc_aunp}{table}(tbl, ...)
 
-\method{calc_aunp}{data.frame}(data, prediction = "prediction", reference = "reference")
+\method{calc_aunp}{data.frame}(data, prediction = "prediction", reference = "reference", ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{tn}{Numeric vector of True Negatives (TN) by class.}

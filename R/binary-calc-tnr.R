@@ -1,5 +1,7 @@
 #' Calculate Specificity (TNR)
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_tnr <- function(...) UseMethod("calc_tnr")
@@ -15,7 +17,7 @@ calc_tnr <- function(...) UseMethod("calc_tnr")
 #'
 #' @export
 #'
-calc_tnr.default <- function(tn, fp, ci.type, ci.level) {
+calc_tnr.default <- function(tn, fp, ci.type, ci.level, ...) {
 
   calc_prop(tn, tn + fp, ci.type, ci.level)
 
@@ -31,7 +33,7 @@ calc_tnr.default <- function(tn, fp, ci.type, ci.level) {
 #'
 #' @export
 #'
-calc_tnr.table <- function(tbl, ci.type, ci.level) {
+calc_tnr.table <- function(tbl, ci.type, ci.level, ...) {
 
   tn <- tbl[1,1]
   fp <- tbl[2,1]
@@ -55,7 +57,7 @@ calc_tnr.table <- function(tbl, ci.type, ci.level) {
 calc_tnr.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
+    ci.type, ci.level, ...
 ) {
 
   data <- data[, c(prediction, reference)]

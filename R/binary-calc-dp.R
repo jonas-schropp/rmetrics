@@ -1,5 +1,7 @@
 #' Calculate Discriminant Power (dp).
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_dp <- function(...) UseMethod("calc_dp")
@@ -15,7 +17,7 @@ calc_dp <- function(...) UseMethod("calc_dp")
 #'
 #' @export
 #'
-calc_dp.default <- function(tn, fp, tp, fn) {
+calc_dp.default <- function(tn, fp, tp, fn, ...) {
 
   tpr <- calc_tpr(tp, fn, F, 0)[1]
   tnr <- calc_tnr(tn, fp, F, 0)[1]
@@ -41,7 +43,7 @@ calc_dp.default <- function(tn, fp, tp, fn) {
 #'
 #' @export
 #'
-calc_dp.table <- function(tbl) {
+calc_dp.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -64,7 +66,7 @@ calc_dp.table <- function(tbl) {
 #'
 calc_dp.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

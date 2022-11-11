@@ -9,13 +9,15 @@
 \usage{
 calc_fpr_micro(...)
 
-\method{calc_fpr_micro}{default}(tn, fp)
+\method{calc_fpr_micro}{default}(tn, fp, ...)
 
-\method{calc_fpr_micro}{table}(tbl)
+\method{calc_fpr_micro}{table}(tbl, ...)
 
-\method{calc_fpr_micro}{data.frame}(data, prediction, reference)
+\method{calc_fpr_micro}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tn}{Numeric vector of True Negatives (TN) by class.}
 
 \item{fp}{Numeric vector of False Positives (FP) by class.}

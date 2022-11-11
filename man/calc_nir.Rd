@@ -9,13 +9,15 @@
 \usage{
 calc_nir(...)
 
-\method{calc_nir}{default}(tp, fn, n)
+\method{calc_nir}{default}(tp, fn, n, ...)
 
-\method{calc_nir}{table}(tbl)
+\method{calc_nir}{table}(tbl, ...)
 
-\method{calc_nir}{data.frame}(data, prediction, reference)
+\method{calc_nir}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fn}{Numeric vector of Fase Negatives (FN) by class.}

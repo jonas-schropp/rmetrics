@@ -9,13 +9,15 @@
 \usage{
 calc_kl_divergence(...)
 
-\method{calc_kl_divergence}{default}(tp, fp, fn, n, epsilon = 1e-06)
+\method{calc_kl_divergence}{default}(tp, fp, fn, n, epsilon = 1e-06, ...)
 
-\method{calc_kl_divergence}{table}(tbl, epsilon = 1e-06)
+\method{calc_kl_divergence}{table}(tbl, epsilon = 1e-06, ...)
 
-\method{calc_kl_divergence}{data.frame}(data, prediction, reference, epsilon = 1e-06)
+\method{calc_kl_divergence}{data.frame}(data, prediction, reference, epsilon = 1e-06, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fp}{Numeric vector of False Positives (FP) by class.}

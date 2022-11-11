@@ -1,5 +1,7 @@
 #' Calculate Geometric mean (gmean) of TPR and TNR.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_gmean <- function(...) UseMethod("calc_gmean")
@@ -15,7 +17,7 @@ calc_gmean <- function(...) UseMethod("calc_gmean")
 #'
 #' @export
 #'
-calc_gmean.default <- function(tn, fp, tp, fn) {
+calc_gmean.default <- function(tn, fp, tp, fn, ...) {
 
   tnr <- calc_tnr(tn, fp, FALSE, 0)[1]
   tpr <- calc_tpr(tp, fn, FALSE, 0)[1]
@@ -32,7 +34,7 @@ calc_gmean.default <- function(tn, fp, tp, fn) {
 #'
 #' @export
 #'
-calc_gmean.table <- function(tbl) {
+calc_gmean.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -55,7 +57,7 @@ calc_gmean.table <- function(tbl) {
 #'
 calc_gmean.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

@@ -1,5 +1,7 @@
 #' Calculate Area under the PR curve (AUPR).
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_aupr <- function(...) UseMethod("calc_aupr")
@@ -14,7 +16,7 @@ calc_aupr <- function(...) UseMethod("calc_aupr")
 #'
 #' @export
 #'
-calc_aupr.default <- function(tp, fp, fn) {
+calc_aupr.default <- function(tp, fp, fn, ...) {
 
   ppv <- calc_precision(tp, fp, FALSE, 0)[1]
   tpr <- calc_tpr(tp, fn, FALSE, 0)[1]
@@ -31,7 +33,7 @@ calc_aupr.default <- function(tp, fp, fn) {
 #'
 #' @export
 #'
-calc_aupr.table <- function(tbl) {
+calc_aupr.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -53,7 +55,7 @@ calc_aupr.table <- function(tbl) {
 #'
 calc_aupr.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

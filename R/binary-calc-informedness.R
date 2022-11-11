@@ -1,5 +1,7 @@
 #' Calculate Informedness
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_informedness <- function(...) UseMethod("calc_informedness")
@@ -15,7 +17,7 @@ calc_informedness <- function(...) UseMethod("calc_informedness")
 #'
 #' @export
 #'
-calc_informedness.default <- function(tp, fn, tn, fp) {
+calc_informedness.default <- function(tp, fn, tn, fp, ...) {
 
   tpr <- calc_tpr(tp, fn, F, 0)[1]
   tnr <- calc_tnr(tn, fp, F, 0)[1]
@@ -32,7 +34,7 @@ calc_informedness.default <- function(tp, fn, tn, fp) {
 #'
 #' @export
 #'
-calc_informedness.table <- function(tbl) {
+calc_informedness.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -55,7 +57,7 @@ calc_informedness.table <- function(tbl) {
 #'
 calc_informedness.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

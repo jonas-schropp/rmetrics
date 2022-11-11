@@ -1,5 +1,7 @@
 #' Calculate FPR Macro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_fpr_macro <- function(...) UseMethod("calc_fpr_macro")
@@ -9,11 +11,11 @@ calc_fpr_macro <- function(...) UseMethod("calc_fpr_macro")
 #' @describeIn calc_fpr_macro
 #'
 #' @param fp `r rox("fpm")`
-#' @param fn `r rox("fnm")`
+#' @param tn `r rox("tnm")`
 #'
 #' @export
 #'
-calc_fpr_macro.default <- function(fp, tn) {
+calc_fpr_macro.default <- function(fp, tn, ...) {
 
   fpr <- fp / (fp + tn)
 
@@ -29,7 +31,7 @@ calc_fpr_macro.default <- function(fp, tn) {
 #'
 #' @export
 #'
-calc_fpr_macro.table <- function(tbl) {
+calc_fpr_macro.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
@@ -52,7 +54,7 @@ calc_fpr_macro.table <- function(tbl) {
 #'
 calc_fpr_macro.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

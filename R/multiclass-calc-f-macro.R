@@ -1,5 +1,7 @@
 #' Calculate F macro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_f_macro <- function(...) UseMethod("calc_f_macro")
@@ -15,7 +17,7 @@ calc_f_macro <- function(...) UseMethod("calc_f_macro")
 #'
 #' @export
 #'
-calc_f_macro.default <- function(tp, fp, fn, beta = 1) {
+calc_f_macro.default <- function(tp, fp, fn, beta = 1, ...) {
 
   f <- calc_f(tp, fp, fn, beta)
 
@@ -31,7 +33,7 @@ calc_f_macro.default <- function(tp, fp, fn, beta = 1) {
 #'
 #' @export
 #'
-calc_f_macro.table <- function(tbl, beta = 1) {
+calc_f_macro.table <- function(tbl, beta = 1, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
@@ -55,7 +57,7 @@ calc_f_macro.table <- function(tbl, beta = 1) {
 calc_f_macro.data.frame <- function(
     data,
     prediction, reference,
-    beta = 1
+    beta = 1, ...
 ) {
 
   data <- data[, c(prediction, reference)]

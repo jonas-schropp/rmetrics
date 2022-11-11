@@ -1,5 +1,7 @@
 #' Calculate Goodman Kruskal Lambda.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' Calculates symmetric and asymmetric (lambda A and lambda B) Goodman Kruskal lambda and their confidence intervals.
 #' Lambda measures the proportional reduction in error in cross tabulation analysis. It can be used the gauge the strength of association between two nominal variables.
 #' It can be interpreted as the probable improvement in predicting the reference given knowledge of the predictions.
@@ -33,7 +35,8 @@ calc_lambda <- function(...) UseMethod("calc_lambda")
 calc_lambda.table <- function(
     tbl,
     direction = c("symmetric", "row", "column"),
-    ci.type = FALSE, ci.level = 0.95
+    ci.type = FALSE, ci.level = 0.95,
+    ...
     ) {
 
   n <- sum(tbl)
@@ -104,7 +107,8 @@ calc_lambda.data.frame <- function(
     prediction = "prediction",
     reference = "reference",
     direction = c("symmetric", "row", "column"),
-    ci.type = FALSE, ci.level = 0.95
+    ci.type = FALSE, ci.level = 0.95,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

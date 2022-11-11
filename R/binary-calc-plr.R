@@ -1,5 +1,7 @@
 #' Calculate Positive Likelihood Ratio
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @importFrom stats qnorm
 #'
 #' @source Koopman, PAR (1984) Confidence intervals for the ratio of two binomial proportions. Biometrics; 513-517.
@@ -21,7 +23,11 @@ calc_plr <- function(...) UseMethod("calc_plr")
 #'
 #' @export
 #'
-calc_plr.default <- function(tp, fn, fp, tn, ci.type, ci.level) {
+calc_plr.default <- function(
+    tp, fn, fp, tn,
+    ci.type, ci.level,
+    ...
+    ) {
 
   tpr <- calc_tpr(tp, fn, F, 0)[1]
   fnr <- calc_fpr(fp, tn, F, 0)[1]
@@ -52,7 +58,10 @@ calc_plr.default <- function(tp, fn, fp, tn, ci.type, ci.level) {
 #'
 #' @export
 #'
-calc_plr.table <- function(tbl, ci.type, ci.level) {
+calc_plr.table <- function(
+    tbl,
+    ci.type, ci.level,
+    ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -78,8 +87,8 @@ calc_plr.table <- function(tbl, ci.type, ci.level) {
 calc_plr.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
-) {
+    ci.type, ci.level,
+    ...) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)

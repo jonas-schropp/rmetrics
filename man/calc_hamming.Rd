@@ -9,13 +9,15 @@
 \usage{
 calc_hamming(...)
 
-\method{calc_hamming}{default}(otp, n)
+\method{calc_hamming}{default}(otp, n, ...)
 
-\method{calc_hamming}{table}(tbl)
+\method{calc_hamming}{table}(tbl, ...)
 
-\method{calc_hamming}{data.frame}(data, prediction, reference)
+\method{calc_hamming}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{otp}{Overall True Positives (OTP).}
 
 \item{n}{Total number of observations.}

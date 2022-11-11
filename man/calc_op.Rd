@@ -9,13 +9,15 @@
 \usage{
 calc_op(...)
 
-\method{calc_op}{default}(tn, fp, tp, fn)
+\method{calc_op}{default}(tn, fp, tp, fn, ...)
 
-\method{calc_op}{table}(tbl)
+\method{calc_op}{table}(tbl, ...)
 
-\method{calc_op}{data.frame}(data, prediction, reference)
+\method{calc_op}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tn}{Numeric, True Negatives (TN).}
 
 \item{fp}{Numeric, False Positives (FP).}

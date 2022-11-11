@@ -9,13 +9,15 @@
 \usage{
 calc_dind(...)
 
-\method{calc_dind}{default}(tn, fp, tp, fn)
+\method{calc_dind}{default}(tn, fp, tp, fn, ...)
 
-\method{calc_dind}{table}(tbl)
+\method{calc_dind}{table}(tbl, ...)
 
-\method{calc_dind}{data.frame}(data, prediction, reference)
+\method{calc_dind}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tn}{Numeric, True Negatives (TN).}
 
 \item{fp}{Numeric, False Positives (FP).}

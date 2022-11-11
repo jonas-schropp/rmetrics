@@ -9,13 +9,15 @@
 \usage{
 calc_fnr(...)
 
-\method{calc_fnr}{default}(fn, tp, ci.type, ci.level)
+\method{calc_fnr}{default}(fn, tp, ci.type, ci.level, ...)
 
-\method{calc_fnr}{table}(tbl, ci.type, ci.level)
+\method{calc_fnr}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_fnr}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_fnr}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{fn}{Numeric, Fase Negatives (FN).}
 
 \item{tp}{Numeric, True Positives (TP).}

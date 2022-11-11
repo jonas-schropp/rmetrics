@@ -1,5 +1,7 @@
 #' Calculate F0.5 Score
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_f05 <- function(...) UseMethod("calc_f05")
@@ -14,7 +16,7 @@ calc_f05 <- function(...) UseMethod("calc_f05")
 #'
 #' @export
 #'
-calc_f05.default <- function(tp, fp, fn) {
+calc_f05.default <- function(tp, fp, fn, ...) {
 
   calc_f(tp, fp, fn, 0.5)
 
@@ -28,7 +30,7 @@ calc_f05.default <- function(tp, fp, fn) {
 #'
 #' @export
 #'
-calc_f05.table <- function(tbl) {
+calc_f05.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -50,7 +52,7 @@ calc_f05.table <- function(tbl) {
 #'
 calc_f05.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

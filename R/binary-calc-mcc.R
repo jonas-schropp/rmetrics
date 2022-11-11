@@ -1,5 +1,7 @@
 #' Calculate Matthews Correlation Coefficient
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_mcc <- function(...) UseMethod("calc_mcc")
@@ -15,7 +17,7 @@ calc_mcc <- function(...) UseMethod("calc_mcc")
 #'
 #' @export
 #'
-calc_mcc.default <- function(tp, tn, fp, fn) {
+calc_mcc.default <- function(tp, tn, fp, fn, ...) {
 
   denom <- (tp + fp) * (tp + fn) * (tn + fp) * (tn + fn)
 
@@ -44,7 +46,7 @@ calc_mcc.default <- function(tp, tn, fp, fn) {
 #'
 #' @export
 #'
-calc_mcc.table <- function(tbl) {
+calc_mcc.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -67,7 +69,7 @@ calc_mcc.table <- function(tbl) {
 #'
 calc_mcc.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

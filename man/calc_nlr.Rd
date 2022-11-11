@@ -12,13 +12,15 @@ Koopman, PAR (1984) Confidence intervals for the ratio of two binomial proportio
 \usage{
 calc_nlr(...)
 
-\method{calc_nlr}{default}(tp, fn, fp, tn, ci.type, ci.level)
+\method{calc_nlr}{default}(tp, fn, fp, tn, ci.type, ci.level, ...)
 
-\method{calc_nlr}{table}(tbl, ci.type, ci.level)
+\method{calc_nlr}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_nlr}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_nlr}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fn}{Numeric, Fase Negatives (FN).}

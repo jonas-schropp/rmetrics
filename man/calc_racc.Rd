@@ -9,13 +9,15 @@
 \usage{
 calc_racc(...)
 
-\method{calc_racc}{default}(tp, fp, fn, n, unbiased = FALSE)
+\method{calc_racc}{default}(tp, fp, fn, n, unbiased = FALSE, ...)
 
-\method{calc_racc}{table}(tbl, unbiased = FALSE)
+\method{calc_racc}{table}(tbl, unbiased = FALSE, ...)
 
-\method{calc_racc}{data.frame}(data, prediction, reference, unbiased = FALSE)
+\method{calc_racc}{data.frame}(data, prediction, reference, unbiased = FALSE, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fp}{Numeric, False Positives (FP).}

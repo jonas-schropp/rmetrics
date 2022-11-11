@@ -9,13 +9,15 @@
 \usage{
 calc_response_entropy(...)
 
-\method{calc_response_entropy}{default}(tp, fp, n)
+\method{calc_response_entropy}{default}(tp, fp, n, ...)
 
-\method{calc_response_entropy}{table}(tbl)
+\method{calc_response_entropy}{table}(tbl, ...)
 
-\method{calc_response_entropy}{data.frame}(data, prediction, reference)
+\method{calc_response_entropy}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fp}{Numeric vector of False Positives (FP) by class.}

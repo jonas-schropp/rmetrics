@@ -9,13 +9,15 @@
 \usage{
 calc_dor(...)
 
-\method{calc_dor}{default}(tp, fn, tn, fp)
+\method{calc_dor}{default}(tp, fn, tn, fp, ...)
 
-\method{calc_dor}{table}(tbl)
+\method{calc_dor}{table}(tbl, ...)
 
-\method{calc_dor}{data.frame}(data, prediction, reference)
+\method{calc_dor}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fn}{Numeric, Fase Negatives (FN).}

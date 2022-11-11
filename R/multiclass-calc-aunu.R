@@ -1,5 +1,7 @@
 #' Calculate average AUC (aunu) / AUC macro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_aunu <- function(...) UseMethod("calc_aunu")
@@ -15,7 +17,7 @@ calc_aunu <- function(...) UseMethod("calc_aunu")
 #'
 #' @export
 #'
-calc_aunu.default <- function(tp, tn, fp, fn) {
+calc_aunu.default <- function(tp, tn, fp, fn, ...) {
 
   aucs <- double(length = length(tp))
   for (i in 1:length(tp)) aucs[i] <- calc_auroc(tn[i], fp[i], tp[i], fn[i])
@@ -32,7 +34,7 @@ calc_aunu.default <- function(tp, tn, fp, fn) {
 #'
 #' @export
 #'
-calc_aunu.table <- function(tbl) {
+calc_aunu.table <- function(tbl, ...) {
 
   aucs <- double(length = ncol(tbl))
 
@@ -64,7 +66,8 @@ calc_aunu.table <- function(tbl) {
 calc_aunu.data.frame <- function(
     data,
     prediction = "prediction",
-    reference = "reference"
+    reference = "reference",
+    ...
 ) {
 
   data <- data[,c(prediction, reference)]

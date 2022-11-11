@@ -9,13 +9,17 @@
 \usage{
 calc_oacc(...)
 
-\method{calc_oacc}{default}(otp, n)
+\method{calc_oacc}{default}(otp, n, ...)
 
-\method{calc_oacc}{table}(tbl)
+\method{calc_oacc}{table}(tbl, ...)
 
-\method{calc_oacc}{data.frame}(data, prediction, reference)
+\method{calc_oacc}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.
+
+The proportion of overall true positives, regardless of class. Identical to micro-averaging TPR.}
+
 \item{otp}{Overall True Positives (OTP).}
 
 \item{n}{Total number of observations.}
@@ -29,7 +33,7 @@ calc_oacc(...)
 \item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-The proportion of overall true positives, regardless of class. Identical to micro-averaging TPR.
+Calculate Calculate Overall Accuracy.
 }
 \section{Methods (by class)}{
 \itemize{

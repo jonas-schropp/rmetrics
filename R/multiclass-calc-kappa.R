@@ -1,5 +1,7 @@
 #' Calculate Kappa, unbiased Kappa or Kappa no Prevalence.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_kappa <- function(...) UseMethod("calc_kappa")
@@ -17,7 +19,8 @@ calc_kappa <- function(...) UseMethod("calc_kappa")
 calc_kappa.table <- function(
     tbl,
     unbiased = FALSE,
-    prev = TRUE
+    prev = TRUE,
+    ...
     ) {
 
   n <- sum(tbl)
@@ -50,7 +53,8 @@ calc_kappa.data.frame <- function(
     prediction = "prediction",
     reference = "reference",
     unbiased = FALSE,
-    prev = TRUE
+    prev = TRUE,
+    ...
     ) {
 
   data <- data[, c(prediction, reference)]

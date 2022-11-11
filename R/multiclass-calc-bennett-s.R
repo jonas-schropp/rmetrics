@@ -1,5 +1,7 @@
 #' Calculate Bennett's S.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_bennett_s <- function(...) UseMethod("calc_bennett_s")
@@ -12,7 +14,7 @@ calc_bennett_s <- function(...) UseMethod("calc_bennett_s")
 #'
 #' @export
 #'
-calc_bennett_s.table <- function(tbl) {
+calc_bennett_s.table <- function(tbl, ...) {
 
   pc_s <- calc_pc_s(tbl)
   otp <- sum(diag(tbl)) # Add agreement matrix option here
@@ -36,7 +38,7 @@ calc_bennett_s.table <- function(tbl) {
 #'
 calc_bennett_s.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

@@ -1,5 +1,7 @@
 #' Calculate FNR macro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_fnr_macro <- function(...) UseMethod("calc_fnr_macro")
@@ -13,7 +15,7 @@ calc_fnr_macro <- function(...) UseMethod("calc_fnr_macro")
 #'
 #' @export
 #'
-calc_fnr_macro.default <- function(fn, tp) {
+calc_fnr_macro.default <- function(fn, tp, ...) {
 
   fnr <- fn / (fn + tp)
 
@@ -29,7 +31,7 @@ calc_fnr_macro.default <- function(fn, tp) {
 #'
 #' @export
 #'
-calc_fnr_macro.table <- function(tbl) {
+calc_fnr_macro.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
@@ -52,7 +54,7 @@ calc_fnr_macro.table <- function(tbl) {
 #'
 calc_fnr_macro.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

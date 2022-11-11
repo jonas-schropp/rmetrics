@@ -9,13 +9,15 @@
 \usage{
 calc_fnr_micro(...)
 
-\method{calc_fnr_micro}{default}(otp, n)
+\method{calc_fnr_micro}{default}(otp, n, ...)
 
-\method{calc_fnr_micro}{table}(tbl)
+\method{calc_fnr_micro}{table}(tbl, ...)
 
-\method{calc_fnr_micro}{data.frame}(data, prediction, reference)
+\method{calc_fnr_micro}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{otp}{Overall True Positives (OTP).}
 
 \item{n}{Total number of observations.}

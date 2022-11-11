@@ -9,13 +9,15 @@
 \usage{
 calc_f2(...)
 
-\method{calc_f2}{default}(tp, fp, fn)
+\method{calc_f2}{default}(tp, fp, fn, ...)
 
-\method{calc_f2}{table}(tbl)
+\method{calc_f2}{table}(tbl, ...)
 
-\method{calc_f2}{data.frame}(data, prediction, reference)
+\method{calc_f2}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fp}{Numeric, False Positives (FP).}

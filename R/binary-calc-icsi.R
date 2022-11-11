@@ -1,5 +1,7 @@
 #' Calculate Individual classification success index.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_icsi <- function(...) UseMethod("calc_icsi")
@@ -14,7 +16,7 @@ calc_icsi <- function(...) UseMethod("calc_icsi")
 #'
 #' @export
 #'
-calc_icsi.default <- function(tp, fn, fp) {
+calc_icsi.default <- function(tp, fn, fp, ...) {
 
   tpr <- calc_tpr(tp, fn, FALSE, 0)[1]
   ppv <- calc_precision(tp, fp, FALSE, 0)[1]
@@ -31,7 +33,7 @@ calc_icsi.default <- function(tp, fn, fp) {
 #'
 #' @export
 #'
-calc_icsi.table <- function(tbl) {
+calc_icsi.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -53,7 +55,7 @@ calc_icsi.table <- function(tbl) {
 #'
 calc_icsi.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

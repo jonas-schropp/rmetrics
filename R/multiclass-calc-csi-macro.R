@@ -1,5 +1,7 @@
 #' Calculate classification Success Index Macro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_csi_macro <- function(...) UseMethod("calc_csi_macro")
@@ -14,7 +16,7 @@ calc_csi_macro <- function(...) UseMethod("calc_csi_macro")
 #'
 #' @export
 #'
-calc_csi_macro.default <- function(tp, fn, fp) {
+calc_csi_macro.default <- function(tp, fn, fp, ...) {
 
   csi <- double(length(tp))
   for (i in 1:length(tp)) csi[i] <- calc_icsi(tp[i], fn[i], fp[i])
@@ -31,7 +33,7 @@ calc_csi_macro.default <- function(tp, fn, fp) {
 #'
 #' @export
 #'
-calc_csi_macro.table <- function(tbl) {
+calc_csi_macro.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
@@ -54,7 +56,7 @@ calc_csi_macro.table <- function(tbl) {
 #'
 calc_csi_macro.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

@@ -1,5 +1,7 @@
 #' Calculate Precision (PPV) Macro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_ppv_macro <- function(...) UseMethod("calc_ppv_macro")
@@ -13,11 +15,11 @@ calc_ppv_macro <- function(...) UseMethod("calc_ppv_macro")
 #'
 #' @export
 #'
-calc_ppv_macro.default <- function(tp, fp) {
+calc_ppv_macro.default <- function(tp, fp, ...) {
 
   ppv <- tp / (tp + fp)
 
-  calc_macro(ppv)
+  calc_macro(ppv, ...)
 
 }
 
@@ -28,12 +30,12 @@ calc_ppv_macro.default <- function(tp, fp) {
 #'
 #' @export
 #'
-calc_ppv_macro.table <- function(tbl) {
+calc_ppv_macro.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fp <- rowSums(tbl) - tp
 
-  calc_ppv_macro.default(tp, fp)
+  calc_ppv_macro.default(tp, fp, ...)
 
 }
 
@@ -49,12 +51,12 @@ calc_ppv_macro.table <- function(tbl) {
 #'
 calc_ppv_macro.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_ppv_macro.table(tbl)
+  calc_ppv_macro.table(tbl, ...)
 
 }

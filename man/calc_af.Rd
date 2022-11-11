@@ -9,13 +9,15 @@
 \usage{
 calc_af(...)
 
-\method{calc_af}{default}(tp, fp, fn, tn)
+\method{calc_af}{default}(tp, fp, fn, tn, ...)
 
-\method{calc_af}{table}(tbl)
+\method{calc_af}{table}(tbl, ...)
 
-\method{calc_af}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_af}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fp}{Numeric, False Positives (FP).}

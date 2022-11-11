@@ -8,11 +8,13 @@
 \usage{
 calc_joint_entropy(...)
 
-\method{calc_joint_entropy}{table}(tbl)
+\method{calc_joint_entropy}{table}(tbl, ...)
 
-\method{calc_joint_entropy}{data.frame}(data, prediction, reference)
+\method{calc_joint_entropy}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
 \item{data}{A data.frame containing the prediction and the reference.}

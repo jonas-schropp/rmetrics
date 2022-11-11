@@ -9,13 +9,15 @@
 \usage{
 calc_sind(...)
 
-\method{calc_sind}{default}(tn, fp, tp, fn)
+\method{calc_sind}{default}(tn, fp, tp, fn, ...)
 
-\method{calc_sind}{table}(tbl)
+\method{calc_sind}{table}(tbl, ...)
 
-\method{calc_sind}{data.frame}(data, prediction, reference)
+\method{calc_sind}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tn}{Numeric, True Negatives (TN).}
 
 \item{fp}{Numeric, False Positives (FP).}

@@ -1,5 +1,7 @@
 #' Calculate Response Entropy.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_response_entropy <- function(...) UseMethod("calc_response_entropy")
@@ -14,7 +16,7 @@ calc_response_entropy <- function(...) UseMethod("calc_response_entropy")
 #'
 #' @export
 #'
-calc_response_entropy.default <- function(tp, fp, n) {
+calc_response_entropy.default <- function(tp, fp, n, ...) {
 
   ppos <- fp + tp
 
@@ -29,13 +31,13 @@ calc_response_entropy.default <- function(tp, fp, n) {
 #'
 #' @export
 #'
-calc_response_entropy.table <- function(tbl) {
+calc_response_entropy.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fp <- rowSums(tbl) - tp
   n <- sum(tbl)
 
-  calc_response_entropy(tp, fp, n)
+  calc_response_entropy(tp, fp, n, ...)
 
 }
 
@@ -51,12 +53,12 @@ calc_response_entropy.table <- function(tbl) {
 #'
 calc_response_entropy.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_response_entropy(tbl)
+  calc_response_entropy(tbl, ...)
 
 }

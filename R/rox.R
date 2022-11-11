@@ -1,4 +1,5 @@
-#' Calculate Kappa, unbiased Kappa or Kappa no Prevalence.
+#' Roxygen Arguments to Reuse.
+#'
 #'
 #' @noRd
 #' @keywords Internal
@@ -43,5 +44,6 @@ rox <- function(type) {
   else if (type == "method") {
     'Character. The averaging method for the individual class scores. Can be either "macro" for macro-averaging or "micro" for micro averaging.'
   }
+  else if (type == "dots") "Additional arguments. Not used."
 
 }

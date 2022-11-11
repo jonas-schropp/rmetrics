@@ -1,5 +1,7 @@
 #' Calculate TPR Macro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_tpr_macro <- function(...) UseMethod("calc_tpr_macro")
@@ -13,7 +15,7 @@ calc_tpr_macro <- function(...) UseMethod("calc_tpr_macro")
 #'
 #' @export
 #'
-calc_tpr_macro.default <- function(tp, fn) {
+calc_tpr_macro.default <- function(tp, fn, ...) {
 
   tpr <- tp / (tp + fn)
 
@@ -28,7 +30,7 @@ calc_tpr_macro.default <- function(tp, fn) {
 #'
 #' @export
 #'
-calc_tpr_macro.table <- function(tbl) {
+calc_tpr_macro.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
@@ -51,7 +53,8 @@ calc_tpr_macro.table <- function(tbl) {
 #'
 calc_tpr_macro.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

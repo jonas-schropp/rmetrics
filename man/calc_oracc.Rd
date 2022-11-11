@@ -9,13 +9,15 @@
 \usage{
 calc_oracc(...)
 
-\method{calc_oracc}{default}(tp, fp, fn, n)
+\method{calc_oracc}{default}(tp, fp, fn, n, unbiased = FALSE, ...)
 
-\method{calc_oracc}{table}(tbl, unbiased = FALSE)
+\method{calc_oracc}{table}(tbl, unbiased = FALSE, ...)
 
-\method{calc_oracc}{data.frame}(data, prediction, reference, unbiased = FALSE)
+\method{calc_oracc}{data.frame}(data, prediction, reference, unbiased = FALSE, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fp}{Numeric vector of False Positives (FP) by class.}
@@ -24,9 +26,9 @@ calc_oracc(...)
 
 \item{n}{Total number of observations.}
 
-\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
-
 \item{unbiased}{TRUE/FALSE, should unbiased random accuracy be returned? FALSE by default.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 

@@ -1,5 +1,7 @@
 #' Calculate Reference Entropy.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_reference_entropy <- function(...) UseMethod("calc_reference_entropy")
@@ -14,7 +16,7 @@ calc_reference_entropy <- function(...) UseMethod("calc_reference_entropy")
 #'
 #' @export
 #'
-calc_reference_entropy.default <- function(tp, fn, n) {
+calc_reference_entropy.default <- function(tp, fn, n, ...) {
 
   pos <- tp + fn
 
@@ -29,13 +31,13 @@ calc_reference_entropy.default <- function(tp, fn, n) {
 #'
 #' @export
 #'
-calc_reference_entropy.table <- function(tbl) {
+calc_reference_entropy.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
   n <- sum(tbl)
 
-  calc_reference_entropy(tp, fn, n)
+  calc_reference_entropy(tp, fn, n, ...)
 
 }
 
@@ -51,12 +53,12 @@ calc_reference_entropy.table <- function(tbl) {
 #'
 calc_reference_entropy.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_reference_entropy(tbl)
+  calc_reference_entropy(tbl, ...)
 
 }

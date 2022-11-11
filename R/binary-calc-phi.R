@@ -1,5 +1,7 @@
 #' Calculate Phi Coefficient
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_phi <- function(...) UseMethod("calc_phi")
@@ -15,7 +17,9 @@ calc_phi <- function(...) UseMethod("calc_phi")
 #'
 #' @export
 #'
-calc_phi.default <- function(tp, tn, fp, fn) {
+calc_phi.default <- function(
+    tp, tn, fp, fn,
+    ...) {
 
   (tp*tn - fp*fn) / sqrt( (tp + fp) * (tp + fn) * (tn + fp) * (tn + fn) )
 
@@ -29,7 +33,7 @@ calc_phi.default <- function(tp, tn, fp, fn) {
 #'
 #' @export
 #'
-calc_phi.table <- function(tbl) {
+calc_phi.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -52,8 +56,8 @@ calc_phi.table <- function(tbl) {
 #'
 calc_phi.data.frame <- function(
     data,
-    prediction, reference
-) {
+    prediction, reference,
+    ...) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)

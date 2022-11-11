@@ -9,13 +9,15 @@
 \usage{
 calc_aupr(...)
 
-\method{calc_aupr}{default}(tp, fp, fn)
+\method{calc_aupr}{default}(tp, fp, fn, ...)
 
-\method{calc_aupr}{table}(tbl)
+\method{calc_aupr}{table}(tbl, ...)
 
-\method{calc_aupr}{data.frame}(data, prediction, reference)
+\method{calc_aupr}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fp}{Numeric, False Positives (FP).}

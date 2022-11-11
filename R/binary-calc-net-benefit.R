@@ -1,5 +1,7 @@
 #' Calculate Net Benefit.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_net_benefit <- function(...) UseMethod("calc_net_benefit")
@@ -15,7 +17,7 @@ calc_net_benefit <- function(...) UseMethod("calc_net_benefit")
 #'
 #' @export
 #'
-calc_net_benefit.default <- function(tp, fp, n, weight = 1) {
+calc_net_benefit.default <- function(tp, fp, n, weight = 1, ...) {
 
   (tp - weight * fp) / n
 
@@ -30,7 +32,7 @@ calc_net_benefit.default <- function(tp, fp, n, weight = 1) {
 #'
 #' @export
 #'
-calc_net_benefit.table <- function(tbl, weight = 1) {
+calc_net_benefit.table <- function(tbl, weight = 1, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -54,7 +56,7 @@ calc_net_benefit.table <- function(tbl, weight = 1) {
 calc_net_benefit.data.frame <- function(
     data,
     prediction, reference,
-    weight = 1
+    weight = 1, ...
 ) {
 
   data <- data[, c(prediction, reference)]

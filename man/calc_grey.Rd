@@ -2,19 +2,47 @@
 % Please edit documentation in R/dual-cutoff-calc-grey.R
 \name{calc_grey}
 \alias{calc_grey}
+\alias{calc_grey.default}
+\alias{calc_grey.table}
+\alias{calc_grey.data.frame}
 \title{Calculate Size of Grey Area}
 \usage{
-calc_grey(ind, tot, ci.type, ci.level)
+calc_grey(...)
+
+\method{calc_grey}{default}(ind, n, ci.type, ci.level, ...)
+
+\method{calc_grey}{table}(tbl, ci.type, ci.level, ...)
+
+\method{calc_grey}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{ind}{Number of indeterminate results.}
 
-\item{tot}{Total number of trials.}
+\item{n}{Total number of observations.}
 
-\item{ci.type}{Either FALSE if no confidence intervals are desired or one of 'boot', ADD OTHERS. If FALSE overwrites ci.level and boot.}
+\item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+
+\item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Size of Grey Area
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_grey(default)}: 
+
+\item \code{calc_grey(table)}: 
+
+\item \code{calc_grey(data.frame)}: 
+
+}}

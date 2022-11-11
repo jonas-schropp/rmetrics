@@ -1,5 +1,7 @@
 #' Calculate Fowlkes–Mallows Index.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' The Fowlkes–Mallows index is the geometric mean of precision (PPV) and recall (TPR). It is generally used to compare the results of two clustering algorithms. It ranges from 0 to 1, with 1 indicating perfect classification.
 #'
 #' @references
@@ -18,7 +20,7 @@ calc_fmi <- function(...) UseMethod("calc_fmi")
 #'
 #' @export
 #'
-calc_fmi.table <- function(tbl) {
+calc_fmi.table <- function(tbl, ...) {
 
   n <- sum(tbl)
   tk <- sum(tbl^2) - n
@@ -44,7 +46,7 @@ calc_fmi.table <- function(tbl) {
 #'
 calc_fmi.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

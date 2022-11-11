@@ -1,5 +1,7 @@
 #' Calculate Braun-Blanquet similarity (bbs).
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_bbs <- function(...) UseMethod("calc_bbs")
@@ -14,7 +16,7 @@ calc_bbs <- function(...) UseMethod("calc_bbs")
 #'
 #' @export
 #'
-calc_bbs.default <- function(tp, ppos, pos) {
+calc_bbs.default <- function(tp, ppos, pos, ...) {
 
   if (ppos > 0 | pos > 0) {
 
@@ -42,7 +44,7 @@ calc_bbs.default <- function(tp, ppos, pos) {
 #'
 #' @export
 #'
-calc_bbs.table <- function(tbl) {
+calc_bbs.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   ppos <- sum(tbl[2,])
@@ -64,7 +66,7 @@ calc_bbs.table <- function(tbl) {
 #'
 calc_bbs.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

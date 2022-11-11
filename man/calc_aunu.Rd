@@ -9,13 +9,15 @@
 \usage{
 calc_aunu(...)
 
-\method{calc_aunu}{default}(tp, tn, fp, fn)
+\method{calc_aunu}{default}(tp, tn, fp, fn, ...)
 
-\method{calc_aunu}{table}(tbl)
+\method{calc_aunu}{table}(tbl, ...)
 
-\method{calc_aunu}{data.frame}(data, prediction = "prediction", reference = "reference")
+\method{calc_aunu}{data.frame}(data, prediction = "prediction", reference = "reference", ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{tn}{Numeric vector of True Negatives (TN) by class.}

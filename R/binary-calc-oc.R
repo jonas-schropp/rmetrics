@@ -1,5 +1,7 @@
 #' Calculate Overlap Coefficient
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_oc <- function(...) UseMethod("calc_oc")
@@ -14,7 +16,7 @@ calc_oc <- function(...) UseMethod("calc_oc")
 #'
 #' @export
 #'
-calc_oc.default <- function(tp, fp, fn) {
+calc_oc.default <- function(tp, fp, fn, ...) {
 
   ppos <- tp + fp
   pos <- tp + fn
@@ -48,7 +50,7 @@ calc_oc.default <- function(tp, fp, fn) {
 #'
 #' @export
 #'
-calc_oc.table <- function(tbl) {
+calc_oc.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -70,7 +72,7 @@ calc_oc.table <- function(tbl) {
 #'
 calc_oc.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

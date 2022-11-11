@@ -9,13 +9,15 @@
 \usage{
 calc_npv(...)
 
-\method{calc_npv}{default}(tn, fn, ci.type, ci.level)
+\method{calc_npv}{default}(tn, fn, ci.type, ci.level, ...)
 
-\method{calc_npv}{table}(tbl, ci.type, ci.level)
+\method{calc_npv}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_npv}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_npv}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tn}{Numeric, True Negatives (TN).}
 
 \item{fn}{Numeric, Fase Negatives (FN).}

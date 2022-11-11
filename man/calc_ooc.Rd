@@ -9,13 +9,15 @@
 \usage{
 calc_ooc(...)
 
-\method{calc_ooc}{default}(tp, fp, fn)
+\method{calc_ooc}{default}(tp, fp, fn, ...)
 
-\method{calc_ooc}{table}(tbl)
+\method{calc_ooc}{table}(tbl, ...)
 
-\method{calc_ooc}{data.frame}(data, prediction, reference)
+\method{calc_ooc}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fp}{Numeric, False Positives (FP).}

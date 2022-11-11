@@ -1,5 +1,7 @@
 #' Calculate Accuracy Macro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_acc_macro <- function(...) UseMethod("calc_acc_macro")
@@ -14,7 +16,7 @@ calc_acc_macro <- function(...) UseMethod("calc_acc_macro")
 #'
 #' @export
 #'
-calc_acc_macro.default <- function(tp, tn, n) {
+calc_acc_macro.default <- function(tp, tn, n, ...) {
 
   acc <- (tp + tn) / n
 
@@ -30,7 +32,7 @@ calc_acc_macro.default <- function(tp, tn, n) {
 #'
 #' @export
 #'
-calc_acc_macro.table <- function(tbl) {
+calc_acc_macro.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
@@ -54,7 +56,7 @@ calc_acc_macro.table <- function(tbl) {
 #'
 calc_acc_macro.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

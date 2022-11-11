@@ -1,5 +1,7 @@
 #' Calculate Bray-Curtis dissimilarity (bcd).
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_bcd <- function(...) UseMethod("calc_bcd")
@@ -14,7 +16,7 @@ calc_bcd <- function(...) UseMethod("calc_bcd")
 #'
 #' @export
 #'
-calc_bcd.default <- function(ppos, pos, n) {
+calc_bcd.default <- function(ppos, pos, n, ...) {
 
   am <- calc_am(ppos, pos)
 
@@ -30,7 +32,7 @@ calc_bcd.default <- function(ppos, pos, n) {
 #'
 #' @export
 #'
-calc_bcd.table <- function(tbl) {
+calc_bcd.table <- function(tbl, ...) {
 
   ppos <- sum(tbl[2,])
   pos <- sum(tbl[,2])
@@ -52,7 +54,7 @@ calc_bcd.table <- function(tbl) {
 #'
 calc_bcd.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

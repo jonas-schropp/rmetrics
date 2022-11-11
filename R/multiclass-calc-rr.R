@@ -1,5 +1,7 @@
 #' Calculate Global Performance Index.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_rr <- function(...) UseMethod("calc_rr")
@@ -13,7 +15,7 @@ calc_rr <- function(...) UseMethod("calc_rr")
 #'
 #' @export
 #'
-calc_rr.default <- function(tp, fp) {
+calc_rr.default <- function(tp, fp, ...) {
 
   ppos <- tp + fp
 
@@ -28,12 +30,12 @@ calc_rr.default <- function(tp, fp) {
 #'
 #' @export
 #'
-calc_rr.table <- function(tbl) {
+calc_rr.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fp <- rowSums(tbl) - tp
 
-  calc_rr(tp, fp)
+  calc_rr(tp, fp, ...)
 
 }
 
@@ -49,12 +51,12 @@ calc_rr.table <- function(tbl) {
 #'
 calc_rr.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_rr(tbl)
+  calc_rr(tbl, ...)
 
 }

@@ -1,5 +1,7 @@
 #' Calculate Otsuka-Ochiai Coefficient
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_ooc <- function(...) UseMethod("calc_ooc")
@@ -14,7 +16,7 @@ calc_ooc <- function(...) UseMethod("calc_ooc")
 #'
 #' @export
 #'
-calc_ooc.default <- function(tp, fp, fn) {
+calc_ooc.default <- function(tp, fp, fn, ...) {
 
   ppos <- tp + fp
   pos <- tp + fn
@@ -45,7 +47,7 @@ calc_ooc.default <- function(tp, fp, fn) {
 #'
 #' @export
 #'
-calc_ooc.table <- function(tbl) {
+calc_ooc.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -67,7 +69,7 @@ calc_ooc.table <- function(tbl) {
 #'
 calc_ooc.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

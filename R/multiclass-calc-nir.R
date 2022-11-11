@@ -1,5 +1,7 @@
 #' Calculate No information Rate.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_nir <- function(...) UseMethod("calc_nir")
@@ -14,7 +16,7 @@ calc_nir <- function(...) UseMethod("calc_nir")
 #'
 #' @export
 #'
-calc_nir.default <- function(tp, fn, n) {
+calc_nir.default <- function(tp, fn, n, ...) {
 
   pos <- tp + fn
   max(pos) / n
@@ -29,13 +31,13 @@ calc_nir.default <- function(tp, fn, n) {
 #'
 #' @export
 #'
-calc_nir.table <- function(tbl) {
+calc_nir.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
   n <- sum(tbl)
 
-  calc_nir(tp, fn, n)
+  calc_nir(tp, fn, n, ...)
 
 }
 
@@ -51,13 +53,14 @@ calc_nir.table <- function(tbl) {
 #'
 calc_nir.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_nir(tbl)
+  calc_nir(tbl, ...)
 
 }
 

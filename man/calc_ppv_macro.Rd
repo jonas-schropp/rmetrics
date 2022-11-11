@@ -9,13 +9,15 @@
 \usage{
 calc_ppv_macro(...)
 
-\method{calc_ppv_macro}{default}(tp, fp)
+\method{calc_ppv_macro}{default}(tp, fp, ...)
 
-\method{calc_ppv_macro}{table}(tbl)
+\method{calc_ppv_macro}{table}(tbl, ...)
 
-\method{calc_ppv_macro}{data.frame}(data, prediction, reference)
+\method{calc_ppv_macro}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fp}{Numeric vector of False Positives (FP) by class.}

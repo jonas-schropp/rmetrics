@@ -9,13 +9,15 @@
 \usage{
 calc_tnr(...)
 
-\method{calc_tnr}{default}(tn, fp, ci.type, ci.level)
+\method{calc_tnr}{default}(tn, fp, ci.type, ci.level, ...)
 
-\method{calc_tnr}{table}(tbl, ci.type, ci.level)
+\method{calc_tnr}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_tnr}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_tnr}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tn}{Numeric, True Negatives (TN).}
 
 \item{fp}{Numeric, False Positives (FP).}

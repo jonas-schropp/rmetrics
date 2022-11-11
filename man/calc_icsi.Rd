@@ -9,13 +9,15 @@
 \usage{
 calc_icsi(...)
 
-\method{calc_icsi}{default}(tp, fn, fp)
+\method{calc_icsi}{default}(tp, fn, fp, ...)
 
-\method{calc_icsi}{table}(tbl)
+\method{calc_icsi}{table}(tbl, ...)
 
-\method{calc_icsi}{data.frame}(data, prediction, reference)
+\method{calc_icsi}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fn}{Numeric, Fase Negatives (FN).}

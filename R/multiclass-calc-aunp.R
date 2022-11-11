@@ -1,5 +1,7 @@
 #' Calculate overall AUC (aunp).
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_aunp <- function(...) UseMethod("calc_aunp")
@@ -15,7 +17,7 @@ calc_aunp <- function(...) UseMethod("calc_aunp")
 #'
 #' @export
 #'
-calc_aunp.default <- function(tp, tn, fp, fn) {
+calc_aunp.default <- function(tp, tn, fp, fn, ...) {
 
   aucs <- double(length = length(tp))
   for (i in 1:length(tp)) aucs[i] <- calc_auroc(tn[i], fp[i], tp[i], fn[i])
@@ -34,7 +36,7 @@ calc_aunp.default <- function(tp, tn, fp, fn) {
 #'
 #' @export
 #'
-calc_aunp.table <- function(tbl) {
+calc_aunp.table <- function(tbl, ...) {
 
   aucs <- double(length = ncol(tbl))
 
@@ -69,7 +71,8 @@ calc_aunp.table <- function(tbl) {
 calc_aunp.data.frame <- function(
     data,
     prediction = "prediction",
-    reference = "reference"
+    reference = "reference",
+    ...
 ) {
 
   data <- data[,c("prediction", "reference")]

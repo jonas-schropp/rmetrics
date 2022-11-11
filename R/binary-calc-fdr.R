@@ -1,5 +1,7 @@
 #' Calculate False Discovery Rate
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_fdr <- function(...) UseMethod("calc_fdr")
@@ -15,7 +17,7 @@ calc_fdr <- function(...) UseMethod("calc_fdr")
 #'
 #' @export
 #'
-calc_fdr.default <- function(fp, tp, ci.type, ci.level) {
+calc_fdr.default <- function(fp, tp, ci.type, ci.level, ...) {
 
   calc_prop(fp, fp + tp, ci.type, ci.level)
 
@@ -31,7 +33,7 @@ calc_fdr.default <- function(fp, tp, ci.type, ci.level) {
 #'
 #' @export
 #'
-calc_fdr.table <- function(tbl, ci.type, ci.level) {
+calc_fdr.table <- function(tbl, ci.type, ci.level, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -55,7 +57,7 @@ calc_fdr.table <- function(tbl, ci.type, ci.level) {
 calc_fdr.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
+    ci.type, ci.level, ...
 ) {
 
   data <- data[, c(prediction, reference)]

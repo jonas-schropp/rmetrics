@@ -9,13 +9,15 @@
 \usage{
 calc_cba(...)
 
-\method{calc_cba}{default}(tp, fp, fn)
+\method{calc_cba}{default}(tp, fp, fn, ...)
 
-\method{calc_cba}{table}(tbl)
+\method{calc_cba}{table}(tbl, ...)
 
-\method{calc_cba}{data.frame}(data, prediction, reference)
+\method{calc_cba}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fp}{Numeric vector of False Positives (FP) by class.}

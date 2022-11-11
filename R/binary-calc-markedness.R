@@ -1,5 +1,7 @@
 #' Calculate Markedness.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_markedness <- function(...) UseMethod("calc_markedness")
@@ -15,7 +17,7 @@ calc_markedness <- function(...) UseMethod("calc_markedness")
 #'
 #' @export
 #'
-calc_markedness.default <- function(tp, fn, tn, fp) {
+calc_markedness.default <- function(tp, fn, tn, fp, ...) {
 
   ppv <- calc_precision(tp, fp, F, 0)[1]
   npv <- calc_npv(tn, fn, F, 0)[1]
@@ -32,7 +34,7 @@ calc_markedness.default <- function(tp, fn, tn, fp) {
 #'
 #' @export
 #'
-calc_markedness.table <- function(tbl) {
+calc_markedness.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -55,7 +57,7 @@ calc_markedness.table <- function(tbl) {
 #'
 calc_markedness.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

@@ -9,13 +9,15 @@
 \usage{
 calc_precision(...)
 
-\method{calc_precision}{default}(tp, fp, ci.type, ci.level)
+\method{calc_precision}{default}(tp, fp, ci.type, ci.level, ...)
 
-\method{calc_precision}{table}(tbl, ci.type, ci.level)
+\method{calc_precision}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_precision}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_precision}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fp}{Numeric, False Positives (FP).}

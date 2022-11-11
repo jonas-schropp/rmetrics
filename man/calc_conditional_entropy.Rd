@@ -11,12 +11,17 @@ calc_conditional_entropy(...)
 \method{calc_conditional_entropy}{data.frame}(
   data,
   prediction = "prediction",
-  reference = "reference"
+  reference = "reference",
+  ...
 )
 
-\method{calc_conditional_entropy}{table}(tbl)
+\method{calc_conditional_entropy}{table}(tbl, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.
+
+Computes the average conditional entropy between two vectors.}
+
 \item{data}{A data.frame containing the prediction and the reference.}
 
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
@@ -26,7 +31,7 @@ calc_conditional_entropy(...)
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 }
 \description{
-Computes the average conditional entropy between two vectors.
+Calculate conditional entropy.
 }
 \section{Methods (by class)}{
 \itemize{

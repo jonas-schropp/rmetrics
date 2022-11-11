@@ -1,5 +1,7 @@
 #' Calculate Optimized Precision.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_op <- function(...) UseMethod("calc_op")
@@ -15,7 +17,7 @@ calc_op <- function(...) UseMethod("calc_op")
 #'
 #' @export
 #'
-calc_op.default <- function(tn, fp, tp, fn) {
+calc_op.default <- function(tn, fp, tp, fn, ...) {
 
   acc <- calc_acc(tp, tn, fp, fn, F, 0)[1]
   tnr <- calc_tnr(tn, fp, F, 0)[1]
@@ -41,7 +43,7 @@ calc_op.default <- function(tn, fp, tp, fn) {
 #'
 #' @export
 #'
-calc_op.table <- function(tbl) {
+calc_op.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -64,7 +66,7 @@ calc_op.table <- function(tbl) {
 #'
 calc_op.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

@@ -9,13 +9,15 @@
 \usage{
 calc_err(...)
 
-\method{calc_err}{default}(tp, tn, fp, fn, ci.type, ci.level)
+\method{calc_err}{default}(tp, tn, fp, fn, ci.type, ci.level, ...)
 
-\method{calc_err}{table}(tbl, ci.type, ci.level)
+\method{calc_err}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_err}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_err}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{tn}{Numeric, True Negatives (TN).}

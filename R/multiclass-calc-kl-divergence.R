@@ -1,5 +1,7 @@
 #' Calculate Kullback-Leibler Divergence.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_kl_divergence <- function(...) UseMethod("calc_kl_divergence")
@@ -16,7 +18,10 @@ calc_kl_divergence <- function(...) UseMethod("calc_kl_divergence")
 #'
 #' @export
 #'
-calc_kl_divergence.default <- function(tp, fp, fn, n, epsilon = 0.000001) {
+calc_kl_divergence.default <- function(
+    tp, fp, fn, n,
+    epsilon = 0.000001,
+    ...) {
 
   posprop <- (tp + fn) / n + epsilon
   pposprop <- (tp + fp) / n + epsilon
@@ -50,14 +55,16 @@ calc_kl_divergence.default <- function(tp, fp, fn, n, epsilon = 0.000001) {
 #'
 #' @export
 #'
-calc_kl_divergence.table <- function(tbl, epsilon = 0.000001) {
+calc_kl_divergence.table <- function(
+    tbl, epsilon = 0.000001,
+    ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
   fp <- rowSums(tbl) - tp
   n <- sum(tbl)
 
-  calc_kl_divergence(tp, fp, fn, n, epsilon)
+  calc_kl_divergence(tp, fp, fn, n, epsilon, ...)
 
 }
 
@@ -74,13 +81,13 @@ calc_kl_divergence.table <- function(tbl, epsilon = 0.000001) {
 calc_kl_divergence.data.frame <- function(
     data,
     prediction, reference,
-    epsilon = 0.000001
+    epsilon = 0.000001, ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_kl_divergence(tbl, epsilon)
+  calc_kl_divergence(tbl, epsilon, ...)
 
 }
 

@@ -9,13 +9,15 @@
 \usage{
 calc_mcc(...)
 
-\method{calc_mcc}{default}(tp, tn, fp, fn)
+\method{calc_mcc}{default}(tp, tn, fp, fn, ...)
 
-\method{calc_mcc}{table}(tbl)
+\method{calc_mcc}{table}(tbl, ...)
 
-\method{calc_mcc}{data.frame}(data, prediction, reference)
+\method{calc_mcc}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{tn}{Numeric, True Negatives (TN).}

@@ -1,5 +1,7 @@
 #' Calculate Mutual information.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_mutual_information <- function(...) UseMethod("calc_mutual_information")
@@ -12,7 +14,7 @@ calc_mutual_information <- function(...) UseMethod("calc_mutual_information")
 #'
 #' @export
 #'
-calc_mutual_information.table <- function(tbl) {
+calc_mutual_information.table <- function(tbl, ...) {
 
   re <- calc_response_entropy(tbl)
   ce <- calc_conditional_entropy(tbl)
@@ -32,7 +34,8 @@ calc_mutual_information.table <- function(tbl) {
 #'
 calc_mutual_information.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

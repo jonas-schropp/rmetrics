@@ -9,13 +9,15 @@
 \usage{
 calc_auroc(...)
 
-\method{calc_auroc}{default}(tn, fp, tp, fn)
+\method{calc_auroc}{default}(tn, fp, tp, fn, ...)
 
-\method{calc_auroc}{table}(tbl)
+\method{calc_auroc}{table}(tbl, ...)
 
-\method{calc_auroc}{data.frame}(data, prediction, reference)
+\method{calc_auroc}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tn}{Numeric, True Negatives (TN).}
 
 \item{fp}{Numeric, False Positives (FP).}

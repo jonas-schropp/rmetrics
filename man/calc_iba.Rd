@@ -9,13 +9,15 @@
 \usage{
 calc_iba(...)
 
-\method{calc_iba}{default}(tn, fp, tp, fn, alpha = 1)
+\method{calc_iba}{default}(tn, fp, tp, fn, alpha = 1, ...)
 
-\method{calc_iba}{table}(tbl, alpha = 1)
+\method{calc_iba}{table}(tbl, alpha = 1, ...)
 
-\method{calc_iba}{data.frame}(data, prediction, reference, alpha = 1)
+\method{calc_iba}{data.frame}(data, prediction, reference, alpha = 1, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tn}{Numeric, True Negatives (TN).}
 
 \item{fp}{Numeric, False Positives (FP).}

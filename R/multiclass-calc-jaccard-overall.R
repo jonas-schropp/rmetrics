@@ -1,5 +1,7 @@
 #' Calculate Mean overall Jaccard index.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' The overall Jaccard index is calculated as the mean Jaccard index over all classes in data.
 #'
 #' @export
@@ -15,7 +17,7 @@ calc_jaccard_overall <- function(...) UseMethod("calc_jaccard_overall")
 #' @param fn `r rox("fnm")`
 #'
 #' @export
-calc_jaccard_overall.default <- function(tp, fn, fp) {
+calc_jaccard_overall.default <- function(tp, fn, fp, ...) {
 
   res <- calc_jaccard(tp, fn, fp)
 
@@ -30,7 +32,7 @@ calc_jaccard_overall.default <- function(tp, fn, fp) {
 #' @param tbl `r rox("tbl")`
 #'
 #' @export
-calc_jaccard_overall.table <- function(tbl) {
+calc_jaccard_overall.table <- function(tbl, ...) {
 
   res <- double(length = ncol(tbl))
 
@@ -61,7 +63,7 @@ calc_jaccard_overall.table <- function(tbl) {
 calc_jaccard_overall.data.frame <- function(
     data,
     prediction = "prediction",
-    reference = "reference"
+    reference = "reference", ...
     ) {
 
   data <- data[,c(prediction, reference)]

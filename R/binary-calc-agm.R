@@ -1,5 +1,7 @@
 #' Calculate Adjusted geometric mean (agm).
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_agm <- function(...) UseMethod("calc_agm")
@@ -15,7 +17,7 @@ calc_agm <- function(...) UseMethod("calc_agm")
 #'
 #' @export
 #'
-calc_agm.default <- function(tn, fp, tp, fn) {
+calc_agm.default <- function(tn, fp, tp, fn, ...) {
 
   tnr <- calc_tnr(tn, fp, FALSE, 0)[1]
   tpr <- calc_tpr(tp, fn, FALSE, 0)[1]
@@ -53,7 +55,7 @@ calc_agm.default <- function(tn, fp, tp, fn) {
 #'
 #' @export
 #'
-calc_agm.table <- function(tbl) {
+calc_agm.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -76,7 +78,7 @@ calc_agm.table <- function(tbl) {
 #'
 calc_agm.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

@@ -1,5 +1,7 @@
 #' Calculate Lift Score
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_lift <- function(...) UseMethod("calc_lift")
@@ -15,7 +17,7 @@ calc_lift <- function(...) UseMethod("calc_lift")
 #'
 #' @export
 #'
-calc_lift.default <- function(tp, fp, pos, neg) {
+calc_lift.default <- function(tp, fp, pos, neg, ...) {
 
   precision <- calc_precision(tp, fp, FALSE, 0)[1]
   prevalence <- calc_prevalence(pos, neg, FALSE, 0)[1]
@@ -32,7 +34,7 @@ calc_lift.default <- function(tp, fp, pos, neg) {
 #'
 #' @export
 #'
-calc_lift.table <- function(tbl) {
+calc_lift.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -55,7 +57,7 @@ calc_lift.table <- function(tbl) {
 #'
 calc_lift.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

@@ -9,13 +9,15 @@
 \usage{
 calc_for(...)
 
-\method{calc_for}{default}(fn, tn, ci.type, ci.level)
+\method{calc_for}{default}(fn, tn, ci.type, ci.level, ...)
 
-\method{calc_for}{table}(tbl, ci.type, ci.level)
+\method{calc_for}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_for}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_for}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{fn}{Numeric, Fase Negatives (FN).}
 
 \item{tn}{Numeric, True Negatives (TN).}

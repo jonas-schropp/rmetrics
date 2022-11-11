@@ -9,13 +9,15 @@
 \usage{
 calc_cross_entropy(...)
 
-\method{calc_cross_entropy}{default}(tp, fp, fn, n)
+\method{calc_cross_entropy}{default}(tp, fp, fn, n, ...)
 
-\method{calc_cross_entropy}{table}(tbl)
+\method{calc_cross_entropy}{table}(tbl, ...)
 
-\method{calc_cross_entropy}{data.frame}(data, prediction, reference)
+\method{calc_cross_entropy}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fp}{Numeric vector of False Positives (FP) by class.}

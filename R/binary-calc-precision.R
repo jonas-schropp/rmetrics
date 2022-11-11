@@ -1,5 +1,7 @@
 #' Calculate Precision
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_precision <- function(...) UseMethod("calc_precision")
@@ -15,7 +17,7 @@ calc_precision <- function(...) UseMethod("calc_precision")
 #'
 #' @export
 #'
-calc_precision.default <- function(tp, fp, ci.type, ci.level) {
+calc_precision.default <- function(tp, fp, ci.type, ci.level, ...) {
 
   calc_prop(tp, tp + fp, ci.type, ci.level)
 
@@ -31,7 +33,7 @@ calc_precision.default <- function(tp, fp, ci.type, ci.level) {
 #'
 #' @export
 #'
-calc_precision.table <- function(tbl, ci.type, ci.level) {
+calc_precision.table <- function(tbl, ci.type, ci.level, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -55,7 +57,7 @@ calc_precision.table <- function(tbl, ci.type, ci.level) {
 calc_precision.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
+    ci.type, ci.level, ...
 ) {
 
   data <- data[, c(prediction, reference)]

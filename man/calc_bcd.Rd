@@ -9,13 +9,15 @@
 \usage{
 calc_bcd(...)
 
-\method{calc_bcd}{default}(ppos, pos, n)
+\method{calc_bcd}{default}(ppos, pos, n, ...)
 
-\method{calc_bcd}{table}(tbl)
+\method{calc_bcd}{table}(tbl, ...)
 
-\method{calc_bcd}{data.frame}(data, prediction, reference)
+\method{calc_bcd}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{ppos}{Number of positives in prediction vector (= TP + FP)}
 
 \item{pos}{Number of positives in reference.}

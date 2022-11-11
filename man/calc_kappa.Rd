@@ -8,17 +8,20 @@
 \usage{
 calc_kappa(...)
 
-\method{calc_kappa}{table}(tbl, unbiased = FALSE, prev = TRUE)
+\method{calc_kappa}{table}(tbl, unbiased = FALSE, prev = TRUE, ...)
 
 \method{calc_kappa}{data.frame}(
   data,
   prediction = "prediction",
   reference = "reference",
   unbiased = FALSE,
-  prev = TRUE
+  prev = TRUE,
+  ...
 )
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
 \item{unbiased}{Logical, should 'normal' or unbiased overall random accuracy be used.}

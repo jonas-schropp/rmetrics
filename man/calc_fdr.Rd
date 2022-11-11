@@ -9,13 +9,15 @@
 \usage{
 calc_fdr(...)
 
-\method{calc_fdr}{default}(fp, tp, ci.type, ci.level)
+\method{calc_fdr}{default}(fp, tp, ci.type, ci.level, ...)
 
-\method{calc_fdr}{table}(tbl, ci.type, ci.level)
+\method{calc_fdr}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_fdr}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_fdr}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{fp}{Numeric, False Positives (FP).}
 
 \item{tp}{Numeric, True Positives (TP).}

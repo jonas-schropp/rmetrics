@@ -1,5 +1,7 @@
 #' Calculate Diagnostic odds ratio
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_dor <- function(...) UseMethod("calc_dor")
@@ -15,7 +17,7 @@ calc_dor <- function(...) UseMethod("calc_dor")
 #'
 #' @export
 #'
-calc_dor.default <- function(tp, fn, tn, fp) {
+calc_dor.default <- function(tp, fn, tn, fp, ...) {
 
   plr <- calc_plr(tp, fn, fp, tn, F, 0)[1]
   nlr <- calc_nlr(tp, fn, fp, tn, F, 0)[1]
@@ -32,7 +34,7 @@ calc_dor.default <- function(tp, fn, tn, fp) {
 #'
 #' @export
 #'
-calc_dor.table <- function(tbl) {
+calc_dor.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -55,7 +57,7 @@ calc_dor.table <- function(tbl) {
 #'
 calc_dor.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

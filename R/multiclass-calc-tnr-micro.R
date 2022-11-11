@@ -1,5 +1,7 @@
 #' Calculate TNR Micro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_tnr_micro <- function(...) UseMethod("calc_tnr_micro")
@@ -13,7 +15,7 @@ calc_tnr_micro <- function(...) UseMethod("calc_tnr_micro")
 #'
 #' @export
 #'
-calc_tnr_micro.default <- function(tn, fp) {
+calc_tnr_micro.default <- function(tn, fp, ...) {
 
   calc_micro(tn, fp)
 
@@ -26,7 +28,7 @@ calc_tnr_micro.default <- function(tn, fp) {
 #'
 #' @export
 #'
-calc_tnr_micro.table <- function(tbl) {
+calc_tnr_micro.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
@@ -49,12 +51,12 @@ calc_tnr_micro.table <- function(tbl) {
 #'
 calc_tnr_micro.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_tnr_micro(tbl)
+  calc_tnr_micro(tbl, ...)
 
 }

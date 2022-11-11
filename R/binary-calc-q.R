@@ -1,5 +1,7 @@
 #' Calculate Yule's Q.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_q <- function(...) UseMethod("calc_q")
@@ -15,7 +17,7 @@ calc_q <- function(...) UseMethod("calc_q")
 #'
 #' @export
 #'
-calc_q.default <- function(tp, tn, fp, fn) {
+calc_q.default <- function(tp, tn, fp, fn, ...) {
 
   if (fp != 0 & fn != 0) {
 
@@ -42,7 +44,7 @@ calc_q.default <- function(tp, tn, fp, fn) {
 #'
 #' @export
 #'
-calc_q.table <- function(tbl) {
+calc_q.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -65,7 +67,7 @@ calc_q.table <- function(tbl) {
 #'
 calc_q.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

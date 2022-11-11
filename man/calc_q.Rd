@@ -9,13 +9,15 @@
 \usage{
 calc_q(...)
 
-\method{calc_q}{default}(tp, tn, fp, fn)
+\method{calc_q}{default}(tp, tn, fp, fn, ...)
 
-\method{calc_q}{table}(tbl)
+\method{calc_q}{table}(tbl, ...)
 
-\method{calc_q}{data.frame}(data, prediction, reference)
+\method{calc_q}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{tn}{Numeric, True Negatives (TN).}

@@ -1,5 +1,7 @@
 #' Calculate Joint entropy.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_joint_entropy <- function(...) UseMethod("calc_joint_entropy")
@@ -12,7 +14,7 @@ calc_joint_entropy <- function(...) UseMethod("calc_joint_entropy")
 #'
 #' @export
 #'
-calc_joint_entropy.table <- function(tbl) {
+calc_joint_entropy.table <- function(tbl, ...) {
 
   p_prime <- tbl / sum(tbl)
 
@@ -35,7 +37,7 @@ calc_joint_entropy.table <- function(tbl) {
 #'
 calc_joint_entropy.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

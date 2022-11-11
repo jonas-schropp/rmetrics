@@ -9,13 +9,15 @@
 \usage{
 calc_fpr(...)
 
-\method{calc_fpr}{default}(fp, tn, ci.type, ci.level)
+\method{calc_fpr}{default}(fp, tn, ci.type, ci.level, ...)
 
-\method{calc_fpr}{table}(tbl, ci.type, ci.level)
+\method{calc_fpr}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_fpr}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_fpr}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{fp}{Numeric, False Positives (FP).}
 
 \item{tn}{Numeric, True Negatives (TN).}

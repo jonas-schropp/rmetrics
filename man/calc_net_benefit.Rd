@@ -9,13 +9,15 @@
 \usage{
 calc_net_benefit(...)
 
-\method{calc_net_benefit}{default}(tp, fp, n, weight = 1)
+\method{calc_net_benefit}{default}(tp, fp, n, weight = 1, ...)
 
-\method{calc_net_benefit}{table}(tbl, weight = 1)
+\method{calc_net_benefit}{table}(tbl, weight = 1, ...)
 
-\method{calc_net_benefit}{data.frame}(data, prediction, reference, weight = 1)
+\method{calc_net_benefit}{data.frame}(data, prediction, reference, weight = 1, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fp}{Numeric, False Positives (FP).}

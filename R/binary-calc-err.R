@@ -1,5 +1,7 @@
 #' Calculate Error rate (err).
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
  calc_err <- function(...) UseMethod("calc_err")
@@ -17,7 +19,11 @@
 #'
 #' @export
 #'
-calc_err.default <- function(tp, tn, fp, fn, ci.type, ci.level) {
+calc_err.default <- function(
+    tp, tn, fp, fn,
+    ci.type, ci.level,
+    ...
+    ) {
 
   calc_prop(fp+fn,
             tp+tn+fp+fn,
@@ -36,7 +42,7 @@ calc_err.default <- function(tp, tn, fp, fn, ci.type, ci.level) {
 #'
 #' @export
 #'
-calc_err.table <- function(tbl, ci.type, ci.level) {
+calc_err.table <- function(tbl, ci.type, ci.level, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -65,7 +71,7 @@ calc_err.table <- function(tbl, ci.type, ci.level) {
 calc_err.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
+    ci.type, ci.level, ...
 ) {
 
   data <- data[, c(prediction, reference)]

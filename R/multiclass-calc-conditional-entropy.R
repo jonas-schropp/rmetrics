@@ -1,5 +1,7 @@
 #' Calculate conditional entropy.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' Computes the average conditional entropy between two vectors.
 #'
 #' @export
@@ -19,7 +21,8 @@ calc_conditional_entropy <- function(...) UseMethod("calc_conditional_entropy")
 calc_conditional_entropy.data.frame <- function(
     data,
     prediction = "prediction",
-    reference = "reference"
+    reference = "reference",
+    ...
     ) {
 
   tbl <- table(data[, c(prediction, reference)])
@@ -36,7 +39,7 @@ calc_conditional_entropy.data.frame <- function(
 #'
 #' @export
 #'
-calc_conditional_entropy.table <- function(tbl) {
+calc_conditional_entropy.table <- function(tbl, ...) {
 
   n <- sum(tbl)
   tbl <- t(tbl)

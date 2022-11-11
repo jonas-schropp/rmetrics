@@ -9,13 +9,15 @@
 \usage{
 calc_agm(...)
 
-\method{calc_agm}{default}(tn, fp, tp, fn)
+\method{calc_agm}{default}(tn, fp, tp, fn, ...)
 
-\method{calc_agm}{table}(tbl)
+\method{calc_agm}{table}(tbl, ...)
 
-\method{calc_agm}{data.frame}(data, prediction, reference)
+\method{calc_agm}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tn}{Numeric, True Negatives (TN).}
 
 \item{fp}{Numeric, False Positives (FP).}

@@ -1,5 +1,7 @@
 #' Calculate Adjusted F-score (af).
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_af <- function(...) {
@@ -19,7 +21,7 @@ calc_af <- function(...) {
 #'
 #' @export
 #'
-calc_af.default <- function(tp, fp, fn, tn) {
+calc_af.default <- function(tp, fp, fn, tn, ...) {
 
   f2 <- calc_f(tp = tp, fp = fp, fn = fn, beta = 2)
   inv05 <- calc_f(tp = tn, fp = fn, fn = fp, beta = 0.5)
@@ -36,7 +38,7 @@ calc_af.default <- function(tp, fp, fn, tn) {
 #'
 #' @export
 #'
-calc_af.table <- function(tbl) {
+calc_af.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -59,8 +61,7 @@ calc_af.table <- function(tbl) {
 #'
 calc_af.data.frame <- function(
     data,
-    prediction, reference,
-    ci.type, ci.level
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

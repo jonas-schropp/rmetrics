@@ -8,16 +8,21 @@
 \usage{
 calc_rand(...)
 
-\method{calc_rand}{table}(tbl, adjust = FALSE)
+\method{calc_rand}{table}(tbl, adjust = FALSE, ...)
 
 \method{calc_rand}{data.frame}(
   data,
   prediction = "prediction",
   reference = "reference",
-  adjust = FALSE
+  adjust = FALSE,
+  ...
 )
 }
 \arguments{
+\item{...}{Additional arguments. Not used.
+
+The Rand index ranges between 0 and 1 and can be used to measure the similarity between two categorical vectors. It is commonly used to evaluate the similarity between clustering outcomes.}
+
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
 \item{adjust}{Should the index be rescaled to take into account that random chance will cause some objects to occupy the same clusters, so that the Rand Index can never be zero? FALSE by default.}
@@ -29,7 +34,7 @@ calc_rand(...)
 \item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-The Rand index ranges between 0 and 1 and can be used to measure the similarity between two categorical vectors. It is commonly used to evaluate the similarity between clustering outcomes.
+Calculate Rand Index.
 }
 \section{Methods (by class)}{
 \itemize{

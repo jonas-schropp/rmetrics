@@ -1,5 +1,7 @@
 #' Calculate Overall Matthews Correlation Coefficient.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_mcc_overall <- function(...) UseMethod("calc_mcc_overall")
@@ -14,7 +16,7 @@ calc_mcc_overall <- function(...) UseMethod("calc_mcc_overall")
 #'
 #' @export
 #'
-calc_mcc_overall.default <- function(tp, fp, fn) {
+calc_mcc_overall.default <- function(tp, fp, fn, ...) {
 
   ppos <- tp + fp
   pos <- tp + fn
@@ -35,14 +37,14 @@ calc_mcc_overall.default <- function(tp, fp, fn) {
 #'
 #' @export
 #'
-calc_mcc_overall.table <- function(tbl) {
+calc_mcc_overall.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
   fp <- rowSums(tbl) - tp
   tn <- sum(tbl) - tp - fn - fp
 
-  calc_mcc_overall(tp, fp, fn)
+  calc_mcc_overall(tp, fp, fn, ...)
 
 }
 
@@ -58,13 +60,14 @@ calc_mcc_overall.table <- function(tbl) {
 #'
 calc_mcc_overall.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_mcc_overall(tbl)
+  calc_mcc_overall(tbl, ...)
 
 }
 

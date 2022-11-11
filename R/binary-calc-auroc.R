@@ -1,5 +1,7 @@
 #' Calculate Area under the ROC curve for each class (auroc).
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_auroc <- function(...) UseMethod("calc_auroc")
@@ -15,7 +17,7 @@ calc_auroc <- function(...) UseMethod("calc_auroc")
 #'
 #' @export
 #'
-calc_auroc.default <- function(tn, fp, tp, fn) {
+calc_auroc.default <- function(tn, fp, tp, fn, ...) {
 
   tnr <- calc_tnr(tn, fp, F, 0)[1]
   tpr <- calc_tpr(tp, fn, F, 0)[1]
@@ -32,7 +34,7 @@ calc_auroc.default <- function(tn, fp, tp, fn) {
 #'
 #' @export
 #'
-calc_auroc.table <- function(tbl) {
+calc_auroc.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -55,7 +57,7 @@ calc_auroc.table <- function(tbl) {
 #'
 calc_auroc.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

@@ -9,13 +9,15 @@
 \usage{
 calc_fnr_macro(...)
 
-\method{calc_fnr_macro}{default}(fn, tp)
+\method{calc_fnr_macro}{default}(fn, tp, ...)
 
-\method{calc_fnr_macro}{table}(tbl)
+\method{calc_fnr_macro}{table}(tbl, ...)
 
-\method{calc_fnr_macro}{data.frame}(data, prediction, reference)
+\method{calc_fnr_macro}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{fn}{Numeric vector of Fase Negatives (FN) by class.}
 
 \item{tp}{Numeric vector of True Positives (TP) by class.}

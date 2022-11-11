@@ -9,13 +9,15 @@
 \usage{
 calc_lift(...)
 
-\method{calc_lift}{default}(tp, fp, pos, neg)
+\method{calc_lift}{default}(tp, fp, pos, neg, ...)
 
-\method{calc_lift}{table}(tbl)
+\method{calc_lift}{table}(tbl, ...)
 
-\method{calc_lift}{data.frame}(data, prediction, reference)
+\method{calc_lift}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fp}{Numeric, False Positives (FP).}

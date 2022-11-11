@@ -1,5 +1,7 @@
 #' Calculate Gwet AC1.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_gwet_ac1 <- function(...) UseMethod("calc_gwet_ac1")
@@ -15,7 +17,7 @@ calc_gwet_ac1 <- function(...) UseMethod("calc_gwet_ac1")
 #'
 #' @export
 #'
-calc_gwet_ac1.default <- function(tp, fp, fn, n) {
+calc_gwet_ac1.default <- function(tp, fp, fn, n, ...) {
 
   pos <- tp + fn
   ppos <- tp + fp
@@ -36,12 +38,12 @@ calc_gwet_ac1.default <- function(tp, fp, fn, n) {
 #'
 #' @export
 #'
-calc_gwet_ac1.table <- function(tbl) {
+calc_gwet_ac1.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
   fp <- rowSums(tbl) - tp
-  tn <- sum(tbl) - tp - fn - fp
+  n <- sum(tbl)
 
   calc_gwet_ac1(tp, fp, fn, n)
 
@@ -59,7 +61,7 @@ calc_gwet_ac1.table <- function(tbl) {
 #'
 calc_gwet_ac1.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

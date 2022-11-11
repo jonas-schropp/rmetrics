@@ -9,13 +9,15 @@
 \usage{
 calc_tpr_macro(...)
 
-\method{calc_tpr_macro}{default}(tp, fn)
+\method{calc_tpr_macro}{default}(tp, fn, ...)
 
-\method{calc_tpr_macro}{table}(tbl)
+\method{calc_tpr_macro}{table}(tbl, ...)
 
-\method{calc_tpr_macro}{data.frame}(data, prediction, reference)
+\method{calc_tpr_macro}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fn}{Numeric vector of Fase Negatives (FN) by class.}

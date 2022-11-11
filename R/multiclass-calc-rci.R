@@ -1,5 +1,7 @@
 #' Calculate Relative Classifier Information.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_rci <- function(...) UseMethod("calc_rci")
@@ -12,7 +14,7 @@ calc_rci <- function(...) UseMethod("calc_rci")
 #'
 #' @export
 #'
-calc_rci.table <- function(tbl) {
+calc_rci.table <- function(tbl, ...) {
 
   mutual_information <- calc_mutual_information(tbl)
   reference_entropy <- calc_reference_entropy(tbl)
@@ -38,11 +40,12 @@ calc_rci.table <- function(tbl) {
 calc_rci.data.frame <- function(
     data,
     prediction = "prediction",
-    reference = "reference"
+    reference = "reference",
+    ...
 ) {
 
   tbl <- table(data[, c(prediction, reference)])
 
-  calc_rci(tbl)
+  calc_rci(tbl, ...)
 
 }

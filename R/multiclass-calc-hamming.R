@@ -1,5 +1,7 @@
 #' Calculate Hamming Loss.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_hamming <- function(...) UseMethod("calc_hamming")
@@ -13,7 +15,7 @@ calc_hamming <- function(...) UseMethod("calc_hamming")
 #'
 #' @export
 #'
-calc_hamming.default <- function(otp, n) {
+calc_hamming.default <- function(otp, n, ...) {
 
   (1 / n) * (n - otp)
 
@@ -27,7 +29,7 @@ calc_hamming.default <- function(otp, n) {
 #'
 #' @export
 #'
-calc_hamming.table <- function(tbl) {
+calc_hamming.table <- function(tbl, ...) {
 
   otp <- sum(diag(tbl))
   n <- sum(tbl)
@@ -48,7 +50,7 @@ calc_hamming.table <- function(tbl) {
 #'
 calc_hamming.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

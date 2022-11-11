@@ -1,5 +1,7 @@
 #' Calculate F2 Score
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_f2 <- function(...) UseMethod("calc_f2")
@@ -14,7 +16,7 @@ calc_f2 <- function(...) UseMethod("calc_f2")
 #'
 #' @export
 #'
-calc_f2.default <- function(tp, fp, fn) {
+calc_f2.default <- function(tp, fp, fn, ...) {
 
   calc_f(tp, fp, fn, 2)
 
@@ -28,7 +30,7 @@ calc_f2.default <- function(tp, fp, fn) {
 #'
 #' @export
 #'
-calc_f2.table <- function(tbl) {
+calc_f2.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -50,7 +52,7 @@ calc_f2.table <- function(tbl) {
 #'
 calc_f2.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

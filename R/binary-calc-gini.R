@@ -1,5 +1,7 @@
 #' Calculate Gini index (gini).
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_gini <- function(...) UseMethod("calc_gini")
@@ -15,7 +17,7 @@ calc_gini <- function(...) UseMethod("calc_gini")
 #'
 #' @export
 #'
-calc_gini.default <- function(tn, fp, tp, fn) {
+calc_gini.default <- function(tn, fp, tp, fn, ...) {
 
   auroc <- calc_auroc(tn, fp, tp, fn)[1]
 
@@ -31,7 +33,7 @@ calc_gini.default <- function(tn, fp, tp, fn) {
 #'
 #' @export
 #'
-calc_gini.table <- function(tbl) {
+calc_gini.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -54,7 +56,7 @@ calc_gini.table <- function(tbl) {
 #'
 calc_gini.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

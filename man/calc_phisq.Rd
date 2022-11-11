@@ -13,7 +13,7 @@ calc_phisq(...)
 \method{calc_phisq}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
-\item{...}{Additional arguments passed on to \code{stats::chisq.test}. Not used.}
+\item{...}{Additional arguments passed on to \code{stats::chisq.test}.}
 
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 

@@ -1,5 +1,7 @@
 #' Calculate Rand Index.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' The Rand index ranges between 0 and 1 and can be used to measure the similarity between two categorical vectors. It is commonly used to evaluate the similarity between clustering outcomes.
 #'
 #' @references
@@ -22,7 +24,7 @@ calc_rand <- function(...) UseMethod("calc_rand")
 #'
 #' @export
 #'
-calc_rand.table <- function(tbl, adjust = FALSE) {
+calc_rand.table <- function(tbl, adjust = FALSE, ...) {
 
   if(adjust) {
 
@@ -51,7 +53,7 @@ calc_rand.table <- function(tbl, adjust = FALSE) {
     calc_rand.data.frame(data,
                          prediction = "prediction",
                          reference = "reference",
-                         adjust = FALSE)
+                         adjust = FALSE, ...)
 
   }
 
@@ -73,7 +75,8 @@ calc_rand.data.frame <- function(
     data,
     prediction = "prediction",
     reference = "reference",
-    adjust = FALSE
+    adjust = FALSE,
+    ...
     ) {
 
   data <- data[, c(prediction, reference)]
@@ -81,7 +84,7 @@ calc_rand.data.frame <- function(
   if (adjust) {
 
     tbl <- table(data[,c(prediction, reference)])
-    calc_rand.table(tbl, adjust = TRUE)
+    calc_rand.table(tbl, adjust = TRUE, ...)
 
   } else {
 

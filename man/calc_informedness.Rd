@@ -9,13 +9,15 @@
 \usage{
 calc_informedness(...)
 
-\method{calc_informedness}{default}(tp, fn, tn, fp)
+\method{calc_informedness}{default}(tp, fn, tn, fp, ...)
 
-\method{calc_informedness}{table}(tbl)
+\method{calc_informedness}{table}(tbl, ...)
 
-\method{calc_informedness}{data.frame}(data, prediction, reference)
+\method{calc_informedness}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fn}{Numeric, Fase Negatives (FN).}

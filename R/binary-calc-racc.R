@@ -1,5 +1,7 @@
 #' Calculate (Unbiased) Random Accuracy
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_racc <- function(...) UseMethod("calc_racc")
@@ -16,7 +18,7 @@ calc_racc <- function(...) UseMethod("calc_racc")
 #'
 #' @export
 #'
-calc_racc.default <- function(tp, fp, fn, n, unbiased = FALSE) {
+calc_racc.default <- function(tp, fp, fn, n, unbiased = FALSE, ...) {
 
   ppos <- tp + fp
   pos <- tp + fn
@@ -37,7 +39,7 @@ calc_racc.default <- function(tp, fp, fn, n, unbiased = FALSE) {
 #'
 #' @export
 #'
-calc_racc.table <- function(tbl, unbiased = FALSE) {
+calc_racc.table <- function(tbl, unbiased = FALSE, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -61,7 +63,7 @@ calc_racc.table <- function(tbl, unbiased = FALSE) {
 calc_racc.data.frame <- function(
     data,
     prediction, reference,
-    unbiased = FALSE
+    unbiased = FALSE, ...
 ) {
 
   data <- data[, c(prediction, reference)]

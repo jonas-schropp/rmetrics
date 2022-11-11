@@ -9,7 +9,7 @@ calc_phisq <- function(...) UseMethod("calc_phisq")
 #' @describeIn calc_phisq
 #'
 #' @param tbl `r rox("tbl")`
-#' @param ... Additional arguments passed on to `stats::chisq.test`. Not used.
+#' @param ... Additional arguments passed on to `stats::chisq.test`.
 #'
 #' @export
 #'
@@ -29,7 +29,7 @@ calc_phisq.table <- function(tbl, ...) {
 #' @param data `r rox("data")`
 #' @param prediction `r rox("prediction")`
 #' @param reference `r rox("reference")`
-#' @param ... Additional arguments passed on to `stats::chisq.test`. Not used.
+#' @param ... Additional arguments passed on to `stats::chisq.test`.
 #'
 #' @export
 #'

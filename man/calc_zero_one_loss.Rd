@@ -9,13 +9,15 @@
 \usage{
 calc_zero_one_loss(...)
 
-\method{calc_zero_one_loss}{default}(otp, n)
+\method{calc_zero_one_loss}{default}(otp, n, ...)
 
-\method{calc_zero_one_loss}{table}(tbl)
+\method{calc_zero_one_loss}{table}(tbl, ...)
 
-\method{calc_zero_one_loss}{data.frame}(data, prediction, reference)
+\method{calc_zero_one_loss}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{otp}{Overall True Positives (OTP).}
 
 \item{n}{Total number of observations.}

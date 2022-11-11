@@ -9,13 +9,22 @@
 \usage{
 calc_jaccard_overall(...)
 
-\method{calc_jaccard_overall}{default}(tp, fn, fp)
+\method{calc_jaccard_overall}{default}(tp, fn, fp, ...)
 
-\method{calc_jaccard_overall}{table}(tbl)
+\method{calc_jaccard_overall}{table}(tbl, ...)
 
-\method{calc_jaccard_overall}{data.frame}(data, prediction = "prediction", reference = "reference")
+\method{calc_jaccard_overall}{data.frame}(
+  data,
+  prediction = "prediction",
+  reference = "reference",
+  ...
+)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.
+
+The overall Jaccard index is calculated as the mean Jaccard index over all classes in data.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fn}{Numeric vector of Fase Negatives (FN) by class.}
@@ -31,7 +40,7 @@ calc_jaccard_overall(...)
 \item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
-The overall Jaccard index is calculated as the mean Jaccard index over all classes in data.
+Calculate Mean overall Jaccard index.
 }
 \section{Methods (by class)}{
 \itemize{

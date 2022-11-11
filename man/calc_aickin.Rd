@@ -19,7 +19,8 @@ calc_aickin(...)
   epsilon = 1e-07,
   ci.type = "aickin",
   ci.level = 0.95,
-  maxiter = 1000
+  maxiter = 1000,
+  ...
 )
 
 \method{calc_aickin}{data.frame}(
@@ -30,10 +31,13 @@ calc_aickin(...)
   epsilon = 1e-07,
   ci.type = "aickin",
   ci.level = 0.95,
-  maxiter = 1000
+  maxiter = 1000,
+  ...
 )
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
 \item{d}{The agreement matrix for tbl. Must have the same dimensions as tbl, with 1 to indicate agreeing scores, and 0 disagreeing scores. By default the diagonal is considered agreeing.}

@@ -1,5 +1,7 @@
 #' Calculate False Negative Rate
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
  calc_fnr <- function(...) UseMethod("calc_fnr")
@@ -15,7 +17,7 @@
 #'
 #' @export
 #'
- calc_fnr.default <- function(fn, tp, ci.type, ci.level) {
+ calc_fnr.default <- function(fn, tp, ci.type, ci.level, ...) {
 
    calc_prop(fn, fn + tp, ci.type, ci.level)
 
@@ -31,7 +33,7 @@
 #'
 #' @export
 #'
-calc_fnr.table <- function(tbl, ci.type, ci.level) {
+calc_fnr.table <- function(tbl, ci.type, ci.level, ...) {
 
   tp <- tbl[2,2]
   fn <- tbl[1,2]
@@ -55,7 +57,7 @@ calc_fnr.table <- function(tbl, ci.type, ci.level) {
 calc_fnr.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
+    ci.type, ci.level, ...
 ) {
 
   data <- data[, c(prediction, reference)]

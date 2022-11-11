@@ -9,7 +9,7 @@ calc_pearson_c <- function(...) UseMethod("calc_pearson_c")
 #' @describeIn calc_pearson_c
 #'
 #' @param tbl `r rox("tbl")`
-#' @param ... Additional arguments passed on to `stats::chisq.test`. Not used.
+#' @param ... Additional arguments passed on to `stats::chisq.test`.
 #'
 #' @export
 #'
@@ -29,7 +29,7 @@ calc_pearson_c.table <- function(tbl, ...) {
 #' @param data `r rox("data")`
 #' @param prediction `r rox("prediction")`
 #' @param reference `r rox("reference")`
-#' @param ... Additional arguments passed on to `stats::chisq.test`. Not used.
+#' @param ... Additional arguments passed on to `stats::chisq.test`.
 #'
 #' @export
 #'

@@ -1,5 +1,7 @@
 #' Calculate Class Balance Accuracy.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_cba <- function(...) UseMethod("calc_cba")
@@ -14,7 +16,7 @@ calc_cba <- function(...) UseMethod("calc_cba")
 #'
 #' @export
 #'
-calc_cba.default <- function(tp, fp, fn) {
+calc_cba.default <- function(tp, fp, fn, ...) {
 
   ppos <- tp + fp
   pos <- tp + fn
@@ -31,7 +33,7 @@ calc_cba.default <- function(tp, fp, fn) {
 #'
 #' @export
 #'
-calc_cba.table <- function(tbl) {
+calc_cba.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
@@ -55,7 +57,7 @@ calc_cba.table <- function(tbl) {
 #'
 calc_cba.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

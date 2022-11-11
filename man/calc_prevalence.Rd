@@ -9,13 +9,15 @@
 \usage{
 calc_prevalence(...)
 
-\method{calc_prevalence}{default}(pos, neg, ci.type, ci.level)
+\method{calc_prevalence}{default}(pos, neg, ci.type, ci.level, ...)
 
-\method{calc_prevalence}{table}(tbl, ci.type, ci.level)
+\method{calc_prevalence}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_prevalence}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_prevalence}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{pos}{Number of positives in reference.}
 
 \item{neg}{Number of negatives in reference.}

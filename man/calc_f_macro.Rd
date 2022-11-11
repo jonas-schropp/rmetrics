@@ -9,13 +9,15 @@
 \usage{
 calc_f_macro(...)
 
-\method{calc_f_macro}{default}(tp, fp, fn, beta = 1)
+\method{calc_f_macro}{default}(tp, fp, fn, beta = 1, ...)
 
-\method{calc_f_macro}{table}(tbl, beta = 1)
+\method{calc_f_macro}{table}(tbl, beta = 1, ...)
 
-\method{calc_f_macro}{data.frame}(data, prediction, reference, beta = 1)
+\method{calc_f_macro}{data.frame}(data, prediction, reference, beta = 1, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fp}{Numeric vector of False Positives (FP) by class.}

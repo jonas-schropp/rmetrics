@@ -9,13 +9,15 @@
 \usage{
 calc_reference_entropy(...)
 
-\method{calc_reference_entropy}{default}(tp, fn, n)
+\method{calc_reference_entropy}{default}(tp, fn, n, ...)
 
-\method{calc_reference_entropy}{table}(tbl)
+\method{calc_reference_entropy}{table}(tbl, ...)
 
-\method{calc_reference_entropy}{data.frame}(data, prediction, reference)
+\method{calc_reference_entropy}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fn}{Numeric vector of Fase Negatives (FN) by class.}

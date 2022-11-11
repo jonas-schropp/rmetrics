@@ -1,5 +1,7 @@
 #' Calculate Information score.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_is <- function(...) UseMethod("calc_is")
@@ -15,7 +17,7 @@ calc_is <- function(...) UseMethod("calc_is")
 #'
 #' @export
 #'
-calc_is.default <- function(tp, fp, fn, n) {
+calc_is.default <- function(tp, fp, fn, n, ...) {
 
   -log(((tp + fn) / n), base = 2) + log((tp / (tp + fp)), base = 2)
 
@@ -29,7 +31,7 @@ calc_is.default <- function(tp, fp, fn, n) {
 #'
 #' @export
 #'
-calc_is.table <- function(tbl) {
+calc_is.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -52,7 +54,7 @@ calc_is.table <- function(tbl) {
 #'
 calc_is.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

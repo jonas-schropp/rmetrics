@@ -1,5 +1,7 @@
 #' Calculate Calculate (Unbiased) Overall Random Accuracy.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_oracc <- function(...) UseMethod("calc_oracc")
@@ -16,7 +18,11 @@ calc_oracc <- function(...) UseMethod("calc_oracc")
 #'
 #' @export
 #'
-calc_oracc.default <- function(tp, fp, fn, n) {
+calc_oracc.default <- function(
+    tp, fp, fn, n,
+    unbiased = FALSE,
+    ...
+    ) {
 
   ppos <- tp + fp
   pos <- tp + fn
@@ -38,7 +44,7 @@ calc_oracc.default <- function(tp, fp, fn, n) {
 #'
 #' @export
 #'
-calc_oracc.table <- function(tbl, unbiased = FALSE) {
+calc_oracc.table <- function(tbl, unbiased = FALSE, ...) {
 
   n <- sum(tbl)
   ppos <- diag(tbl) + (rowSums(tbl) - diag(tbl))
@@ -66,13 +72,13 @@ calc_oracc.table <- function(tbl, unbiased = FALSE) {
 calc_oracc.data.frame <- function(
     data,
     prediction, reference,
-    unbiased = FALSE
+    unbiased = FALSE, ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_oracc(tbl, unbiased)
+  calc_oracc(tbl, unbiased, ...)
 
 }
 

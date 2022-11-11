@@ -14,12 +14,14 @@ calc_acc <- function(...) UseMethod("calc_acc")
 #' @param fn `r rox("fn")`
 #' @param ci.type Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.
 #' @param ci.level `r rox("ci.level")`
+#' @param ... `r rox("dots")`
 #'
 #' @export
 #'
 calc_acc.default <- function(
     tp, tn, fp, fn,
-    ci.type, ci.level
+    ci.type, ci.level,
+    ...
     ) {
 
   calc_prop(tp + tn,
@@ -39,7 +41,9 @@ calc_acc.default <- function(
 #'
 #' @export
 #'
-calc_acc.table <- function(tbl, ci.type, ci.level) {
+calc_acc.table <- function(tbl,
+                           ci.type, ci.level,
+                           ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -65,7 +69,8 @@ calc_acc.table <- function(tbl, ci.type, ci.level) {
 calc_acc.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
+    ci.type, ci.level,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

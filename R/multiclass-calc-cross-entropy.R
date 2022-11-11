@@ -1,5 +1,7 @@
 #' Calculate Cross entropy.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_cross_entropy <- function(...) UseMethod("calc_cross_entropy")
@@ -15,7 +17,7 @@ calc_cross_entropy <- function(...) UseMethod("calc_cross_entropy")
 #'
 #' @export
 #'
-calc_cross_entropy.default <- function(tp, fp, fn, n) {
+calc_cross_entropy.default <- function(tp, fp, fn, n, ...) {
 
   ppos <- tp + fp
   pos <- tp + fn
@@ -37,7 +39,7 @@ calc_cross_entropy.default <- function(tp, fp, fn, n) {
 #'
 #' @export
 #'
-calc_cross_entropy.table <- function(tbl) {
+calc_cross_entropy.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
@@ -61,7 +63,7 @@ calc_cross_entropy.table <- function(tbl) {
 #'
 calc_cross_entropy.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

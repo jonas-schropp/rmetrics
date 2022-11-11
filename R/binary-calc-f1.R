@@ -1,5 +1,7 @@
 #' Calculate F1 Score
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
  calc_f1 <- function(...) UseMethod("calc_f1")
@@ -14,7 +16,7 @@
 #'
 #' @export
 #'
- calc_f1.default <- function(tp, fp, fn) {
+ calc_f1.default <- function(tp, fp, fn, ...) {
 
    calc_f(tp, fp, fn, 1)
 
@@ -28,7 +30,7 @@
 #'
 #' @export
 #'
-calc_f1.table <- function(tbl) {
+calc_f1.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -50,7 +52,7 @@ calc_f1.table <- function(tbl) {
 #'
 calc_f1.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

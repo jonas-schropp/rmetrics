@@ -9,13 +9,15 @@
 \usage{
 calc_tpr(...)
 
-\method{calc_tpr}{default}(tp, fn, ci.type, ci.level)
+\method{calc_tpr}{default}(tp, fn, ci.type, ci.level, ...)
 
-\method{calc_tpr}{table}(tbl, ci.type, ci.level)
+\method{calc_tpr}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_tpr}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_tpr}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fn}{Numeric, Fase Negatives (FN).}
@@ -31,10 +33,6 @@ calc_tpr(...)
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
 \item{reference}{Character. The name of the variable in data that contains the reference values.}
-
-\item{tn}{Numeric, True Negatives (TN).}
-
-\item{fp}{Numeric, False Positives (FP).}
 }
 \description{
 Calculate Sensitivity (TPR)

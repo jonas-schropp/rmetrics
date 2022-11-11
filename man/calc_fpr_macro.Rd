@@ -9,14 +9,18 @@
 \usage{
 calc_fpr_macro(...)
 
-\method{calc_fpr_macro}{default}(fp, tn)
+\method{calc_fpr_macro}{default}(fp, tn, ...)
 
-\method{calc_fpr_macro}{table}(tbl)
+\method{calc_fpr_macro}{table}(tbl, ...)
 
-\method{calc_fpr_macro}{data.frame}(data, prediction, reference)
+\method{calc_fpr_macro}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{fp}{Numeric vector of False Positives (FP) by class.}
+
+\item{tn}{Numeric vector of True Negatives (TN) by class.}
 
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
@@ -25,8 +29,6 @@ calc_fpr_macro(...)
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
 \item{reference}{Character. The name of the variable in data that contains the reference values.}
-
-\item{fn}{Numeric vector of Fase Negatives (FN) by class.}
 }
 \description{
 Calculate FPR Macro.

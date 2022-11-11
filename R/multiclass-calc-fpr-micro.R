@@ -1,5 +1,7 @@
 #' Calculate FPR Micro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_fpr_micro <- function(...) UseMethod("calc_fpr_micro")
@@ -13,7 +15,7 @@ calc_fpr_micro <- function(...) UseMethod("calc_fpr_micro")
 #'
 #' @export
 #'
-calc_fpr_micro.default <- function(tn, fp) {
+calc_fpr_micro.default <- function(tn, fp, ...) {
 
   1 - calc_tnr_micro(tn, fp)
 
@@ -27,7 +29,7 @@ calc_fpr_micro.default <- function(tn, fp) {
 #'
 #' @export
 #'
-calc_fpr_micro.table <- function(tbl) {
+calc_fpr_micro.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
@@ -50,7 +52,7 @@ calc_fpr_micro.table <- function(tbl) {
 #'
 calc_fpr_micro.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

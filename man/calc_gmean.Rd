@@ -9,13 +9,15 @@
 \usage{
 calc_gmean(...)
 
-\method{calc_gmean}{default}(tn, fp, tp, fn)
+\method{calc_gmean}{default}(tn, fp, tp, fn, ...)
 
-\method{calc_gmean}{table}(tbl)
+\method{calc_gmean}{table}(tbl, ...)
 
-\method{calc_gmean}{data.frame}(data, prediction, reference)
+\method{calc_gmean}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tn}{Numeric, True Negatives (TN).}
 
 \item{fp}{Numeric, False Positives (FP).}

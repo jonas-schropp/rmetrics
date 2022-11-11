@@ -9,13 +9,15 @@
 \usage{
 calc_acc(...)
 
-\method{calc_acc}{default}(tp, tn, fp, fn, ci.type, ci.level)
+\method{calc_acc}{default}(tp, tn, fp, fn, ci.type, ci.level, ...)
 
-\method{calc_acc}{table}(tbl, ci.type, ci.level)
+\method{calc_acc}{table}(tbl, ci.type, ci.level, ...)
 
-\method{calc_acc}{data.frame}(data, prediction, reference, ci.type, ci.level)
+\method{calc_acc}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{tn}{Numeric, True Negatives (TN).}

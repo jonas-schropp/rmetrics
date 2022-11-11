@@ -1,5 +1,7 @@
 #' Calculate TNR Macro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_tnr_macro <- function(...) UseMethod("calc_tnr_macro")
@@ -13,7 +15,7 @@ calc_tnr_macro <- function(...) UseMethod("calc_tnr_macro")
 #'
 #' @export
 #'
-calc_tnr_macro.default <- function(tn, fp) {
+calc_tnr_macro.default <- function(tn, fp, ...) {
 
   tnr <- tn / (tn + fp)
 
@@ -28,14 +30,14 @@ calc_tnr_macro.default <- function(tn, fp) {
 #'
 #' @export
 #'
-calc_tnr_macro.table <- function(tbl) {
+calc_tnr_macro.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
   fp <- rowSums(tbl) - tp
   tn <- sum(tbl) - tp - fn - fp
 
-  calc_tnr_macro(tn, fp)
+  calc_tnr_macro(tn, fp, ...)
 
 }
 
@@ -51,12 +53,12 @@ calc_tnr_macro.table <- function(tbl) {
 #'
 calc_tnr_macro.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_tnr_macro(tbl)
+  calc_tnr_macro(tbl, ...)
 
 }

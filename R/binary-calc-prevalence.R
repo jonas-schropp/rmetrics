@@ -1,5 +1,7 @@
 #' Calculate Sample Prevalence
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_prevalence <- function(...) UseMethod("calc_prevalence")
@@ -15,7 +17,7 @@ calc_prevalence <- function(...) UseMethod("calc_prevalence")
 #'
 #' @export
 #'
-calc_prevalence.default <- function(pos, neg, ci.type, ci.level) {
+calc_prevalence.default <- function(pos, neg, ci.type, ci.level, ...) {
 
   calc_prop(pos, pos + neg, ci.type, ci.level)
 
@@ -31,7 +33,7 @@ calc_prevalence.default <- function(pos, neg, ci.type, ci.level) {
 #'
 #' @export
 #'
-calc_prevalence.table <- function(tbl, ci.type, ci.level) {
+calc_prevalence.table <- function(tbl, ci.type, ci.level, ...) {
 
   pos <- sum(tbl[,2])
   neg <- sum(tbl[,1])
@@ -55,7 +57,7 @@ calc_prevalence.table <- function(tbl, ci.type, ci.level) {
 calc_prevalence.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
+    ci.type, ci.level, ...
 ) {
 
   data <- data[, c(prediction, reference)]

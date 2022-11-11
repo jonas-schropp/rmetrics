@@ -9,13 +9,15 @@
 \usage{
 calc_mcc_overall(...)
 
-\method{calc_mcc_overall}{default}(tp, fp, fn)
+\method{calc_mcc_overall}{default}(tp, fp, fn, ...)
 
-\method{calc_mcc_overall}{table}(tbl)
+\method{calc_mcc_overall}{table}(tbl, ...)
 
-\method{calc_mcc_overall}{data.frame}(data, prediction, reference)
+\method{calc_mcc_overall}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fp}{Numeric vector of False Positives (FP) by class.}

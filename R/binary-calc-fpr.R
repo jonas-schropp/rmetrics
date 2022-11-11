@@ -1,5 +1,7 @@
 #' Calculate False Positive Rate
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_fpr <- function(...) UseMethod("calc_fpr")
@@ -15,7 +17,7 @@ calc_fpr <- function(...) UseMethod("calc_fpr")
 #'
 #' @export
 #'
-calc_fpr.default <- function(fp, tn, ci.type, ci.level) {
+calc_fpr.default <- function(fp, tn, ci.type, ci.level, ...) {
 
   calc_prop(fp, fp + tn, ci.type, ci.level)
 
@@ -31,7 +33,7 @@ calc_fpr.default <- function(fp, tn, ci.type, ci.level) {
 #'
 #' @export
 #'
-calc_fpr.table <- function(tbl, ci.type, ci.level) {
+calc_fpr.table <- function(tbl, ci.type, ci.level, ...) {
 
   tn <- tbl[1,1]
   fp <- tbl[2,1]
@@ -55,7 +57,7 @@ calc_fpr.table <- function(tbl, ci.type, ci.level) {
 calc_fpr.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
+    ci.type, ci.level, ...
 ) {
 
   data <- data[, c(prediction, reference)]

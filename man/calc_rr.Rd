@@ -9,13 +9,15 @@
 \usage{
 calc_rr(...)
 
-\method{calc_rr}{default}(tp, fp)
+\method{calc_rr}{default}(tp, fp, ...)
 
-\method{calc_rr}{table}(tbl)
+\method{calc_rr}{table}(tbl, ...)
 
-\method{calc_rr}{data.frame}(data, prediction, reference)
+\method{calc_rr}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fp}{Numeric vector of False Positives (FP) by class.}

@@ -1,5 +1,7 @@
 #' Calculate Negative Predictive Value
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_npv <- function(...) UseMethod("calc_npv")
@@ -15,7 +17,7 @@ calc_npv <- function(...) UseMethod("calc_npv")
 #'
 #' @export
 #'
-calc_npv.default <- function(tn, fn, ci.type, ci.level) {
+calc_npv.default <- function(tn, fn, ci.type, ci.level, ...) {
 
   calc_prop(tn, tn + fn, ci.type, ci.level)
 
@@ -31,7 +33,7 @@ calc_npv.default <- function(tn, fn, ci.type, ci.level) {
 #'
 #' @export
 #'
-calc_npv.table <- function(tbl, ci.type, ci.level) {
+calc_npv.table <- function(tbl, ci.type, ci.level, ...) {
 
   tn <- tbl[1,1]
   fn <- tbl[1,2]
@@ -55,7 +57,7 @@ calc_npv.table <- function(tbl, ci.type, ci.level) {
 calc_npv.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
+    ci.type, ci.level, ...
 ) {
 
   data <- data[, c(prediction, reference)]

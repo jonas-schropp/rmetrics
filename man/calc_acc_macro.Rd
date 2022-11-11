@@ -9,13 +9,15 @@
 \usage{
 calc_acc_macro(...)
 
-\method{calc_acc_macro}{default}(tp, tn, n)
+\method{calc_acc_macro}{default}(tp, tn, n, ...)
 
-\method{calc_acc_macro}{table}(tbl)
+\method{calc_acc_macro}{table}(tbl, ...)
 
-\method{calc_acc_macro}{data.frame}(data, prediction, reference)
+\method{calc_acc_macro}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{tn}{Numeric vector of True Negatives (TN) by class.}

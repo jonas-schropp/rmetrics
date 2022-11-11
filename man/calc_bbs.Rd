@@ -9,13 +9,15 @@
 \usage{
 calc_bbs(...)
 
-\method{calc_bbs}{default}(tp, ppos, pos)
+\method{calc_bbs}{default}(tp, ppos, pos, ...)
 
-\method{calc_bbs}{table}(tbl)
+\method{calc_bbs}{table}(tbl, ...)
 
-\method{calc_bbs}{data.frame}(data, prediction, reference)
+\method{calc_bbs}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{ppos}{Number of positives in prediction vector (= TP + FP)}

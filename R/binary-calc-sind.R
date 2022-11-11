@@ -1,5 +1,7 @@
 #' Calculate Similarity Index
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_sind <- function(...) UseMethod("calc_sind")
@@ -15,7 +17,7 @@ calc_sind <- function(...) UseMethod("calc_sind")
 #'
 #' @export
 #'
-calc_sind.default <- function(tn, fp, tp, fn) {
+calc_sind.default <- function(tn, fp, tp, fn, ...) {
 
   dind <- calc_dind(tn, fp, tp, fn)[1]
 
@@ -31,7 +33,7 @@ calc_sind.default <- function(tn, fp, tp, fn) {
 #'
 #' @export
 #'
-calc_sind.table <- function(tbl) {
+calc_sind.table <- function(tbl, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -54,7 +56,7 @@ calc_sind.table <- function(tbl) {
 #'
 calc_sind.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

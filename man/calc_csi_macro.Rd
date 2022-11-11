@@ -9,13 +9,15 @@
 \usage{
 calc_csi_macro(...)
 
-\method{calc_csi_macro}{default}(tp, fn, fp)
+\method{calc_csi_macro}{default}(tp, fn, fp, ...)
 
-\method{calc_csi_macro}{table}(tbl)
+\method{calc_csi_macro}{table}(tbl, ...)
 
-\method{calc_csi_macro}{data.frame}(data, prediction, reference)
+\method{calc_csi_macro}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric vector of True Positives (TP) by class.}
 
 \item{fn}{Numeric vector of Fase Negatives (FN) by class.}

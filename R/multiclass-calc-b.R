@@ -1,5 +1,7 @@
 #' Calculate Bangdiwala's B.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_b <- function(...) UseMethod("calc_b")
@@ -14,7 +16,7 @@ calc_b <- function(...) UseMethod("calc_b")
 #'
 #' @export
 #'
-calc_b.default <- function(tp, fp, fn) {
+calc_b.default <- function(tp, fp, fn, ...) {
 
   ppos <- tp + fp
   pos <- tp + fn
@@ -31,7 +33,7 @@ calc_b.default <- function(tp, fp, fn) {
 #'
 #' @export
 #'
-calc_b.table <- function(tbl) {
+calc_b.table <- function(tbl, ...) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
@@ -54,7 +56,7 @@ calc_b.table <- function(tbl) {
 #'
 calc_b.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

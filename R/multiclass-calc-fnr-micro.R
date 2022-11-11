@@ -1,5 +1,7 @@
 #' Calculate FNR micro.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_fnr_micro <- function(...) UseMethod("calc_fnr_micro")
@@ -13,7 +15,7 @@ calc_fnr_micro <- function(...) UseMethod("calc_fnr_micro")
 #'
 #' @export
 #'
-calc_fnr_micro.default <- function(otp, n) {
+calc_fnr_micro.default <- function(otp, n, ...) {
 
   1 - calc_oacc(otp, n)
 
@@ -27,7 +29,7 @@ calc_fnr_micro.default <- function(otp, n) {
 #'
 #' @export
 #'
-calc_fnr_micro.table <- function(tbl) {
+calc_fnr_micro.table <- function(tbl, ...) {
 
   otp <- sum(diag(tbl))
   n <- sum(tbl)
@@ -48,7 +50,7 @@ calc_fnr_micro.table <- function(tbl) {
 #'
 calc_fnr_micro.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference, ...
 ) {
 
   data <- data[, c(prediction, reference)]

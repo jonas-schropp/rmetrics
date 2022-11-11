@@ -9,13 +9,15 @@
 \usage{
 calc_is(...)
 
-\method{calc_is}{default}(tp, fp, fn, n)
+\method{calc_is}{default}(tp, fp, fn, n, ...)
 
-\method{calc_is}{table}(tbl)
+\method{calc_is}{table}(tbl, ...)
 
-\method{calc_is}{data.frame}(data, prediction, reference)
+\method{calc_is}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fp}{Numeric, False Positives (FP).}

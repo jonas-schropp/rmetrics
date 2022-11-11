@@ -1,5 +1,7 @@
 #' Calculate Calculate Overall Accuracy.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' The proportion of overall true positives, regardless of class. Identical to micro-averaging TPR.
 #'
 #' @export
@@ -15,7 +17,7 @@ calc_oacc <- function(...) UseMethod("calc_oacc")
 #'
 #' @export
 #'
-calc_oacc.default <- function(otp, n) {
+calc_oacc.default <- function(otp, n, ...) {
 
   otp / n
 
@@ -29,12 +31,12 @@ calc_oacc.default <- function(otp, n) {
 #'
 #' @export
 #'
-calc_oacc.table <- function(tbl) {
+calc_oacc.table <- function(tbl, ...) {
 
   otp <- sum(diag(tbl))
   n <- sum(tbl)
 
-  calc_oacc(otp, n)
+  calc_oacc(otp, n, ...)
 
 }
 
@@ -50,13 +52,14 @@ calc_oacc.table <- function(tbl) {
 #'
 calc_oacc.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_oacc(tbl)
+  calc_oacc(tbl, ...)
 
 }
 

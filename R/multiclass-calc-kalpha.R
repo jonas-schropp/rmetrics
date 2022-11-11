@@ -1,5 +1,7 @@
 #' Calculate Unweighted Krippendorff's Alpha.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_kalpha <- function(...) UseMethod("calc_kalpha")
@@ -13,7 +15,7 @@ calc_kalpha <- function(...) UseMethod("calc_kalpha")
 #'
 #' @export
 #'
-calc_kalpha.table <- function(tbl, unbiased = TRUE) {
+calc_kalpha.table <- function(tbl, unbiased = TRUE, ...) {
 
   n <- sum(tbl)
   otp <- sum(diag(tbl))
@@ -40,7 +42,8 @@ calc_kalpha.table <- function(tbl, unbiased = TRUE) {
 #'
 calc_kalpha.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

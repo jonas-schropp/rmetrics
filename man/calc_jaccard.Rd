@@ -9,13 +9,15 @@
 \usage{
 calc_jaccard(...)
 
-\method{calc_jaccard}{default}(tp, fn, fp)
+\method{calc_jaccard}{default}(tp, fn, fp, ...)
 
-\method{calc_jaccard}{table}(tbl)
+\method{calc_jaccard}{table}(tbl, ...)
 
-\method{calc_jaccard}{data.frame}(data, prediction, reference)
+\method{calc_jaccard}{data.frame}(data, prediction, reference, ...)
 }
 \arguments{
+\item{...}{Additional arguments. Not used.}
+
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fn}{Numeric, Fase Negatives (FN).}

@@ -1,5 +1,7 @@
 #' Calculate Zero-One Loss.
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @export
 #'
 calc_zero_one_loss <- function(...) UseMethod("calc_zero_one_loss")
@@ -13,7 +15,7 @@ calc_zero_one_loss <- function(...) UseMethod("calc_zero_one_loss")
 #'
 #' @export
 #'
-calc_zero_one_loss.default <- function(otp, n) {
+calc_zero_one_loss.default <- function(otp, n, ...) {
 
   n - otp
 
@@ -26,7 +28,7 @@ calc_zero_one_loss.default <- function(otp, n) {
 #'
 #' @export
 #'
-calc_zero_one_loss.table <- function(tbl) {
+calc_zero_one_loss.table <- function(tbl, ...) {
 
   otp <- sum(diag(tbl))
   n <- sum(tbl)
@@ -47,7 +49,8 @@ calc_zero_one_loss.table <- function(tbl) {
 #'
 calc_zero_one_loss.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

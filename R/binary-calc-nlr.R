@@ -1,5 +1,7 @@
 #' Calculate Negative Likelihood Ratio
 #'
+#' @param ... `r rox("dots")`
+#'
 #' @importFrom stats qnorm
 #'
 #' @source Koopman, PAR (1984) Confidence intervals for the ratio of two binomial proportions. Biometrics; 513-517.
@@ -21,7 +23,10 @@ calc_nlr <- function(...) UseMethod("calc_nlr")
 #'
 #' @export
 #'
-calc_nlr.default <- function(tp, fn, fp, tn, ci.type, ci.level) {
+calc_nlr.default <- function(
+    tp, fn, fp, tn,
+    ci.type, ci.level,
+    ...) {
 
   lr <- (1 - (tp / (tp + fn))) / (tn / (fp + tn))
 
@@ -60,7 +65,7 @@ calc_nlr.default <- function(tp, fn, fp, tn, ci.type, ci.level) {
 #'
 #' @export
 #'
-calc_nlr.table <- function(tbl, ci.type, ci.level) {
+calc_nlr.table <- function(tbl, ci.type, ci.level, ...) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -86,8 +91,8 @@ calc_nlr.table <- function(tbl, ci.type, ci.level) {
 calc_nlr.data.frame <- function(
     data,
     prediction, reference,
-    ci.type, ci.level
-) {
+    ci.type, ci.level,
+    ...) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
