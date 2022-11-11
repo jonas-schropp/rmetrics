@@ -80,5 +80,6 @@ yourself and submit a `pull request`.
 # Planned features
 
 This package is under active development. The current focus for
-development is 1) to implement more metrics for ordinal classifiers and
-2) to add confidence interval calculations for more of the metrics.
+development is 1) to implement more metrics for ordinal classifiers, 2)
+to add confidence interval calculations for more of the metrics and 3)
+to add much more documentation and references.

@@ -73,6 +73,6 @@ If there is a metric you want to see in this package that is not available, plea
 
 # Planned features
 
-This package is under active development. The current focus for development is 1) to implement more metrics for ordinal classifiers and 2) to add confidence interval calculations for more of the metrics. 
+This package is under active development. The current focus for development is 1) to implement more metrics for ordinal classifiers, 2) to add confidence interval calculations for more of the metrics and 3) to add much more documentation and references.
 
 
