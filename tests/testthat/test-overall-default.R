@@ -39,13 +39,14 @@ ofn <- sum(colSums(tbl) - tp)
 
 ################################################################################
 
-test_that("calc_fmi works with valid input", {
-  expect_equal(
-    calc_fmi(otp, ofp, ofn),
-    0.520104, # dendextend
-    tolerance = 0.001, ignore_attr = TRUE
-  )
-})
+#test_that("calc_fmi works with valid input", {
+#  expect_equal(
+#    calc_fmi(otp, ofp, ofn),
+#    0.520104, # dendextend
+#    tolerance = 0.001, ignore_attr = TRUE
+#  )
+#})   Keep only table and data.frame for now
+
 test_that("Overall Accuracy works with valid input", {
   expect_equal(
     calc_oacc(otp, n),
@@ -181,7 +182,7 @@ test_that("Lambda A works with valid input", {
 })
 test_that("Overall J works with valid input", {
   expect_equal(
-    calc_jaccard_overall(data),
+    calc_jaccard_overall(tp, fn, fp),
     0.4666666666666666, # Only mean result in pycm, returns also sum (1.4)
     tolerance = 0.001
   )

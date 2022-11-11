@@ -2,20 +2,35 @@
 % Please edit documentation in R/multiclass-calc-fmi.R
 \name{calc_fmi}
 \alias{calc_fmi}
-\title{Calculate Fowlkes–Mallows index}
+\alias{calc_fmi.table}
+\alias{calc_fmi.data.frame}
+\title{Calculate Fowlkes–Mallows Index.}
 \usage{
-calc_fmi(otp, ofp, ofn)
+calc_fmi(...)
+
+\method{calc_fmi}{table}(tbl)
+
+\method{calc_fmi}{data.frame}(data, prediction, reference)
 }
 \arguments{
-\item{tp}{Number of true positives in the contingency table.}
+\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
 
-\item{fp}{Number of false positives in the contingency table.}
+\item{data}{A data.frame containing the prediction and the reference.}
 
-\item{fn}{Number of false negatives in the contingency table.}
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 The Fowlkes–Mallows index is the geometric mean of precision (PPV) and recall (TPR). It is generally used to compare the results of two clustering algorithms. It ranges from 0 to 1, with 1 indicating perfect classification.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{calc_fmi(table)}: 
+
+\item \code{calc_fmi(data.frame)}: 
+
+}}
 \references{
 Fowlkes, E. B.; Mallows, C. L. (1 September 1983). "A Method for Comparing Two Hierarchical Clusterings". Journal of the American Statistical Association. 78 (383): 553. doi:10.2307/2288117
 }

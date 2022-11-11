@@ -30,7 +30,7 @@ calc_hamming.default <- function(otp, n) {
 calc_hamming.table <- function(tbl) {
 
   otp <- sum(diag(tbl))
-  n <- syum(tbl)
+  n <- sum(tbl)
 
   calc_hamming(otp, n)
 

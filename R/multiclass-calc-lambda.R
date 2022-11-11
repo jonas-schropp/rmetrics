@@ -101,9 +101,10 @@ calc_lambda.table <- function(
 #'
 calc_lambda.data.frame <- function(
     data,
-    prediction, reference,
-    direction,
-    ci.type, ci.level
+    prediction = "prediction",
+    reference = "reference",
+    direction = c("symmetric", "row", "column"),
+    ci.type = FALSE, ci.level = 0.95
 ) {
 
   data <- data[, c(prediction, reference)]

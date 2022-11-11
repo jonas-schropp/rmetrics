@@ -12,11 +12,19 @@ calc_cramer_v(...)
   tbl,
   ci.type = c("ncchisq", "ncchisqadj", "fisher", "fisheradj"),
   ci.level = 0.95,
-  bias_correct = FALSE,
+  bias.correct = FALSE,
   ...
 )
 
-\method{calc_cramer_v}{data.frame}(data, prediction, reference, ...)
+\method{calc_cramer_v}{data.frame}(
+  data,
+  prediction = "prediction",
+  reference = "reference",
+  ci.type = c("ncchisq", "ncchisqadj", "fisher", "fisheradj"),
+  ci.level = 0.95,
+  bias.correct = FALSE,
+  ...
+)
 }
 \arguments{
 \item{...}{Additional arguments passed on to \code{stats::chisq.test}. Not used.}
@@ -27,7 +35,7 @@ calc_cramer_v(...)
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
 
-\item{bias_correct}{Should a bias correction be applied? FALSE by default.}
+\item{bias.correct}{Should a bias correction be applied? FALSE by default.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 

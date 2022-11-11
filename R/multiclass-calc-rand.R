@@ -77,14 +77,16 @@ calc_rand.data.frame <- function(
     ) {
 
   data <- data[, c(prediction, reference)]
-  prediction <- data[[1]]
-  reference <- data[[2]]
 
   if (adjust) {
 
+    tbl <- table(data[,c(prediction, reference)])
     calc_rand.table(tbl, adjust = TRUE)
 
   } else {
+
+    prediction <- data[[1]]
+    reference <- data[[2]]
 
     x <- vapply(prediction, FUN = function(x) x != prediction, integer(length(prediction)))
     y <- vapply(reference, FUN = function(x) x != reference, integer(length(reference)))

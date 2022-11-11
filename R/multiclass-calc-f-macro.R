@@ -31,14 +31,14 @@ calc_f_macro.default <- function(tp, fp, fn, beta = 1) {
 #'
 #' @export
 #'
-calc_f_macro.table <- function(tbl) {
+calc_f_macro.table <- function(tbl, beta = 1) {
 
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
   fp <- rowSums(tbl) - tp
   tn <- sum(tbl) - tp - fn - fp
 
-  calc_f_macro(tp, fp, fn)
+  calc_f_macro(tp, fp, fn, beta)
 
 }
 
@@ -54,13 +54,14 @@ calc_f_macro.table <- function(tbl) {
 #'
 calc_f_macro.data.frame <- function(
     data,
-    prediction, reference
+    prediction, reference,
+    beta = 1
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_f_macro(tbl)
+  calc_f_macro(tbl, beta)
 
 }
 

@@ -29,12 +29,10 @@ calc_fnr_micro.default <- function(otp, n) {
 #'
 calc_fnr_micro.table <- function(tbl) {
 
-  tp <- diag(tbl)
-  fn <- colSums(tbl) - tp
-  fp <- rowSums(tbl) - tp
-  tn <- sum(tbl) - tp - fn - fp
+  otp <- sum(diag(tbl))
+  n <- sum(tbl)
 
-  calc_fnr_micro(fn, tp)
+  calc_fnr_micro(otp, n)
 
 }
 

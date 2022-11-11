@@ -24,7 +24,7 @@ calc_cramer_v <- function(...) UseMethod("calc_cramer_v")
 #' @param tbl `r rox("tbl")`
 #' @param ci.type FALSE if no ci is requested or one out of "ncchisq" (using noncentral chisquare), "ncchisqadj", "fisher" (using fisher z transformation), "fisheradj" (using fisher z transformation and bias correction).
 #' @param ci.level `r rox("ci.level")`
-#' @param bias_correct Should a bias correction be applied? FALSE by default.
+#' @param bias.correct Should a bias correction be applied? FALSE by default.
 #' @param ... Additional arguments passed on to `stats::chisq.test`. Not used.
 #'
 #' @export
@@ -33,7 +33,7 @@ calc_cramer_v.table <- function(
     tbl,
     ci.type = c("ncchisq", "ncchisqadj", "fisher", "fisheradj"),
     ci.level = 0.95,
-    bias_correct = FALSE,
+    bias.correct = FALSE,
     ...
     ) {
 
@@ -43,14 +43,14 @@ calc_cramer_v.table <- function(
   n <- sum(tbl)
   sqr <- sapply(dims, function(i) i - 1/(n - 1) * (i - 1)^2)
 
-  if (bias_correct) {
+  if (bias.correct) {
     phi.hat <- chisq.hat/n
     v <- as.numeric(sqrt(max(0, phi.hat - df/(n - 1)) / (min(sqr - 1))))
   } else {
     v <- as.numeric(sqrt(chisq.hat/(n * (min(dims) - 1))))
   }
 
-  if (!ci.type) {
+  if (isFALSE(ci.type)) {
     ci <- c(NA, NA)
   } else if (ci.type == "ncchisq") {
     ci <- c(lochi(chisq.hat, df, ci.level)[1],
@@ -87,13 +87,17 @@ calc_cramer_v.table <- function(
 #'
 calc_cramer_v.data.frame <- function(
     data,
-    prediction, reference,
+    prediction = "prediction",
+    reference = "reference",
+    ci.type = c("ncchisq", "ncchisqadj", "fisher", "fisheradj"),
+    ci.level = 0.95,
+    bias.correct = FALSE,
     ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_cramer_v(tbl)
+  calc_cramer_v(tbl, ci.type, ci.level, bias.correct)
 
 }

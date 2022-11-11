@@ -15,7 +15,14 @@ calc_lambda(...)
   ci.level = 0.95
 )
 
-\method{calc_lambda}{data.frame}(data, prediction, reference, direction, ci.type, ci.level)
+\method{calc_lambda}{data.frame}(
+  data,
+  prediction = "prediction",
+  reference = "reference",
+  direction = c("symmetric", "row", "column"),
+  ci.type = FALSE,
+  ci.level = 0.95
+)
 }
 \arguments{
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}

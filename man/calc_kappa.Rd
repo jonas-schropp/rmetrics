@@ -10,7 +10,13 @@ calc_kappa(...)
 
 \method{calc_kappa}{table}(tbl, unbiased = FALSE, prev = TRUE)
 
-\method{calc_kappa}{data.frame}(data, unbiased = FALSE, prev = TRUE)
+\method{calc_kappa}{data.frame}(
+  data,
+  prediction = "prediction",
+  reference = "reference",
+  unbiased = FALSE,
+  prev = TRUE
+)
 }
 \arguments{
 \item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
@@ -20,6 +26,10 @@ calc_kappa(...)
 \item{prev}{TRUE for Kappa and unbiased Kappa, FALSE for Kappa no prevalence.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
+
+\item{prediction}{Character. The name of the variable in data that contains the predictions.}
+
+\item{reference}{Character. The name of the variable in data that contains the reference values.}
 }
 \description{
 Calculate Kappa, unbiased Kappa or Kappa no Prevalence.

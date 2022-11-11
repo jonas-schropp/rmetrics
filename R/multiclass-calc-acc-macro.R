@@ -35,7 +35,8 @@ calc_acc_macro.table <- function(tbl) {
   tp <- diag(tbl)
   fn <- colSums(tbl) - tp
   fp <- rowSums(tbl) - tp
-  tn <- sum(tbl) - tp - fn - fp
+  n <- sum(tbl)
+  tn <- n - tp - fn - fp
 
   calc_acc_macro(tp, tn, n)
 

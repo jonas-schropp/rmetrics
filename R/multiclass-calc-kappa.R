@@ -38,6 +38,8 @@ calc_kappa.table <- function(
 #' @describeIn calc_kappa
 #'
 #' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
 #' @param unbiased Logical, should 'normal' or unbiased overall random accuracy be used.
 #' @param prev TRUE for Kappa and unbiased Kappa, FALSE for Kappa no prevalence.
 #'
@@ -45,6 +47,8 @@ calc_kappa.table <- function(
 #'
 calc_kappa.data.frame <- function(
     data,
+    prediction = "prediction",
+    reference = "reference",
     unbiased = FALSE,
     prev = TRUE
     ) {
@@ -52,6 +56,6 @@ calc_kappa.data.frame <- function(
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_kappa(tbl)
+  calc_kappa(tbl, unbiased, prev)
 
 }

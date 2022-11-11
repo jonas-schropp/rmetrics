@@ -34,7 +34,7 @@ calc_fpr_micro.table <- function(tbl) {
   fp <- rowSums(tbl) - tp
   tn <- sum(tbl) - tp - fn - fp
 
-  calc_fpr_micro(tp, fp, fn)
+  calc_fpr_micro(tn, fp)
 
 }
 
