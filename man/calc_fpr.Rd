@@ -39,7 +39,23 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate False Positive Rate
+The false positive rate (FPR) is a measure of the proportion of false
+positive results in a binary classification problem. It is calculated as
+the number of false positive predictions divided by the total number of
+actual negative samples.
+}
+\details{
+To calculate the FPR, the following formula is used:
+
+False positive rate = (Number of false positive predictions) / (Total number of actual negative samples)
+
+The resulting value is a proportion, with values closer to 0 indicating a
+better-performing model and values closer to 1 indicating a worse-
+performing model.
+
+The FPR is a useful metric to compare the ability of different models
+to accurately predict the negative class, and can be used to identify
+models that have a high degree of accuracy for the negative class.
 }
 \section{Methods (by class)}{
 \itemize{

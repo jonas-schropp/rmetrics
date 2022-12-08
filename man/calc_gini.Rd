@@ -5,7 +5,7 @@
 \alias{calc_gini.default}
 \alias{calc_gini.table}
 \alias{calc_gini.data.frame}
-\title{Calculate Gini index (gini).}
+\title{Calculate Gini Index}
 \usage{
 calc_gini(...)
 
@@ -38,7 +38,7 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate Gini index (gini).
+Calculate Gini Index
 }
 \section{Methods (by class)}{
 \itemize{

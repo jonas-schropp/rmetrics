@@ -39,7 +39,22 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate False Omission Rate
+The false omission rate (FOR) is a measure of the proportion of false
+negative results among all negative results in a statistical test. It
+is calculated as the number of false negatives divided by the total number
+of negative results.
+}
+\details{
+To calculate the FOR, the following formula is used:
+
+FOR = (Number of false negatives) / (Total number of negative results)
+
+The resulting value is a proportion, with values closer to 0 indicating a
+more reliable statistical test and values closer to 1 indicating a less
+reliable test.
+
+The FOR is a useful metric to identify tests that are more likely
+to accurately identify true negative results.
 }
 \section{Methods (by class)}{
 \itemize{

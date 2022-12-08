@@ -39,7 +39,25 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate False Negative Rate
+The false negative rate is a measure of the proportion of false negative
+results in a binary classification problem. It is calculated as the number
+of false negative predictions divided by the total number of actual
+positive samples.
+}
+\details{
+To calculate the false negative rate, the following formula is used:
+
+False negative rate = (Number of false negative predictions) / (Total number of actual positive samples)
+
+The resulting value is a proportion, with values closer to 0 indicating a
+better-performing model and values closer to 1 indicating a worse-
+performing model.
+
+Overall, the false negative rate is a useful metric for evaluating
+the performance of a classification model. It provides a way to compare
+the ability of different models to accurately predict the positive class,
+and can be used to identify models that have a high degree of accuracy for
+the positive class.
 }
 \section{Methods (by class)}{
 \itemize{

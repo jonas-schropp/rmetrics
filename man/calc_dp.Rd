@@ -5,7 +5,7 @@
 \alias{calc_dp.default}
 \alias{calc_dp.table}
 \alias{calc_dp.data.frame}
-\title{Calculate Discriminant Power (dp).}
+\title{Calculate Discriminant Power.}
 \usage{
 calc_dp(...)
 
@@ -38,7 +38,7 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate Discriminant Power (dp).
+Calculate Discriminant Power.
 }
 \section{Methods (by class)}{
 \itemize{

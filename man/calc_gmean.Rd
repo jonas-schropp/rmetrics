@@ -51,7 +51,7 @@ of negative samples.
 }
 \details{
 The geometric mean of TPR and TNR can be adjusted for the proportion of
-negativesby setting \code{adjust = TRUE}.
+negatives by setting \code{adjust = TRUE}.
 }
 \section{Methods (by class)}{
 \itemize{

@@ -1,4 +1,6 @@
-#' Calculate Gini index (gini).
+#' Calculate Gini Index
+#'
+#'
 #'
 #' @param ... `r rox("dots")`
 #'

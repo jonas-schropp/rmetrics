@@ -5,7 +5,7 @@
 \alias{calc_bbs.default}
 \alias{calc_bbs.table}
 \alias{calc_bbs.data.frame}
-\title{Calculate Braun-Blanquet similarity (bbs).}
+\title{Calculate Braun-Blanquet similarity.}
 \usage{
 calc_bbs(...)
 
@@ -36,7 +36,23 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate Braun-Blanquet similarity (bbs).
+The Braun-Blanquet similarity is a measure of the degree to which two sets
+of observations are similar. It is commonly used in ecology to compare
+the composition of two different plant communities, but it can also be
+applied to other types of data sets.
+}
+\details{
+To calculate the Braun-Blanquet similarity, the following steps are followed:
+\itemize{
+\item For each observation in the first set of data, count the number of times it occurs.
+\item For each observation in the second set of data, count the number of times it occurs.
+\item For each observation that occurs in both sets of data, calculate the minimum of the two counts and add this value to the Braun-Blanquet similarity score.
+\item Divide the Braun-Blanquet similarity score by the total number of observations in both sets of data.
+}
+
+The resulting value is a measure of the degree to which the two sets of data
+are similar, with values closer to 1 indicating greater similarity and
+values closer to 0 indicating less similarity.
 }
 \section{Methods (by class)}{
 \itemize{

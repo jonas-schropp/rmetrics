@@ -1,5 +1,22 @@
 #' Calculate False Omission Rate
 #'
+#' The false omission rate (FOR) is a measure of the proportion of false
+#' negative results among all negative results in a statistical test. It
+#' is calculated as the number of false negatives divided by the total number
+#' of negative results.
+#'
+#' @details
+#' To calculate the FOR, the following formula is used:
+#'
+#' FOR = (Number of false negatives) / (Total number of negative results)
+#'
+#' The resulting value is a proportion, with values closer to 0 indicating a
+#' more reliable statistical test and values closer to 1 indicating a less
+#' reliable test.
+#'
+#' The FOR is a useful metric to identify tests that are more likely
+#' to accurately identify true negative results.
+#'
 #' @param ... `r rox("dots")`
 #'
 #' @export
@@ -12,7 +29,7 @@ calc_for <- function(...) UseMethod("calc_for")
 #'
 #' @param fn `r rox("fn")`
 #' @param tn `r rox("tn")`
-#' @param ci.type Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.
+#' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
 #'
 #' @export
@@ -28,7 +45,7 @@ calc_for.default <- function(fn, tn, ci.type, ci.level, ...) {
 #' @describeIn calc_for
 #'
 #' @param tbl `r rox("tbl")`
-#' @param ci.type Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.
+#' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
 #'
 #' @export
@@ -49,7 +66,7 @@ calc_for.default <- function(fn, tn, ci.type, ci.level, ...) {
 #' @param data `r rox("data")`
 #' @param prediction `r rox("prediction")`
 #' @param reference `r rox("reference")`
-#' @param ci.type Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.
+#' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
 #'
 #' @export

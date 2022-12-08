@@ -5,7 +5,7 @@
 \alias{calc_err.default}
 \alias{calc_err.table}
 \alias{calc_err.data.frame}
-\title{Calculate Error rate (err).}
+\title{Calculate Error Rate.}
 \usage{
 calc_err(...)
 
@@ -43,7 +43,19 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate Error rate (err).
+The error rate of a classification model is a measure of the proportion
+of incorrect predictions made by the model. It is calculated as the number
+of incorrect predictions divided by the total number of predictions made by
+the model.
+}
+\details{
+To calculate the error rate of a classification model, the following formula is used:
+
+Error rate = (Number of incorrect predictions) / (Total number of predictions)
+
+The resulting value is a proportion, with values closer to 0 indicating a
+better-performing model and values closer to 1 indicating a worse-
+performing model.
 }
 \section{Methods (by class)}{
 \itemize{

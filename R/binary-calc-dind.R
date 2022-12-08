@@ -1,4 +1,4 @@
-#' Calculate Distance index (dind).
+#' Calculate Distance Index.
 #'
 #' @param ... `r rox("dots")`
 #'

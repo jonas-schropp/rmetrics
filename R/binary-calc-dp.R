@@ -1,4 +1,4 @@
-#' Calculate Discriminant Power (dp).
+#' Calculate Discriminant Power.
 #'
 #' @param ... `r rox("dots")`
 #'

@@ -1,7 +1,7 @@
 Package: rmetrics
 Type: Package
 Title: A Collection of Metrics to Evaluate the Performance of Statistical and Machine Learning Models
-Version: 0.1.0
+Version: 0.1.2
 Authors@R: 
     person("Jonas", "Schropp", , "jonas.schropp@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))

@@ -38,7 +38,27 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate Diagnostic odds ratio
+The diagnostic odds ratio (DOR) is a metric that is used to evaluate
+the performance of a diagnostic test. It is calculated as the ratio of
+the odds of a positive test result in people with the disease to the
+odds of a positive test result in people without the disease.
+}
+\details{
+To calculate the DOR, the following formula is used:
+
+DOR = (True positive rate / False positive rate) / (False negative rate / True negative rate)
+
+where the true positive rate is the ratio of true positive predictions to
+the total number of actual positive samples, the false positive rate is
+the ratio of false positive predictions to the total number of actual
+negative samples, the false negative rate is the ratio of false
+negative predictions to the total number of actual positive samples,
+and the true negative rate is the ratio of true negative predictions to
+the total number of actual negative samples.
+
+The resulting value is a measure of the effectiveness of a diagnostic test,
+with values closer to 1 indicating a weaker test and values closer to
+infinity indicating a stronger test.
 }
 \section{Methods (by class)}{
 \itemize{

@@ -5,7 +5,7 @@
 \alias{calc_bcd.default}
 \alias{calc_bcd.table}
 \alias{calc_bcd.data.frame}
-\title{Calculate Bray-Curtis dissimilarity (bcd).}
+\title{Calculate Bray-Curtis dissimilarity.}
 \usage{
 calc_bcd(...)
 
@@ -36,7 +36,29 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate Bray-Curtis dissimilarity (bcd).
+The Bray-Curtis dissimilarity is a measure of the degree to which two sets
+of observations are different. It is commonly used in ecology to compare
+the composition of two different plant communities, but it can also be
+applied to other types of data sets.
+}
+\details{
+To calculate the Bray-Curtis dissimilarity, the following steps are
+followed:
+\itemize{
+\item For each observation in the first set of data, count the number of times
+it occurs.
+\item For each observation in the second set of data, count the number of times
+it occurs.
+\item For each observation that occurs in both sets of data, calculate the
+absolute difference between the two counts and add this value to the Bray-
+Curtis dissimilarity score.
+\item Divide the Bray-Curtis dissimilarity score by the total number of
+observations in both sets of data.
+}
+
+The resulting value is a measure of the degree to which the two sets of data
+are different, with values closer to 1 indicating greater dissimilarity
+and values closer to 0 indicating less dissimilarity.
 }
 \section{Methods (by class)}{
 \itemize{

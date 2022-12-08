@@ -39,7 +39,19 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate False Discovery Rate
+The false discovery rate (FDR) is a measure of the proportion of false
+positive results among all positive results in a statistical test. It
+is calculated as the number of false positives divided by the total
+number of positive results.
+}
+\details{
+To calculate the FDR, the following formula is used:
+
+FDR = (Number of false positives) / (Total number of positive results)
+
+The resulting value is a proportion, with values closer to 0 indicating a
+more reliable statistical test and values closer to 1 indicating a less
+reliable test.
 }
 \section{Methods (by class)}{
 \itemize{

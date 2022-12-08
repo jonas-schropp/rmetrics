@@ -5,7 +5,7 @@
 \alias{calc_dind.default}
 \alias{calc_dind.table}
 \alias{calc_dind.data.frame}
-\title{Calculate Distance index (dind).}
+\title{Calculate Distance Index.}
 \usage{
 calc_dind(...)
 
@@ -38,7 +38,7 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate Distance index (dind).
+Calculate Distance Index.
 }
 \section{Methods (by class)}{
 \itemize{

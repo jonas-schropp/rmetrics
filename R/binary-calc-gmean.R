@@ -10,7 +10,7 @@
 #'
 #' @details
 #' The geometric mean of TPR and TNR can be adjusted for the proportion of
-#' negativesby setting `adjust = TRUE`.
+#' negatives by setting `adjust = TRUE`.
 #'
 #'
 #' @param ... `r rox("dots")`
