@@ -5,15 +5,15 @@
 \alias{calc_gmean.default}
 \alias{calc_gmean.table}
 \alias{calc_gmean.data.frame}
-\title{Calculate Geometric mean (gmean) of TPR and TNR.}
+\title{Calculate (adjusted) Geometric mean of TPR and TNR.}
 \usage{
 calc_gmean(...)
 
-\method{calc_gmean}{default}(tn, fp, tp, fn, ...)
+\method{calc_gmean}{default}(tn, fp, tp, fn, adjust = FALSE, ...)
 
-\method{calc_gmean}{table}(tbl, ...)
+\method{calc_gmean}{table}(tbl, adjust = FALSE, ...)
 
-\method{calc_gmean}{data.frame}(data, prediction, reference, ...)
+\method{calc_gmean}{data.frame}(data, prediction, reference, adjust = FALSE, ...)
 }
 \arguments{
 \item{...}{Additional arguments. Not used.}
@@ -25,6 +25,9 @@ calc_gmean(...)
 \item{tp}{Numeric, True Positives (TP).}
 
 \item{fn}{Numeric, Fase Negatives (FN).}
+
+\item{adjust}{Should the GM be adjusted for the proportion of negatives?
+FALSE by default.}
 
 \item{tbl}{A table representing the input confusion matrix. This must always have
 prediction on rows and reference on columns, otherwise most functions in
@@ -38,7 +41,17 @@ rmetrics will generate incorrect results.}
 values.}
 }
 \description{
-Calculate Geometric mean (gmean) of TPR and TNR.
+The geometric mean is a measure of central tendency that is calculated by
+taking the n-th root of the product of n numbers. In the context of binary
+classification, the true positive rate (TPR) and true negative rate (TNR) are
+two common metrics used to evaluate the performance of a model. The TPR is the
+ratio of true positive predictions to the total number of positive samples,
+and the TNR is the ratio of true negative predictions to the total number
+of negative samples.
+}
+\details{
+The geometric mean of TPR and TNR can be adjusted for the proportion of
+negativesby setting \code{adjust = TRUE}.
 }
 \section{Methods (by class)}{
 \itemize{

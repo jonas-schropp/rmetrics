@@ -206,7 +206,7 @@ test_that("calc_af works with valid input", {
 })
 test_that("calc_agm works with valid input", {
   expect_equal(
-    calc_agm(tbl), # adjusted geometric mean,
+    calc_gmean(tbl, T), # adjusted geometric mean,
     0.596, # pycm
     tolerance = 0.001
   )
