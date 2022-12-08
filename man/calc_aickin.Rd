@@ -38,7 +38,9 @@ calc_aickin(...)
 \arguments{
 \item{...}{Additional arguments. Not used.}
 
-\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+\item{tbl}{A table representing the input confusion matrix. This must always have
+prediction on rows and reference on columns, otherwise most functions in
+rmetrics will generate incorrect results.}
 
 \item{d}{The agreement matrix for tbl. Must have the same dimensions as tbl, with 1 to indicate agreeing scores, and 0 disagreeing scores. By default the diagonal is considered agreeing.}
 
@@ -46,7 +48,8 @@ calc_aickin(...)
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or 'aickin' if the default CI's by Aickin should be calculated. If FALSE overwrites ci.level. Default is to calculate the CI.}
 
-\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that
+should be calculated.}
 
 \item{maxiter}{Integer or double. Maximum number of iterations to try until convergence. Default is 1000.}
 
@@ -54,7 +57,8 @@ calc_aickin(...)
 
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
-\item{reference}{Character. The name of the variable in data that contains the reference values.}
+\item{reference}{Character. The name of the variable in data that contains the reference
+values.}
 }
 \description{
 Calculate Aickin's Alpha.

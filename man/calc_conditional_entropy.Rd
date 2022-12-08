@@ -26,9 +26,12 @@ Computes the average conditional entropy between two vectors.}
 
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
-\item{reference}{Character. The name of the variable in data that contains the reference values.}
+\item{reference}{Character. The name of the variable in data that contains the reference
+values.}
 
-\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+\item{tbl}{A table representing the input confusion matrix. This must always have
+prediction on rows and reference on columns, otherwise most functions in
+rmetrics will generate incorrect results.}
 }
 \description{
 Calculate conditional entropy.

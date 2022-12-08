@@ -29,11 +29,14 @@ calc_cramer_v(...)
 \arguments{
 \item{...}{Additional arguments passed on to \code{stats::chisq.test}. Not used.}
 
-\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+\item{tbl}{A table representing the input confusion matrix. This must always have
+prediction on rows and reference on columns, otherwise most functions in
+rmetrics will generate incorrect results.}
 
 \item{ci.type}{FALSE if no ci is requested or one out of "ncchisq" (using noncentral chisquare), "ncchisqadj", "fisher" (using fisher z transformation), "fisheradj" (using fisher z transformation and bias correction).}
 
-\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that
+should be calculated.}
 
 \item{bias.correct}{Should a bias correction be applied? FALSE by default.}
 
@@ -41,7 +44,8 @@ calc_cramer_v(...)
 
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
-\item{reference}{Character. The name of the variable in data that contains the reference values.}
+\item{reference}{Character. The name of the variable in data that contains the reference
+values.}
 }
 \value{
 A numeric vector with the three elements 'v', 'll' and 'ul'. If no CI is requested, 'll' and 'ul' are NA.

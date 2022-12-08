@@ -5,7 +5,7 @@ evaluate machine learning models and statistical models. It is primarily
 designed as a backend to my package `revaluate`, but the large number of
 provided metrics makes it useful as a standalone package.
 
-The package provides classsification metrics for *binary*, *multiclass*
+The package provides classification metrics for *binary*, *multiclass*
 or *ordered* dependent variables, with the special case of binary
 dependent variables that are evaluated using upper and lower cutoffs and
 a grey area in between.
@@ -17,15 +17,13 @@ or a `data.frame`.
 
 The package is **under active development**! Function names or arguments
 might change unannounced, methods might be added or even removed. Do not
-use it in a production environment!
+use it in a production environment (yet)!
 
 # Installation
 
 `rmetrics` is not yet on CRAN. You can install the package via github:
 
-    devtools::install_github("jonas-schropp/rmetrics.git")
-
-And load it with:
+    devtools::install_github("jonas-schropp/rmetrics")
 
     library(rmetrics)
 
@@ -64,6 +62,15 @@ Or not request a CI at all:
 
     ##     alpha        ll        ul 
     ## 0.4509621        NA        NA
+
+Most functions also support raw counts for the entries of the confusion
+matrix as inputs:
+
+    calc_tnr(tn = 275, fp = 8, 
+             ci.type = "clopper-pearson", 
+             ci.level = 0.95)
+
+    ## [1] 0.9717314 0.9450616 0.9877183
 
 # Available metrics
 

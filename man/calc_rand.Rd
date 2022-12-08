@@ -23,7 +23,9 @@ calc_rand(...)
 
 The Rand index ranges between 0 and 1 and can be used to measure the similarity between two categorical vectors. It is commonly used to evaluate the similarity between clustering outcomes.}
 
-\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+\item{tbl}{A table representing the input confusion matrix. This must always have
+prediction on rows and reference on columns, otherwise most functions in
+rmetrics will generate incorrect results.}
 
 \item{adjust}{Should the index be rescaled to take into account that random chance will cause some objects to occupy the same clusters, so that the Rand Index can never be zero? FALSE by default.}
 
@@ -31,7 +33,8 @@ The Rand index ranges between 0 and 1 and can be used to measure the similarity 
 
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
-\item{reference}{Character. The name of the variable in data that contains the reference values.}
+\item{reference}{Character. The name of the variable in data that contains the reference
+values.}
 }
 \description{
 Calculate Rand Index.

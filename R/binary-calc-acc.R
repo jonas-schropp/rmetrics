@@ -1,5 +1,26 @@
 #' Calculate Accuracy (acc)
 #'
+#'
+#' Accuracy refers to the degree to which a model's predictions are correct.
+#' It is a measure of how well a model is able to make predictions that match
+#' the observed data.
+#' Accuracy is calculated by dividing the number of correct predictions made
+#' by the model by the total number of predictions made.
+#'
+#' @details
+#' Accuracy is calculated as follows:
+#'
+#' Accuracy = (Number of correct predictions) / (Total number of predictions)
+#'
+#' For example, if a model makes 100 predictions and 75 of them are correct,
+#' the accuracy score would be 75/100 = 0.75. This means that the model is able
+#' to correctly predict the outcome 75% of the time.
+#'
+#' Overall, accuracy is a useful metric for evaluating the performance of a
+#' predictive model, but it should be used in conjunction with other metrics to
+#' get a complete picture of a model's performance, especially when class
+#' imbalance is present or a focus on either type 1 or type 2 errors is necessary.
+#'
 #' @export
 #'
 calc_acc <- function(...) UseMethod("calc_acc")
@@ -12,7 +33,7 @@ calc_acc <- function(...) UseMethod("calc_acc")
 #' @param tn `r rox("tn")`
 #' @param fp `r rox("fp")`
 #' @param fn `r rox("fn")`
-#' @param ci.type Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.
+#' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
 #' @param ... `r rox("dots")`
 #'
@@ -36,7 +57,7 @@ calc_acc.default <- function(
 #' @describeIn calc_acc
 #'
 #' @param tbl `r rox("tbl")`
-#' @param ci.type Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.
+#' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
 #'
 #' @export
@@ -61,7 +82,7 @@ calc_acc.table <- function(tbl,
 #' @param data `r rox("data")`
 #' @param prediction `r rox("prediction")`
 #' @param reference `r rox("reference")`
-#' @param ci.type Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.
+#' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
 #'
 #' @export

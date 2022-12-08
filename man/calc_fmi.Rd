@@ -17,13 +17,16 @@ calc_fmi(...)
 
 The Fowlkes–Mallows index is the geometric mean of precision (PPV) and recall (TPR). It is generally used to compare the results of two clustering algorithms. It ranges from 0 to 1, with 1 indicating perfect classification.}
 
-\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+\item{tbl}{A table representing the input confusion matrix. This must always have
+prediction on rows and reference on columns, otherwise most functions in
+rmetrics will generate incorrect results.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
-\item{reference}{Character. The name of the variable in data that contains the reference values.}
+\item{reference}{Character. The name of the variable in data that contains the reference
+values.}
 }
 \description{
 Calculate Fowlkes–Mallows Index.

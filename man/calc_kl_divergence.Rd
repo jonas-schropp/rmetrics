@@ -28,13 +28,16 @@ calc_kl_divergence(...)
 
 \item{epsilon}{Continuity correction for zero cells. By default 0.000001.}
 
-\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+\item{tbl}{A table representing the input confusion matrix. This must always have
+prediction on rows and reference on columns, otherwise most functions in
+rmetrics will generate incorrect results.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
-\item{reference}{Character. The name of the variable in data that contains the reference values.}
+\item{reference}{Character. The name of the variable in data that contains the reference
+values.}
 }
 \description{
 Calculate Kullback-Leibler Divergence.

@@ -33,19 +33,23 @@ Calculates symmetric and asymmetric (lambda A and lambda B) Goodman Kruskal lamb
 Lambda measures the proportional reduction in error in cross tabulation analysis. It can be used the gauge the strength of association between two nominal variables.
 It can be interpreted as the probable improvement in predicting the reference given knowledge of the predictions.}
 
-\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+\item{tbl}{A table representing the input confusion matrix. This must always have
+prediction on rows and reference on columns, otherwise most functions in
+rmetrics will generate incorrect results.}
 
 \item{direction}{Character, either "symmetric", "row" or "column". "row" corresponds to Lambda B and "column" to Lambda A.}
 
 \item{ci.type}{FALSE if no ci is requested or "normal" for normal approximation CIs}
 
-\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that
+should be calculated.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
-\item{reference}{Character. The name of the variable in data that contains the reference values.}
+\item{reference}{Character. The name of the variable in data that contains the reference
+values.}
 }
 \value{
 A numeric vector with the three elements 'lambda', 'll' and 'ul'. If no CI is requested, 'll' and 'ul' are NA.

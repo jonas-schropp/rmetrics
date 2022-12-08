@@ -7,14 +7,22 @@
 rox <- function(type) {
 
   if (type == "tbl") {
-    "A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results."
-  } else if (type == "data") {
+    "A table representing the input confusion matrix. This must always have
+    prediction on rows and reference on columns, otherwise most functions in
+    rmetrics will generate incorrect results."
+  }
+  else if (type == "data") {
     "A data.frame containing the prediction and the reference."
-  } else if (type == "prediction") {
+  }
+  else if (type == "prediction") {
     "Character. The name of the variable in data that contains the predictions."
-  } else if (type == "reference") {
-    "Character. The name of the variable in data that contains the reference values."
-  } else if (type == "n") "Total number of observations."
+  }
+  else if (type == "reference") {
+    "Character. The name of the variable in data that contains the reference
+    values."
+  }
+
+  else if (type == "n") "Total number of observations."
 
   else if (type == "tp") "Numeric, True Positives (TP)."
   else if (type == "fp") "Numeric, False Positives (FP)."
@@ -39,11 +47,18 @@ rox <- function(type) {
   else if (type == "negm") "Number of negatives per class (= colSums(tbl))"
 
   else if (type == "ci.level") {
-    "A number between 0 and 1 for the levels of the confidence intervals that should be calculated."
+    "A number between 0 and 1 for the levels of the confidence intervals that
+    should be calculated."
   }
   else if (type == "method") {
-    'Character. The averaging method for the individual class scores. Can be either "macro" for macro-averaging or "micro" for micro averaging.'
+    'Character. The averaging method for the individual class scores. Can be
+    either "macro" for macro-averaging or "micro" for micro averaging.'
   }
+
   else if (type == "dots") "Additional arguments. Not used."
+
+  else if (type == "prop.ci.type") {
+    'Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.'
+  }
 
 }

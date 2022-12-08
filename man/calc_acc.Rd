@@ -28,18 +28,40 @@ calc_acc(...)
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 
-\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that
+should be calculated.}
 
-\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+\item{tbl}{A table representing the input confusion matrix. This must always have
+prediction on rows and reference on columns, otherwise most functions in
+rmetrics will generate incorrect results.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
-\item{reference}{Character. The name of the variable in data that contains the reference values.}
+\item{reference}{Character. The name of the variable in data that contains the reference
+values.}
 }
 \description{
-Calculate Accuracy (acc)
+Accuracy refers to the degree to which a model's predictions are correct.
+It is a measure of how well a model is able to make predictions that match
+the observed data.
+Accuracy is calculated by dividing the number of correct predictions made
+by the model by the total number of predictions made.
+}
+\details{
+Accuracy is calculated as follows:
+
+Accuracy = (Number of correct predictions) / (Total number of predictions)
+
+For example, if a model makes 100 predictions and 75 of them are correct,
+the accuracy score would be 75/100 = 0.75. This means that the model is able
+to correctly predict the outcome 75\% of the time.
+
+Overall, accuracy is a useful metric for evaluating the performance of a
+predictive model, but it should be used in conjunction with other metrics to
+get a complete picture of a model's performance, especially when class
+imbalance is present or a focus on either type 1 or type 2 errors is necessary.
 }
 \section{Methods (by class)}{
 \itemize{

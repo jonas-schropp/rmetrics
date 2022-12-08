@@ -31,15 +31,19 @@ calc_plr(...)
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level.}
 
-\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that
+should be calculated.}
 
-\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+\item{tbl}{A table representing the input confusion matrix. This must always have
+prediction on rows and reference on columns, otherwise most functions in
+rmetrics will generate incorrect results.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
-\item{reference}{Character. The name of the variable in data that contains the reference values.}
+\item{reference}{Character. The name of the variable in data that contains the reference
+values.}
 }
 \description{
 Calculate Positive Likelihood Ratio

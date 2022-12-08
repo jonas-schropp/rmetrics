@@ -24,18 +24,33 @@ calc_tpr(...)
 
 \item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
 
-\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that should be calculated.}
+\item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that
+should be calculated.}
 
-\item{tbl}{A table representing the input confusion matrix. This must always have prediction on rows and reference on columns, otherwise most functions in rmetrics will generate incorrect results.}
+\item{tbl}{A table representing the input confusion matrix. This must always have
+prediction on rows and reference on columns, otherwise most functions in
+rmetrics will generate incorrect results.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 
 \item{prediction}{Character. The name of the variable in data that contains the predictions.}
 
-\item{reference}{Character. The name of the variable in data that contains the reference values.}
+\item{reference}{Character. The name of the variable in data that contains the reference
+values.}
 }
 \description{
-Calculate Sensitivity (TPR)
+Sensitivity is the ability of a test or measurement to accurately detect what
+it is supposed to detect. In the context of medical tests, sensitivity refers
+to the proportion of people with a disease who are correctly identified as
+having the disease by the test. A test with high sensitivity will have few
+false negatives, meaning that it will rarely miss cases of the disease.
+}
+\details{
+For example, a test for a certain type of cancer may have a sensitivity of 95\%,
+which means that out of 100 people with the cancer, the test will correctly
+identify 95 of them as having the disease. This means that the test will have
+a 5\% false negative rate, which means that out of 100 people with the cancer,
+the test will fail to detect the disease in 5 of them.
 }
 \section{Methods (by class)}{
 \itemize{

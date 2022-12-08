@@ -1,5 +1,17 @@
 #' Calculate Sensitivity (TPR)
 #'
+#' Sensitivity is the ability of a test or measurement to accurately detect what
+#' it is supposed to detect. In the context of medical tests, sensitivity refers
+#' to the proportion of people with a disease who are correctly identified as
+#' having the disease by the test. A test with high sensitivity will have few
+#' false negatives, meaning that it will rarely miss cases of the disease.
+#'
+#' For example, a test for a certain type of cancer may have a sensitivity of 95%,
+#' which means that out of 100 people with the cancer, the test will correctly
+#' identify 95 of them as having the disease. This means that the test will have
+#' a 5% false negative rate, which means that out of 100 people with the cancer,
+#' the test will fail to detect the disease in 5 of them.
+#'
 #' @param ... `r rox("dots")`
 #'
 #' @export

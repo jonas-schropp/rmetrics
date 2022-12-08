@@ -1,21 +1,3 @@
-#' Calculate F-score (f).
-#'
-#' Just a helper function for f1, f2 etc. Returns only the estimate.
-#' @param tp Number of true positives in the contingency table.
-#' @param fp Number of false positives in the contingency table.
-#' @param fn Number of false negatives in the contingency table.
-#' @param beta beta coefficient
-#'
-#' @noRd
-#' @keywords Internal
-calc_f <- function(tp, fp, fn, beta) {
-
-  ((1 + (beta)^2) * tp) / ((1 + (beta)^2) * tp + fp + (beta^2) * fn)
-
-}
-
-
-
 #' Calculate G-measure & G-mean.
 #'
 #' @param item1 True positive rate (TPR) or True negative rate (TNR) or Positive predictive value (PPV)

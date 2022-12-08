@@ -115,21 +115,21 @@ test_that("calc_err works with valid input", {
 })
 test_that("calc_f05 works with valid input", {
   expect_equal(
-    calc_f05(tbl),
+    calc_f(tbl, 0.5),
     0.521, # pycm
     tolerance = 0.001
   )
 })
 test_that("calc_f1 works with valid input", {
   expect_equal(
-    calc_f1(tbl),
+    calc_f(tbl, 1),
     0.556, # pycm
     tolerance = 0.001
   )
 })
 test_that("calc_f2 works with valid input", {
   expect_equal(
-    calc_f2(tbl),
+    calc_f(tbl, 2),
     0.595, # pycm
     tolerance = 0.001
   )
