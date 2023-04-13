@@ -71,3 +71,10 @@ performance.
 \item \code{calc_auroc(data.frame)}: 
 
 }}
+\seealso{
+\code{\link[=calc_tpr]{calc_tpr()}}
+
+\code{\link[=calc_fpr]{calc_fpr()}}
+
+\code{\link[=calc_aupr]{calc_aupr()}}
+}

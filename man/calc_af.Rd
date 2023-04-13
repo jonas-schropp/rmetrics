@@ -37,8 +37,21 @@ rmetrics will generate incorrect results.}
 \item{reference}{Character. The name of the variable in data that contains the reference
 values.}
 }
+\value{
+A numeric value that represents the Adjusted F-score (af) for the
+binary classification model.
+
+A numeric value that represents the Adjusted F-score (af) for the
+binary classification model.
+}
 \description{
-Calculate Adjusted F-score (af).
+This function calculates the Adjusted F-score (af) which is a statistical
+measure that combines both sensitivity and specificity of a binary
+classification model, by taking into account both the false positive rate
+(FPR) and the false negative rate (FNR) while penalizing more heavily the
+FNR. This function uses the calc_f function to calculate the F2-score (F2)
+and the inverse of the F0.5-score (inv05) and then applies the following
+formula: sqrt(F2 * inv05).
 }
 \section{Methods (by class)}{
 \itemize{
@@ -49,3 +62,17 @@ Calculate Adjusted F-score (af).
 \item \code{calc_af(data.frame)}: 
 
 }}
+\section{Functions}{
+\itemize{
+\item \code{calc_af()}: 
+
+}}
+\examples{
+calc_af(tp = 80, fp = 20, fn = 20, tn = 80)
+
+}
+\seealso{
+\code{\link{calc_f}}
+}
+\concept{Classification Metrics}
+\keyword{classification}

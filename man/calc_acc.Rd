@@ -58,10 +58,8 @@ For example, if a model makes 100 predictions and 75 of them are correct,
 the accuracy score would be 75/100 = 0.75. This means that the model is able
 to correctly predict the outcome 75\% of the time.
 
-Overall, accuracy is a useful metric for evaluating the performance of a
-predictive model, but it should be used in conjunction with other metrics to
-get a complete picture of a model's performance, especially when class
-imbalance is present or a focus on either type 1 or type 2 errors is necessary.
+Use with caution when class imbalance is present or a focus on either type
+1 or type 2 errors is necessary.
 }
 \section{Methods (by class)}{
 \itemize{

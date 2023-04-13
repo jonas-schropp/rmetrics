@@ -54,12 +54,6 @@ threshold used to classify a sample as positive or negative, and calculating
 the precision and recall at each threshold. These precision-recall pairs
 are then plotted on a graph, with precision on the y-axis and recall on the
 x-axis. The AUPRC is then calculated by measuring the area under this curve.
-
-The AUPRC is a useful metric because it allows for a more comprehensive
-evaluation of a model's performance. Unlike the F1-score, which is a
-single number that represents the harmonic mean of precision and recall,
-the AUPRC takes into account the entire precision-recall curve and provides
-a more complete picture of a model's performance.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -70,3 +64,30 @@ a more complete picture of a model's performance.
 \item \code{calc_aupr(data.frame)}: 
 
 }}
+\examples{
+# Create a sample data frame with prediction and reference columns
+data <- data.frame(
+  prediction = c(0.9, 0.8, 0.6, 0.5, 0.3, 0.2, 0.1),
+  reference = c(1, 0, 0, 1, 1, 0, 1)
+)
+
+# Calculate AUPR using the data frame method
+calc_aupr(data, prediction = "prediction", reference = "reference")
+
+# the table method
+calc_aupr(table(data$prediction, data$reference))
+
+# Calculate AUPR using the default method
+tp <- 2
+fp <- 1
+fn <- 2
+calc_aupr(tp, fp, fn)
+
+}
+\seealso{
+\code{\link[=calc_precision]{calc_precision()}}
+
+\code{\link[=calc_tpr]{calc_tpr()}}
+
+\code{\link[=calc_auroc]{calc_auroc()}}
+}

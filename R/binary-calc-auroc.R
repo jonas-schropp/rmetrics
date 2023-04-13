@@ -24,6 +24,10 @@
 #' TPR-FPR curve and thereby provides a more complete picture of a model's
 #' performance.
 #'
+#' @seealso [calc_tpr()]
+#' @seealso [calc_fpr()]
+#' @seealso [calc_aupr()]
+#'
 #' @param ... `r rox("dots")`
 #'
 #' @export

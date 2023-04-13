@@ -44,10 +44,15 @@ applied to other types of data sets.
 \details{
 To calculate the Braun-Blanquet similarity, the following steps are followed:
 \itemize{
-\item For each observation in the first set of data, count the number of times it occurs.
-\item For each observation in the second set of data, count the number of times it occurs.
-\item For each observation that occurs in both sets of data, calculate the minimum of the two counts and add this value to the Braun-Blanquet similarity score.
-\item Divide the Braun-Blanquet similarity score by the total number of observations in both sets of data.
+\item For each observation in the first set of data, count the number of times it
+occurs.
+\item For each observation in the second set of data, count the number of times
+it occurs.
+\item For each observation that occurs in both sets of data, calculate the
+minimum of the two counts and add this value to the Braun-Blanquet similarity
+score.
+\item Divide the Braun-Blanquet similarity score by the total number of
+observations in both sets of data.
 }
 
 The resulting value is a measure of the degree to which the two sets of data
@@ -63,3 +68,24 @@ values closer to 0 indicating less similarity.
 \item \code{calc_bbs(data.frame)}: 
 
 }}
+\examples{
+# Create some example data
+set.seed(123)
+reference <- factor(sample(c("A", "B", "C"), 100, replace = TRUE))
+prediction <- factor(sample(c("A", "B", "C"), 100, replace = TRUE))
+data <- data.frame(reference, prediction)
+
+# Calculate Braun-Blanquet similarity using data frame
+calc_bbs(data, prediction = "prediction", reference = "reference")
+
+# Calculate Braun-Blanquet similarity using confusion matrix
+tbl <- table(data)
+calc_bbs(tbl)
+
+# Calculate Braun-Blanquet similarity manually
+tp <- sum(data$reference == "A" & data$prediction == "A")
+ppos <- sum(data$prediction == "A")
+pos <- sum(data$reference == "A")
+calc_bbs(tp, ppos, pos)
+
+}
