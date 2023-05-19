@@ -8,7 +8,8 @@
 #' @details
 #' To calculate the DOR, the following formula is used:
 #'
-#' DOR = (True positive rate / False positive rate) / (False negative rate / True negative rate)
+#' DOR = (True positive rate / False positive rate) / (False negative rate /
+#' True negative rate)
 #'
 #' where the true positive rate is the ratio of true positive predictions to
 #' the total number of actual positive samples, the false positive rate is
@@ -44,7 +45,12 @@ calc_dor.default <- function(tp, fn, tn, fp, ...) {
   plr <- calc_plr(tp, fn, fp, tn, F, 0)[1]
   nlr <- calc_nlr(tp, fn, fp, tn, F, 0)[1]
 
-  plr / nlr
+  if (is.na(nlr) | nlr == 0) {
+    warning("Can not calculate DOR if NLR is 0 or NA. Returning NA.")
+    return(NA_real_)
+  } else {
+    return(plr / nlr)
+  }
 
 }
 
@@ -53,17 +59,29 @@ calc_dor.default <- function(tp, fn, tn, fp, ...) {
 #' @describeIn calc_dor
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_dor.table <- function(tbl, ...) {
+calc_dor.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_dor(tp, fn, tn, fp)
+  calc_dor.default(
+    tp,
+    fn,
+    tn,
+    fp
+    )
 
 }
 
@@ -79,12 +97,15 @@ calc_dor.table <- function(tbl, ...) {
 #'
 calc_dor.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_dor(tbl)
+  calc_dor.table(tbl, incr)
 
 }

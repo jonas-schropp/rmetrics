@@ -39,6 +39,12 @@ calc_gmean.default <- function(tn, fp, tp, fn, adjust = FALSE, ...) {
 
   gm <- calc_g(tpr, tnr)
 
+  if (is.na(gm)) {
+    warning("Can not calculate geometric mean if either TNR of TPR are 0
+            of can not be calculated. Returning NA.")
+    return(gm)
+  }
+
   if (adjust) {
 
     neg <- tn + fp
@@ -73,17 +79,25 @@ calc_gmean.default <- function(tn, fp, tp, fn, adjust = FALSE, ...) {
 #' @param tbl `r rox("tbl")`
 #' @param adjust Should the GM be adjusted for the proportion of negatives?
 #' FALSE by default.
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_gmean.table <- function(tbl, adjust = FALSE, ...) {
+calc_gmean.table <- function(
+    tbl,
+    adjust = FALSE,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_gmean(tn, fp, tp, fn, adjust)
+  calc_gmean.default(tn, fp, tp, fn, adjust)
 
 }
 
@@ -101,13 +115,16 @@ calc_gmean.table <- function(tbl, adjust = FALSE, ...) {
 #'
 calc_gmean.data.frame <- function(
     data,
-    prediction, reference,
-    adjust = FALSE, ...
+    prediction,
+    reference,
+    adjust = FALSE,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_gmean(tbl, adjust)
+  calc_gmean.table(tbl, adjust, incr)
 
 }

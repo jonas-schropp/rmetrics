@@ -11,9 +11,9 @@ calc_racc(...)
 
 \method{calc_racc}{default}(tp, fp, fn, n, unbiased = FALSE, ...)
 
-\method{calc_racc}{table}(tbl, unbiased = FALSE, ...)
+\method{calc_racc}{table}(tbl, unbiased = FALSE, incr = FALSE, ...)
 
-\method{calc_racc}{data.frame}(data, prediction, reference, unbiased = FALSE, ...)
+\method{calc_racc}{data.frame}(data, prediction, reference, unbiased = FALSE, incr = FALSE, ...)
 }
 \arguments{
 \item{...}{Additional arguments. Not used.}
@@ -31,6 +31,9 @@ calc_racc(...)
 \item{tbl}{A table representing the input confusion matrix. This must always have
 prediction on rows and reference on columns, otherwise most functions in
 rmetrics will generate incorrect results.}
+
+\item{incr}{Double. Continuity correction to add to each cell of the table. FALSE
+by default, which means the raw counts will be used.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 

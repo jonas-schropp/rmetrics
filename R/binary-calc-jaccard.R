@@ -30,16 +30,23 @@ calc_jaccard.default <- function(tp, fn, fp, ...) {
 #' @describeIn calc_jaccard
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_jaccard.table <- function(tbl, ...) {
+calc_jaccard.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_jaccard(tp, fn, fp)
+  calc_jaccard.default(tp, fn, fp)
 
 }
 
@@ -55,12 +62,15 @@ calc_jaccard.table <- function(tbl, ...) {
 #'
 calc_jaccard.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_jaccard(tbl)
+  calc_jaccard.table(tbl, incr)
 
 }

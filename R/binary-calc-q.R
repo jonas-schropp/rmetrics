@@ -22,17 +22,16 @@ calc_q.default <- function(tp, tn, fp, fn, ...) {
   if (fp != 0 & fn != 0) {
 
     or <- (tp * tn) / (fp * fn)
-    q <- (or - 1) / (or + 1)
+
+    return((or - 1) / (or + 1))
 
   } else {
 
-    q <- NA_real_
-    warning("Can not calculate Yule's Q. \n
-            No FP or FN. Returning NA.")
+    warning("Yule's Q can not be calculated if either FP or FN are 0.
+            Returning NA.")
+    return(NA_real_)
 
   }
-
-  q
 
 }
 
@@ -41,17 +40,24 @@ calc_q.default <- function(tp, tn, fp, fn, ...) {
 #' @describeIn calc_q
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_q.table <- function(tbl, ...) {
+calc_q.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_q(tp, tn, fp, fn)
+  calc_q.default(tp, tn, fp, fn)
 
 }
 
@@ -67,12 +73,15 @@ calc_q.table <- function(tbl, ...) {
 #'
 calc_q.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_q(tbl)
+  calc_q.table(tbl, incr)
 
 }

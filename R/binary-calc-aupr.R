@@ -60,8 +60,8 @@ calc_aupr <- function(...) UseMethod("calc_aupr")
 #'
 calc_aupr.default <- function(tp, fp, fn, ...) {
 
-  ppv <- calc_precision(tp, fp, FALSE, 0)[1]
-  tpr <- calc_tpr(tp, fn, FALSE, 0)[1]
+  ppv <- calc_precision.default(tp, fp, FALSE, 0)[1]
+  tpr <- calc_tpr.default(tp, fn, FALSE, 0)[1]
 
   (ppv + tpr) / 2
 
@@ -72,12 +72,23 @@ calc_aupr.default <- function(tp, fp, fn, ...) {
 #' @describeIn calc_aupr
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_aupr.table <- function(tbl, ...) {
+calc_aupr.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
 
-  calc_aupr(tp = tbl[2,2], fp = tbl[2,1], fn = tbl[1,2])
+  tbl <- tbl + incr
+
+  calc_aupr.default(
+    tp = tbl[2,2],
+    fp = tbl[2,1],
+    fn = tbl[1,2]
+    )
 
 }
 
@@ -88,16 +99,20 @@ calc_aupr.table <- function(tbl, ...) {
 #' @param data `r rox("data")`
 #' @param prediction `r rox("prediction")`
 #' @param reference `r rox("reference")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
 calc_aupr.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   tbl <- table(data[, c(prediction, reference)])
 
-  calc_aupr(tbl)
+  calc_aupr.table(tbl, incr)
 
 }

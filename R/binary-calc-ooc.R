@@ -44,16 +44,23 @@ calc_ooc.default <- function(tp, fp, fn, ...) {
 #' @describeIn calc_ooc
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_ooc.table <- function(tbl, ...) {
+calc_ooc.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_ooc(tp, fp, fn)
+  calc_ooc.default(tp, fp, fn)
 
 }
 
@@ -69,12 +76,15 @@ calc_ooc.table <- function(tbl, ...) {
 #'
 calc_ooc.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_ooc(tbl)
+  calc_ooc.table(tbl, incr)
 
 }

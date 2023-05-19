@@ -11,9 +11,9 @@ calc_net_benefit(...)
 
 \method{calc_net_benefit}{default}(tp, fp, n, weight = 1, ...)
 
-\method{calc_net_benefit}{table}(tbl, weight = 1, ...)
+\method{calc_net_benefit}{table}(tbl, weight = 1, incr = FALSE, ...)
 
-\method{calc_net_benefit}{data.frame}(data, prediction, reference, weight = 1, ...)
+\method{calc_net_benefit}{data.frame}(data, prediction, reference, weight = 1, incr = FALSE, ...)
 }
 \arguments{
 \item{...}{Additional arguments. Not used.}
@@ -29,6 +29,9 @@ calc_net_benefit(...)
 \item{tbl}{A table representing the input confusion matrix. This must always have
 prediction on rows and reference on columns, otherwise most functions in
 rmetrics will generate incorrect results.}
+
+\item{incr}{Double. Continuity correction to add to each cell of the table. FALSE
+by default, which means the raw counts will be used.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 

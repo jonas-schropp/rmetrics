@@ -31,17 +31,24 @@ calc_lift.default <- function(tp, fp, pos, neg, ...) {
 #' @describeIn calc_lift
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_lift.table <- function(tbl, ...) {
+calc_lift.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
   pos <- sum(tbl[,2])
   neg <- sum(tbl[,1])
 
-  calc_lift(tp, fp, pos, neg)
+  calc_lift.default(tp, fp, pos, neg)
 
 }
 
@@ -57,12 +64,15 @@ calc_lift.table <- function(tbl, ...) {
 #'
 calc_lift.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_lift(tbl)
+  calc_lift.table(tbl, incr)
 
 }

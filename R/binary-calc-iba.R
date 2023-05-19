@@ -33,17 +33,25 @@ calc_iba.default <- function(tn, fp, tp, fn, alpha = 1, ...) {
 #'
 #' @param tbl `r rox("tbl")`
 #' @param alpha Weight for TPR - TNR. By default 1.
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_iba.table <- function(tbl, alpha = 1, ...) {
+calc_iba.table <- function(
+    tbl,
+    alpha = 1,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_iba(tn, fp, tp, fn, alpha)
+  calc_iba.default(tn, fp, tp, fn, alpha)
 
 }
 
@@ -60,13 +68,16 @@ calc_iba.table <- function(tbl, alpha = 1, ...) {
 #'
 calc_iba.data.frame <- function(
     data,
-    prediction, reference,
-    alpha = 1, ...
+    prediction,
+    reference,
+    alpha = 1,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_iba(tbl, alpha)
+  calc_iba.table(tbl, alpha, incr)
 
 }

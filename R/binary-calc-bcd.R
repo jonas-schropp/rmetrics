@@ -52,16 +52,23 @@ calc_bcd.default <- function(ppos, pos, n, ...) {
 #' @describeIn calc_bcd
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_bcd.table <- function(tbl, ...) {
+calc_bcd.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   ppos <- sum(tbl[2,])
   pos <- sum(tbl[,2])
   n <- sum(tbl)
 
-  calc_bcd(ppos, pos, n)
+  calc_bcd.default(ppos, pos, n)
 
 }
 
@@ -77,12 +84,15 @@ calc_bcd.table <- function(tbl, ...) {
 #'
 calc_bcd.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_bcd(tbl)
+  calc_bcd.table(tbl, incr)
 
 }

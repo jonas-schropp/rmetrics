@@ -178,10 +178,14 @@ calc_aickin.data.frame <- function(
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_aickin.table(tbl,
-                    d, epsilon,
-                    ci.type, ci.level,
-                    maxiter)
+  calc_aickin.table(
+    tbl,
+    d,
+    epsilon,
+    ci.type,
+    ci.level,
+    maxiter
+    )
 
 }
 

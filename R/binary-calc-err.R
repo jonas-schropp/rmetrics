@@ -53,18 +53,25 @@ calc_err.default <- function(
 #' @param tbl `r rox("tbl")`
 #' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_err.table <- function(tbl, ci.type, ci.level, ...) {
+calc_err.table <- function(
+    tbl,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
+    ) {
 
-  tp <- tbl[2,2]
-  tn <- tbl[1,1]
+  tbl <- tbl + incr
+
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_prop(fp+fn,
-            tp+tn+fp+fn,
+  calc_prop(fp + fn,
+            sum(tbl),
             ci.type = ci.type,
             ci.level = ci.level)
 
@@ -84,13 +91,17 @@ calc_err.table <- function(tbl, ci.type, ci.level, ...) {
 #'
 calc_err.data.frame <- function(
     data,
-    prediction, reference,
-    ci.type, ci.level, ...
+    prediction,
+    reference,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_err(tbl, ci.type, ci.level)
+  calc_err.table(tbl, ci.type, ci.level, incr)
 
 }

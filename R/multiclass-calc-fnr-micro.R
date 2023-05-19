@@ -50,7 +50,9 @@ calc_fnr_micro.table <- function(tbl, ...) {
 #'
 calc_fnr_micro.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

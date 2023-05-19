@@ -22,7 +22,9 @@ calc_cramer_v <- function(...) UseMethod("calc_cramer_v")
 #' @describeIn calc_cramer_v
 #'
 #' @param tbl `r rox("tbl")`
-#' @param ci.type FALSE if no ci is requested or one out of "ncchisq" (using noncentral chisquare), "ncchisqadj", "fisher" (using fisher z transformation), "fisheradj" (using fisher z transformation and bias correction).
+#' @param ci.type FALSE if no ci is requested or one out of "ncchisq" (using
+#' noncentral chisquare), "ncchisqadj", "fisher" (using fisher z transformation),
+#' "fisheradj" (using fisher z transformation and bias correction).
 #' @param ci.level `r rox("ci.level")`
 #' @param bias.correct Should a bias correction be applied? FALSE by default.
 #' @param ... Additional arguments passed on to `stats::chisq.test`. Not used.
@@ -41,10 +43,10 @@ calc_cramer_v.table <- function(
   chisq.hat <- calc_chisq.table(tbl, correct = FALSE, ...)[1]
   df <- prod(dims - 1)
   n <- sum(tbl)
-  sqr <- sapply(dims, function(i) i - 1/(n - 1) * (i - 1)^2)
 
   if (bias.correct) {
     phi.hat <- chisq.hat/n
+    sqr <- sapply(dims, function(i) i - 1/(n - 1) * (i - 1)^2)
     v <- as.numeric(sqrt(max(0, phi.hat - df/(n - 1)) / (min(sqr - 1))))
   } else {
     v <- as.numeric(sqrt(chisq.hat/(n * (min(dims) - 1))))

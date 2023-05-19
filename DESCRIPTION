@@ -1,9 +1,11 @@
 Package: rmetrics
 Type: Package
 Title: A Collection of Metrics to Evaluate the Performance of Statistical and Machine Learning Models
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: 
-    person("Jonas", "Schropp", , "jonas.schropp@protonmail.com", role = c("aut", "cre"),
+    person("Jonas", "Schropp", , 
+           "jonas.schropp@protonmail.com", 
+           role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: The package provides a common interface to a very large collection of metrics for the evaluation of machine learning models and statistical models. 
     It is mainly designed as a backend for the revaluate package, but each function can of course be used on its own.

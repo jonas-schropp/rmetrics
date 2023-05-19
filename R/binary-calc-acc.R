@@ -57,12 +57,19 @@ calc_acc.default <- function(
 #' @param tbl `r rox("tbl")`
 #' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_acc.table <- function(tbl,
-                           ci.type, ci.level,
-                           ...) {
+calc_acc.table <- function(
+    tbl,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
@@ -82,19 +89,23 @@ calc_acc.table <- function(tbl,
 #' @param reference `r rox("reference")`
 #' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
 calc_acc.data.frame <- function(
     data,
-    prediction, reference,
-    ci.type, ci.level,
+    prediction,
+    reference,
+    ci.type,
+    ci.level,
+    incr = FALSE,
     ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_acc(tbl, ci.type, ci.level)
+  calc_acc(tbl, ci.type, ci.level, incr)
 
 }

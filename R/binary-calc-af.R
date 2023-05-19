@@ -61,10 +61,17 @@ calc_af.default <- function(tp, fp, fn, tn, ...) {
 #' @describeIn calc_af
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_af.table <- function(tbl, ...) {
+calc_af.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   calc_af(
     tp = tbl[2,2],
@@ -82,16 +89,20 @@ calc_af.table <- function(tbl, ...) {
 #' @param data `r rox("data")`
 #' @param prediction `r rox("prediction")`
 #' @param reference `r rox("reference")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
 calc_af.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   tbl <- table(data[, c(prediction, reference)])
 
-  calc_af(tbl)
+  calc_af(tbl, incr)
 
 }

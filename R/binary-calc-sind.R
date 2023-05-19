@@ -30,17 +30,24 @@ calc_sind.default <- function(tn, fp, tp, fn, ...) {
 #' @describeIn calc_sind
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_sind.table <- function(tbl, ...) {
+calc_sind.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_sind(tn, fp, tp, fn)
+  calc_sind.default(tn, fp, tp, fn)
 
 }
 
@@ -56,12 +63,15 @@ calc_sind.table <- function(tbl, ...) {
 #'
 calc_sind.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_sind(tbl)
+  calc_sind.table(tbl, incr)
 
 }

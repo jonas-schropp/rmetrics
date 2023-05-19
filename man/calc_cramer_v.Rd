@@ -33,7 +33,9 @@ calc_cramer_v(...)
 prediction on rows and reference on columns, otherwise most functions in
 rmetrics will generate incorrect results.}
 
-\item{ci.type}{FALSE if no ci is requested or one out of "ncchisq" (using noncentral chisquare), "ncchisqadj", "fisher" (using fisher z transformation), "fisheradj" (using fisher z transformation and bias correction).}
+\item{ci.type}{FALSE if no ci is requested or one out of "ncchisq" (using
+noncentral chisquare), "ncchisqadj", "fisher" (using fisher z transformation),
+"fisheradj" (using fisher z transformation and bias correction).}
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that
 should be calculated.}

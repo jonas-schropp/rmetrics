@@ -11,9 +11,9 @@ calc_err(...)
 
 \method{calc_err}{default}(tp, tn, fp, fn, ci.type, ci.level, ...)
 
-\method{calc_err}{table}(tbl, ci.type, ci.level, ...)
+\method{calc_err}{table}(tbl, ci.type, ci.level, incr = FALSE, ...)
 
-\method{calc_err}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
+\method{calc_err}{data.frame}(data, prediction, reference, ci.type, ci.level, incr = FALSE, ...)
 }
 \arguments{
 \item{...}{Additional arguments. Not used.}
@@ -26,7 +26,10 @@ calc_err(...)
 
 \item{fn}{Numeric, Fase Negatives (FN).}
 
-\item{ci.type}{Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.}
+\item{ci.type}{Either FALSE if no confidence intervals are desired or one of
+"agresti.coull", "agresti-coull", "ac", "asymptotic", "normal",
+"wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes",
+and "wilson". If FALSE, overwrites ci.level.}
 
 \item{ci.level}{A number between 0 and 1 for the levels of the confidence intervals that
 should be calculated.}
@@ -34,6 +37,9 @@ should be calculated.}
 \item{tbl}{A table representing the input confusion matrix. This must always have
 prediction on rows and reference on columns, otherwise most functions in
 rmetrics will generate incorrect results.}
+
+\item{incr}{Double. Continuity correction to add to each cell of the table. FALSE
+by default, which means the raw counts will be used.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 

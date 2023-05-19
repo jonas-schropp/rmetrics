@@ -46,7 +46,9 @@ calc_fmi.table <- function(tbl, ...) {
 #'
 calc_fmi.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

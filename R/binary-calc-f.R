@@ -49,16 +49,24 @@ calc_f.default <- function(tp, fp, fn, beta, ...) {
 #'
 #' @param tbl `r rox("tbl")`
 #' @param beta beta coefficient
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_f.table <- function(tbl, beta, ...) {
+calc_f.table <- function(
+    tbl,
+    beta,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_f(tp, fp, fn, beta)
+  calc_f.default(tp, fp, fn, beta)
 
 }
 
@@ -75,13 +83,16 @@ calc_f.table <- function(tbl, beta, ...) {
 #'
 calc_f.data.frame <- function(
     data,
-    prediction, reference,
-    beta, ...
+    prediction,
+    reference,
+    beta,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_f(tbl, beta)
+  calc_f.table(tbl, beta, incr)
 
 }

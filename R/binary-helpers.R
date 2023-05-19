@@ -7,10 +7,12 @@
 #' @keywords Internal
 calc_g <- function(item1, item2) {
 
-  if (item1 != 0 & item2 != 0) {
-    sqrt(item1 * item2)
+  if (is.na(item1) | is.na(item2)) {
+    return(NA_real_)
+  } else if (item1 == 0 | item2 == 0) {
+    return(NA_real_)
   } else {
-    NA_real_
+    return(sqrt(item1 * item2))
   }
 
 }

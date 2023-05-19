@@ -32,17 +32,24 @@ calc_gini.default <- function(tn, fp, tp, fn, ...) {
 #' @describeIn calc_gini
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_gini.table <- function(tbl, ...) {
+calc_gini.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_gini(tn, fp, tp, fn)
+  calc_gini.default(tn, fp, tp, fn)
 
 }
 
@@ -58,12 +65,15 @@ calc_gini.table <- function(tbl, ...) {
 #'
 calc_gini.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_gini(tbl)
+  calc_gini.table(tbl, incr)
 
 }

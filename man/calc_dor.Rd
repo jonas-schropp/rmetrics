@@ -11,9 +11,9 @@ calc_dor(...)
 
 \method{calc_dor}{default}(tp, fn, tn, fp, ...)
 
-\method{calc_dor}{table}(tbl, ...)
+\method{calc_dor}{table}(tbl, incr = FALSE, ...)
 
-\method{calc_dor}{data.frame}(data, prediction, reference, ...)
+\method{calc_dor}{data.frame}(data, prediction, reference, incr = FALSE, ...)
 }
 \arguments{
 \item{...}{Additional arguments. Not used.}
@@ -29,6 +29,9 @@ calc_dor(...)
 \item{tbl}{A table representing the input confusion matrix. This must always have
 prediction on rows and reference on columns, otherwise most functions in
 rmetrics will generate incorrect results.}
+
+\item{incr}{Double. Continuity correction to add to each cell of the table. FALSE
+by default, which means the raw counts will be used.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 
@@ -46,7 +49,8 @@ odds of a positive test result in people without the disease.
 \details{
 To calculate the DOR, the following formula is used:
 
-DOR = (True positive rate / False positive rate) / (False negative rate / True negative rate)
+DOR = (True positive rate / False positive rate) / (False negative rate /
+True negative rate)
 
 where the true positive rate is the ratio of true positive predictions to
 the total number of actual positive samples, the false positive rate is

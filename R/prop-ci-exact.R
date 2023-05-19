@@ -1,6 +1,7 @@
 #' Calculate Exact CI for proportions
 #'
-#' @param successes Number of 'successes' in a bernoulli experiment. Numerator of the proportion to draw.
+#' @param successes Number of 'successes' in a bernoulli experiment. Numerator
+#' of the proportion to draw.
 #' @param trials Total number of trials, denominator of the proportion to draw.
 #' @param l Levels of the confidence intervals returned by `ci_levels`.
 #'

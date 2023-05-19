@@ -30,10 +30,19 @@ calc_prevalence.default <- function(pos, neg, ci.type, ci.level, ...) {
 #' @param tbl `r rox("tbl")`
 #' @param ci.type Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.
 #' @param ci.level `r rox("ci.level")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_prevalence.table <- function(tbl, ci.type, ci.level, ...) {
+calc_prevalence.table <- function(
+    tbl,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   pos <- sum(tbl[,2])
   neg <- sum(tbl[,1])
@@ -56,13 +65,17 @@ calc_prevalence.table <- function(tbl, ci.type, ci.level, ...) {
 #'
 calc_prevalence.data.frame <- function(
     data,
-    prediction, reference,
-    ci.type, ci.level, ...
+    prediction,
+    reference,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_prevalence(tbl, ci.type, ci.level)
+  calc_prevalence.table(tbl, ci.type, ci.level, incr)
 
 }

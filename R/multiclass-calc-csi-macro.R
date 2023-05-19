@@ -56,7 +56,9 @@ calc_csi_macro.table <- function(tbl, ...) {
 #'
 calc_csi_macro.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

@@ -43,17 +43,24 @@ calc_mcc.default <- function(tp, tn, fp, fn, ...) {
 #' @describeIn calc_mcc
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_mcc.table <- function(tbl, ...) {
+calc_mcc.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_mcc(tp, tn, fp, fn)
+  calc_mcc.default(tp, tn, fp, fn)
 
 }
 
@@ -69,12 +76,15 @@ calc_mcc.table <- function(tbl, ...) {
 #'
 calc_mcc.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_mcc(tbl)
+  calc_mcc.table(tbl, incr)
 
 }

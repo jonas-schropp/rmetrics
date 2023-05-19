@@ -59,8 +59,10 @@ calc_grey.table <- function(tbl, ci.type, ci.level, ...) {
 #'
 calc_grey.data.frame <- function(
     data,
-    prediction, reference,
-    ci.type, ci.level,
+    prediction,
+    reference,
+    ci.type,
+    ci.level,
     ...
 ) {
 

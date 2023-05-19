@@ -56,8 +56,10 @@ calc_f_macro.table <- function(tbl, beta = 1, ...) {
 #'
 calc_f_macro.data.frame <- function(
     data,
-    prediction, reference,
-    beta = 1, ...
+    prediction,
+    reference,
+    beta = 1,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

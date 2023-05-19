@@ -54,7 +54,9 @@ calc_fpr_macro.table <- function(tbl, ...) {
 #'
 calc_fpr_macro.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

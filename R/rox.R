@@ -58,7 +58,15 @@ rox <- function(type) {
   else if (type == "dots") "Additional arguments. Not used."
 
   else if (type == "prop.ci.type") {
-    'Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.'
+    'Either FALSE if no confidence intervals are desired or one of
+    "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal",
+    "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes",
+    and "wilson". If FALSE, overwrites ci.level.'
+  }
+
+  else if (type == "incr") {
+    "Double. Continuity correction to add to each cell of the table. FALSE
+    by default, which means the raw counts will be used."
   }
 
 }

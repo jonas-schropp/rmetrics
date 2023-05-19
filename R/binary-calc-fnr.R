@@ -50,10 +50,19 @@
 #' @param tbl `r rox("tbl")`
 #' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_fnr.table <- function(tbl, ci.type, ci.level, ...) {
+calc_fnr.table <- function(
+    tbl,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   fn <- tbl[1,2]
@@ -76,13 +85,17 @@ calc_fnr.table <- function(tbl, ci.type, ci.level, ...) {
 #'
 calc_fnr.data.frame <- function(
     data,
-    prediction, reference,
-    ci.type, ci.level, ...
+    prediction,
+    reference,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_fnr(tbl, ci.type, ci.level)
+  calc_fnr.table(tbl, ci.type, ci.level, incr)
 
 }

@@ -48,10 +48,19 @@ calc_fpr.default <- function(fp, tn, ci.type, ci.level, ...) {
 #' @param tbl `r rox("tbl")`
 #' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_fpr.table <- function(tbl, ci.type, ci.level, ...) {
+calc_fpr.table <- function(
+    tbl,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tn <- tbl[1,1]
   fp <- tbl[2,1]
@@ -74,13 +83,17 @@ calc_fpr.table <- function(tbl, ci.type, ci.level, ...) {
 #'
 calc_fpr.data.frame <- function(
     data,
-    prediction, reference,
-    ci.type, ci.level, ...
+    prediction,
+    reference,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_fpr(tbl, ci.type, ci.level)
+  calc_fpr.table(tbl, ci.type, ci.level, incr)
 
 }

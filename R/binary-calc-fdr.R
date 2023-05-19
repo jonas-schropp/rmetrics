@@ -44,10 +44,19 @@ calc_fdr.default <- function(fp, tp, ci.type, ci.level, ...) {
 #' @param tbl `r rox("tbl")`
 #' @param ci.type `r rox("prop.ci.type")`
 #' @param ci.level `r rox("ci.level")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_fdr.table <- function(tbl, ci.type, ci.level, ...) {
+calc_fdr.table <- function(
+    tbl,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
@@ -70,13 +79,17 @@ calc_fdr.table <- function(tbl, ci.type, ci.level, ...) {
 #'
 calc_fdr.data.frame <- function(
     data,
-    prediction, reference,
-    ci.type, ci.level, ...
+    prediction,
+    reference,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_fdr(tbl, ci.type, ci.level)
+  calc_fdr.table(tbl, ci.type, ci.level, incr)
 
 }

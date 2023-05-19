@@ -10,28 +10,6 @@ calc_conditional_entropy <- function(...) UseMethod("calc_conditional_entropy")
 
 
 
-#' @describeIn calc_conditional_entropy
-#'
-#' @param data `r rox("data")`
-#' @param prediction `r rox("prediction")`
-#' @param reference `r rox("reference")`
-#'
-#' @export
-#'
-calc_conditional_entropy.data.frame <- function(
-    data,
-    prediction = "prediction",
-    reference = "reference",
-    ...
-    ) {
-
-  tbl <- table(data[, c(prediction, reference)])
-
-  calc_conditional_entropy(tbl)
-
-}
-
-
 
 #' @describeIn calc_conditional_entropy
 #'
@@ -52,5 +30,28 @@ calc_conditional_entropy.table <- function(tbl, ...) {
   res <- tmp * (pos / n)
 
   return(-sum(res))
+
+}
+
+
+
+#' @describeIn calc_conditional_entropy
+#'
+#' @param data `r rox("data")`
+#' @param prediction `r rox("prediction")`
+#' @param reference `r rox("reference")`
+#'
+#' @export
+#'
+calc_conditional_entropy.data.frame <- function(
+    data,
+    prediction = "prediction",
+    reference = "reference",
+    ...
+) {
+
+  tbl <- table(data[, c(prediction, reference)])
+
+  calc_conditional_entropy(tbl)
 
 }

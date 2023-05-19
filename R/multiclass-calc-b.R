@@ -56,7 +56,9 @@ calc_b.table <- function(tbl, ...) {
 #'
 calc_b.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

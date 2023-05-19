@@ -34,7 +34,7 @@ calc_hamming.table <- function(tbl, ...) {
   otp <- sum(diag(tbl))
   n <- sum(tbl)
 
-  calc_hamming(otp, n)
+  calc_hamming.default(otp, n)
 
 }
 
@@ -50,13 +50,14 @@ calc_hamming.table <- function(tbl, ...) {
 #'
 calc_hamming.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    ...
 ) {
 
-  data <- data[, c(prediction, reference)]
-  otp <- sum(data[[1]] == data[[2]])
+  otp <- sum(data[[prediction]] == data[[reference]])
   n <- nrow(data)
 
-  calc_hamming(otp, n)
+  calc_hamming.default(otp, n)
 
 }

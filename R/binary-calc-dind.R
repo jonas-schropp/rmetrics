@@ -31,17 +31,29 @@ calc_dind.default <- function(tn, fp, tp, fn, ...) {
 #' @describeIn calc_dind
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_dind.table <- function(tbl, ...) {
+calc_dind.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_dind(tn, fp, tp, fn)
+  calc_dind.default(
+    tn,
+    fp,
+    tp,
+    fn
+    )
 
 }
 
@@ -57,13 +69,16 @@ calc_dind.table <- function(tbl, ...) {
 #'
 calc_dind.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_dind(tbl)
+  calc_dind(tbl, incr)
 
 }
 

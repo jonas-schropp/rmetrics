@@ -52,7 +52,9 @@ calc_fpr_micro.table <- function(tbl, ...) {
 #'
 calc_fpr_micro.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]

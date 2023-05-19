@@ -33,6 +33,7 @@ calc_cross_entropy.default <- function(tp, fp, fn, n, ...) {
 
 
 
+
 #' @describeIn calc_cross_entropy
 #'
 #' @param tbl `r rox("tbl")`
@@ -63,7 +64,9 @@ calc_cross_entropy.table <- function(tbl, ...) {
 #'
 calc_cross_entropy.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
@@ -72,4 +75,3 @@ calc_cross_entropy.data.frame <- function(
   calc_cross_entropy(tbl)
 
 }
-

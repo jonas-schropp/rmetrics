@@ -18,7 +18,8 @@ calc_plr <- function(...) UseMethod("calc_plr")
 #' @param fn `r rox("fn")`
 #' @param fp `r rox("fp")`
 #' @param tn `r rox("tn")`
-#' @param ci.type Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level.
+#' @param ci.type Either FALSE if no confidence intervals are desired or
+#' 'koopman'. If FALSE overwrites ci.level.
 #' @param ci.level `r rox("ci.level")`
 #'
 #' @export
@@ -32,7 +33,22 @@ calc_plr.default <- function(
   tpr <- calc_tpr(tp, fn, F, 0)[1]
   fnr <- calc_fpr(fp, tn, F, 0)[1]
 
-  lr <- tpr / fnr
+  if (is.na(fnr)) {
+    warning("Can not calculate negative likelihood ratio if there are
+            no false negative cases. Returning NA.")
+    res <- c(NA_real_, NA_real_, NA_real_)
+    names(res) <- c("plr", "ll", "ul")
+    return(res)
+  } else if (fnr == 0) {
+    warning("Can not calculate negative likelihood ratio if there are
+            no false negative cases. Returning NA.")
+    res <- c(NA_real_, NA_real_, NA_real_)
+    names(res) <- c("plr", "ll", "ul")
+    return(res)
+  } else {
+    lr <- tpr / fnr
+  }
+
 
   # CI method by Koopman (1984). Coverage not that great.
   if (is.na(ci.type) | isFALSE(ci.type)) {
@@ -55,20 +71,25 @@ calc_plr.default <- function(
 #' @param tbl `r rox("tbl")`
 #' @param ci.type Either FALSE if no confidence intervals are desired or 'koopman'. If FALSE overwrites ci.level.
 #' @param ci.level `r rox("ci.level")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
 calc_plr.table <- function(
     tbl,
-    ci.type, ci.level,
+    ci.type,
+    ci.level,
+    incr = FALSE,
     ...) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_plr(tp, fn, fp, tn, ci.type, ci.level)
+  calc_plr.default(tp, fn, fp, tn, ci.type, ci.level)
 
 }
 
@@ -86,13 +107,17 @@ calc_plr.table <- function(
 #'
 calc_plr.data.frame <- function(
     data,
-    prediction, reference,
-    ci.type, ci.level,
-    ...) {
+    prediction,
+    reference,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
+    ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_plr(tbl, ci.type, ci.level)
+  calc_plr.table(tbl, ci.type, ci.level, incr)
 
 }

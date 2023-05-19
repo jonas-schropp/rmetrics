@@ -36,17 +36,25 @@ calc_racc.default <- function(tp, fp, fn, n, unbiased = FALSE, ...) {
 #' @describeIn calc_racc
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_racc.table <- function(tbl, unbiased = FALSE, ...) {
+calc_racc.table <- function(
+    tbl,
+    unbiased = FALSE,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
   n <- sum(tbl)
 
-  calc_racc(tp, fp, fn, n, unbiased)
+  calc_racc.default(tp, fp, fn, n, unbiased)
 
 }
 
@@ -62,14 +70,17 @@ calc_racc.table <- function(tbl, unbiased = FALSE, ...) {
 #'
 calc_racc.data.frame <- function(
     data,
-    prediction, reference,
-    unbiased = FALSE, ...
+    prediction,
+    reference,
+    unbiased = FALSE,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_racc(tbl, unbiased)
+  calc_racc.table(tbl, unbiased, incr)
 
 }
 

@@ -28,12 +28,24 @@ calc_tnr.default <- function(tn, fp, ci.type, ci.level, ...) {
 #' @describeIn calc_tnr
 #'
 #' @param tbl `r rox("tbl")`
-#' @param ci.type Either FALSE if no confidence intervals are desired or one of "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald", "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If FALSE, overwrites ci.level.
+#' @param ci.type Either FALSE if no confidence intervals are desired or one of
+#' "agresti.coull", "agresti-coull", "ac", "asymptotic", "normal", "wald",
+#' "clopper-pearson", "cp", "exact", "jeffreys", "bayes", and "wilson". If
+#' FALSE, overwrites ci.level.
 #' @param ci.level `r rox("ci.level")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_tnr.table <- function(tbl, ci.type, ci.level, ...) {
+calc_tnr.table <- function(
+    tbl,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tn <- tbl[1,1]
   fp <- tbl[2,1]
@@ -56,13 +68,17 @@ calc_tnr.table <- function(tbl, ci.type, ci.level, ...) {
 #'
 calc_tnr.data.frame <- function(
     data,
-    prediction, reference,
-    ci.type, ci.level, ...
+    prediction,
+    reference,
+    ci.type,
+    ci.level,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_tnr(tbl, ci.type, ci.level)
+  calc_tnr.table(tbl, ci.type, ci.level, incr)
 
 }

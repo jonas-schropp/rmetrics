@@ -30,16 +30,23 @@ calc_icsi.default <- function(tp, fn, fp, ...) {
 #' @describeIn calc_icsi
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_icsi.table <- function(tbl, ...) {
+calc_icsi.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_icsi(tp, fn, fp)
+  calc_icsi.default(tp, fn, fp)
 
 }
 
@@ -55,12 +62,15 @@ calc_icsi.table <- function(tbl, ...) {
 #'
 calc_icsi.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_icsi(tbl)
+  calc_icsi.table(tbl, incr)
 
 }

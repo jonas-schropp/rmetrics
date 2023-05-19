@@ -11,9 +11,9 @@ calc_jaccard(...)
 
 \method{calc_jaccard}{default}(tp, fn, fp, ...)
 
-\method{calc_jaccard}{table}(tbl, ...)
+\method{calc_jaccard}{table}(tbl, incr = FALSE, ...)
 
-\method{calc_jaccard}{data.frame}(data, prediction, reference, ...)
+\method{calc_jaccard}{data.frame}(data, prediction, reference, incr = FALSE, ...)
 }
 \arguments{
 \item{...}{Additional arguments. Not used.}
@@ -27,6 +27,9 @@ calc_jaccard(...)
 \item{tbl}{A table representing the input confusion matrix. This must always have
 prediction on rows and reference on columns, otherwise most functions in
 rmetrics will generate incorrect results.}
+
+\item{incr}{Double. Continuity correction to add to each cell of the table. FALSE
+by default, which means the raw counts will be used.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 

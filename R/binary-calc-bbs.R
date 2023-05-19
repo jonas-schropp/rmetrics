@@ -83,16 +83,22 @@ calc_bbs.default <- function(tp, ppos, pos, ...) {
 #' @describeIn calc_bbs
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_bbs.table <- function(tbl, ...) {
+calc_bbs.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
 
+  tbl <- tbl + incr
   tp <- tbl[2,2]
   ppos <- sum(tbl[2,])
   pos <- sum(tbl[,2])
 
-  calc_bbs(tp, ppos, pos)
+  calc_bbs.default(tp, ppos, pos)
 
 }
 
@@ -108,13 +114,16 @@ calc_bbs.table <- function(tbl, ...) {
 #'
 calc_bbs.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_bbs(tbl)
+  calc_bbs.table(tbl, incr)
 
 }
 

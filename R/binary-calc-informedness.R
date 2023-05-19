@@ -31,17 +31,24 @@ calc_informedness.default <- function(tp, fn, tn, fp, ...) {
 #' @describeIn calc_informedness
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_informedness.table <- function(tbl, ...) {
+calc_informedness.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_informedness(tp, fn, tn, fp)
+  calc_informedness.default(tp, fn, tn, fp)
 
 }
 
@@ -57,12 +64,15 @@ calc_informedness.table <- function(tbl, ...) {
 #'
 calc_informedness.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_informedness(tbl)
+  calc_informedness.table(tbl, incr)
 
 }

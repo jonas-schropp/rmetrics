@@ -11,9 +11,17 @@ calc_prevalence(...)
 
 \method{calc_prevalence}{default}(pos, neg, ci.type, ci.level, ...)
 
-\method{calc_prevalence}{table}(tbl, ci.type, ci.level, ...)
+\method{calc_prevalence}{table}(tbl, ci.type, ci.level, incr = FALSE, ...)
 
-\method{calc_prevalence}{data.frame}(data, prediction, reference, ci.type, ci.level, ...)
+\method{calc_prevalence}{data.frame}(
+  data,
+  prediction,
+  reference,
+  ci.type,
+  ci.level,
+  incr = FALSE,
+  ...
+)
 }
 \arguments{
 \item{...}{Additional arguments. Not used.}
@@ -30,6 +38,9 @@ should be calculated.}
 \item{tbl}{A table representing the input confusion matrix. This must always have
 prediction on rows and reference on columns, otherwise most functions in
 rmetrics will generate incorrect results.}
+
+\item{incr}{Double. Continuity correction to add to each cell of the table. FALSE
+by default, which means the raw counts will be used.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 

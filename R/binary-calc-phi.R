@@ -21,7 +21,15 @@ calc_phi.default <- function(
     tp, tn, fp, fn,
     ...) {
 
-  (tp*tn - fp*fn) / sqrt( (tp + fp) * (tp + fn) * (tn + fp) * (tn + fn) )
+  denom <- (tp + fp) * (tp + fn) * (tn + fp) * (tn + fn)
+
+  if (denom == 0) {
+    warning("calc_phi can not be calculated if any combination of two cells
+            is zero. Returning NA.")
+    return(NA_real_)
+  }
+
+  (tp*tn - fp*fn) / sqrt(denom)
 
 }
 
@@ -30,17 +38,24 @@ calc_phi.default <- function(
 #' @describeIn calc_phi
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_phi.table <- function(tbl, ...) {
+calc_phi.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_phi(tp, tn, fp, fn)
+  calc_phi.default(tp, tn, fp, fn)
 
 }
 
@@ -56,12 +71,15 @@ calc_phi.table <- function(tbl, ...) {
 #'
 calc_phi.data.frame <- function(
     data,
-    prediction, reference,
-    ...) {
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
+    ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_phi(tbl)
+  calc_phi.table(tbl, incr)
 
 }

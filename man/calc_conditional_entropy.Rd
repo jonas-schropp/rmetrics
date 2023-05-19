@@ -2,11 +2,13 @@
 % Please edit documentation in R/multiclass-calc-conditional-entropy.R
 \name{calc_conditional_entropy}
 \alias{calc_conditional_entropy}
-\alias{calc_conditional_entropy.data.frame}
 \alias{calc_conditional_entropy.table}
+\alias{calc_conditional_entropy.data.frame}
 \title{Calculate conditional entropy.}
 \usage{
 calc_conditional_entropy(...)
+
+\method{calc_conditional_entropy}{table}(tbl, ...)
 
 \method{calc_conditional_entropy}{data.frame}(
   data,
@@ -14,13 +16,15 @@ calc_conditional_entropy(...)
   reference = "reference",
   ...
 )
-
-\method{calc_conditional_entropy}{table}(tbl, ...)
 }
 \arguments{
 \item{...}{Additional arguments. Not used.
 
 Computes the average conditional entropy between two vectors.}
+
+\item{tbl}{A table representing the input confusion matrix. This must always have
+prediction on rows and reference on columns, otherwise most functions in
+rmetrics will generate incorrect results.}
 
 \item{data}{A data.frame containing the prediction and the reference.}
 
@@ -28,18 +32,14 @@ Computes the average conditional entropy between two vectors.}
 
 \item{reference}{Character. The name of the variable in data that contains the reference
 values.}
-
-\item{tbl}{A table representing the input confusion matrix. This must always have
-prediction on rows and reference on columns, otherwise most functions in
-rmetrics will generate incorrect results.}
 }
 \description{
 Calculate conditional entropy.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{calc_conditional_entropy(data.frame)}: 
-
 \item \code{calc_conditional_entropy(table)}: 
+
+\item \code{calc_conditional_entropy(data.frame)}: 
 
 }}

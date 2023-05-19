@@ -22,6 +22,12 @@ calc_dp.default <- function(tn, fp, tp, fn, ...) {
   tpr <- calc_tpr(tp, fn, F, 0)[1]
   tnr <- calc_tnr(tn, fp, F, 0)[1]
 
+  if (is.na(tpr) | is.na(tnr)) {
+    warning("Discriminant power can not be calculated if
+             there are no positive of no negative cases. Returning NA.")
+    return(NA_real_)
+  }
+
   if (tpr == 1 | tnr == 1) {
     warning("Discriminant power can not be calculated with
              perfect tpr or tnr. Returning NA.")
@@ -40,17 +46,24 @@ calc_dp.default <- function(tn, fp, tp, fn, ...) {
 #' @describeIn calc_dp
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_dp.table <- function(tbl, ...) {
+calc_dp.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
+
+  tbl <- tbl + incr
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_dp(tn, fp, tp, fn)
+  calc_dp.default(tn, fp, tp, fn)
 
 }
 
@@ -66,12 +79,15 @@ calc_dp.table <- function(tbl, ...) {
 #'
 calc_dp.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_dp(tbl)
+  calc_dp.table(tbl, incr)
 
 }

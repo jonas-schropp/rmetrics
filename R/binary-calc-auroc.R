@@ -59,17 +59,22 @@ calc_auroc.default <- function(tn, fp, tp, fn, ...) {
 #' @describeIn calc_auroc
 #'
 #' @param tbl `r rox("tbl")`
+#' @param incr `r rox("incr")`
 #'
 #' @export
 #'
-calc_auroc.table <- function(tbl, ...) {
+calc_auroc.table <- function(
+    tbl,
+    incr = FALSE,
+    ...
+    ) {
 
   tp <- tbl[2,2]
   tn <- tbl[1,1]
   fp <- tbl[2,1]
   fn <- tbl[1,2]
 
-  calc_auroc(tn, fp, tp, fn)
+  calc_auroc.default(tn, fp, tp, fn)
 
 }
 
@@ -85,13 +90,16 @@ calc_auroc.table <- function(tbl, ...) {
 #'
 calc_auroc.data.frame <- function(
     data,
-    prediction, reference, ...
+    prediction,
+    reference,
+    incr = FALSE,
+    ...
 ) {
 
   data <- data[, c(prediction, reference)]
   tbl <- table(data)
 
-  calc_auroc(tbl)
+  calc_auroc.table(tbl, incr)
 
 }
 
